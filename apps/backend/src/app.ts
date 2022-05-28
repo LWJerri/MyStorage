@@ -44,7 +44,7 @@ async function boot() {
 	try {
 		console.log("Starting...");
 
-		await fastify.listen(3005);
+		await fastify.listen(3005, "0.0.0.0");
 
 		console.log("Application ready!");
 	} catch (err) {
