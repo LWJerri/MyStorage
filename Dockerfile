@@ -5,6 +5,7 @@ RUN apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev li
 
 WORKDIR /app
 
+RUN yarn add pnpm -g
 RUN pnpm install
 
 COPY . /app
