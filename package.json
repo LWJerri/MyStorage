@@ -1,0 +1,23 @@
+{
+	"name": "@simonstorage",
+	"version": "1.0.0",
+	"description": "SimonStorage website",
+	"workspaces": [
+		"apps/*"
+	],
+	"engines": {
+		"node": ">= 16"
+	},
+	"scripts": {
+		"prestart": "pnpm --filter=@simonstorage/frontend build",
+		"start": "pnpm --filter=@simonstorage/backend start"
+	},
+	"repository": "https://github.com/LWJerri/SimonStorage",
+	"author": "LWJerri (lwjerri.js.org)",
+	"license": "MIT",
+	"devDependencies": {
+		"nodemon": "^2.0.16",
+		"prettier": "^2.6.2",
+		"ts-node": "^10.8.0"
+	}
+}
