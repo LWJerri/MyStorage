@@ -13,9 +13,10 @@ COPY apps/frontend/package.json apps/frontend/
 COPY apps/backend/package.json apps/backend/
 
 RUN pnpm install
-RUN pnpm prisma generate
 
 COPY apps/frontend apps/frontend
 COPY apps/backend apps/backend
+
+RUN pnpm prisma generate
 
 CMD ["pnpm", "start"]
