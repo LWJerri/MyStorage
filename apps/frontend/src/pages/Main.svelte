@@ -4,10 +4,12 @@
   import { toast } from "@zerodevx/svelte-toast";
   import Navbar from "../components/Navbar.svelte";
 
-  let response = {} as {
+  $: response = {} as {
     error: boolean;
     uploads: Array<{ id: string; createdAt: Date; name: string; size: number; url: string; key: string }>;
   };
+
+  let search;
 
   onMount(async () => {
     const apiRequest = await (await fetch("/api/file", { method: "GET" })).json();
@@ -49,23 +51,63 @@
   <Navbar />
 
   {#if response?.uploads?.length > 0}
-    <div class="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5">
-      {#each response.uploads as upload}
-        <div class="card card-compact bg-base-200 shadow-lg rounded">
-          <div class="card-body">
-            <h2 class="card-title font-bold">{upload.name}</h2>
-            <p>
-              Загружен: {new Date(upload.createdAt).toLocaleDateString()}
-              {new Date(upload.createdAt).toLocaleTimeString()}
-            </p>
-            <p>Размер: {fileSize(upload.size)}</p>
-            <div class="card-actions justify-end mt-5">
-              <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-accent rounded w-full">Открыть</a>
-              <button
-                on:click={async () => await deleteFile(upload.id, upload.name)}
-                class="btn btn-sm btn-outline btn-error rounded w-full">Удалить</button
+    <div class="mt-5 flex flex-row-reverse px-1">
+      <input
+        type="text"
+        bind:value={search}
+        placeholder="Поиск по названию"
+        class="input input-sm input-bordered w-96"
+      />
+    </div>
+
+    <div class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
+      {#each search?.length > 0 ? response.uploads.filter((i) => i.name
+                .split(".")[0]
+                .indexOf(search) !== -1) : response.uploads as upload}
+        <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
+          <figure>
+            {#if upload.url.endsWith(".png") || upload.url.endsWith(".jpg") || upload.url.endsWith(".jpeg")}
+              <img src={upload.url} alt="preview" class="select-none" />
+            {:else}
+              <svg
+                class="w-64 h-64"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                /></svg
               >
+            {/if}
+          </figure>
+
+          <div class="card-body flex-grow">
+            <h2 class="card-title font-bold">
+              {upload.name.length >= 15 ? upload.name.slice(0, 15) + "..." + upload.name.split(".").pop() : upload.name}
+            </h2>
+
+            <div>
+              <p>
+                Загружен: {new Date(upload.createdAt).toLocaleDateString()}
+                {new Date(upload.createdAt).toLocaleTimeString()}
+              </p>
+              <p>Размер: {fileSize(upload.size)}</p>
             </div>
+          </div>
+
+          <div class="my-2 mx-1 space-y-1">
+            <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded w-full">Открыть</a>
+
+            <!--<a class="btn btn-sm btn-outline btn-warning rounded w-full" href={upload.url} download>Скачать</a>-->
+
+            <button
+              on:click={async () => await deleteFile(upload.id, upload.name)}
+              class="btn btn-sm btn-outline btn-error rounded w-full">Удалить</button
+            >
           </div>
         </div>
       {/each}
