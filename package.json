@@ -1,22 +1,22 @@
 {
-	"name": "@mystorage",
-	"version": "1.1.0",
-	"description": "MyStorage application",
-	"workspaces": [
-		"apps/*"
-	],
-	"engines": {
-		"node": ">= 16"
-	},
-	"scripts": {
-		"start": "pnpm --filter=@simonstorage/backend start",
-		"dev:backend": "npm --filter=@mystorage/backend dev",
-		"dev:frontend": "npm --filter=@mystorage/frontend dev"
-	},
-	"repository": "https://github.com/LWJerri/MyStorage",
-	"author": "LWJerri (lwjerri.js.org)",
-	"license": "MIT",
-	"devDependencies": {
-		"prettier": "^2.6.2"
-	}
+  "name": "@mystorage",
+  "version": "1.1.0",
+  "description": "MyStorage application",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">= 16"
+  },
+  "scripts": {
+    "start": "pnpm --filter=@simonstorage/backend start",
+    "dev:backend": "npm --filter=@mystorage/backend dev",
+    "dev:frontend": "npm --filter=@mystorage/frontend dev"
+  },
+  "repository": "https://github.com/LWJerri/MyStorage",
+  "author": "LWJerri (lwjerri.js.org)",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.6.2"
+  }
 }
