@@ -1,7 +1,7 @@
 FROM node:18-slim
 
 RUN apt update -y
-RUN apt-get update && apt-get install git curl wget -y
+RUN apt-get install git curl wget -y
 RUN apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev openssl -y
 
 WORKDIR /app
@@ -18,5 +18,8 @@ COPY apps/frontend apps/frontend
 COPY apps/backend apps/backend
 
 RUN cd apps/backend && pnpm prisma generate
+RUN pnpm run -r build
+
+RUN pnpm install --prod
 
 CMD ["pnpm", "start"]
