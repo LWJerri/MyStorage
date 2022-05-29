@@ -1,5 +1,5 @@
 {
-  "name": "@simonstorage/backend",
+  "name": "@mystorage/backend",
   "version": "1.0.0",
   "main": "./dist/app.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "devDependencies": {
     "nodemon": "^2.0.16",
     "prisma": "^3.14.0",
-    "ts-node": "^10.8.0"
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
   }
 }
