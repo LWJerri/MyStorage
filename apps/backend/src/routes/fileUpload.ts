@@ -21,7 +21,7 @@ export default async function (req: FastifyRequest & { body: { files: File | Fil
           ContentType: file.mimetype,
         }).promise();
 
-        prisma.upload.create({
+        await prisma.upload.create({
           data: { name: file.name, size: file.size, url: uploadResult.Location, key: uploadResult.Key },
         });
 
