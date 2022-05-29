@@ -4,7 +4,7 @@ RUN apt update -y
 RUN apt-get install git curl wget -y
 RUN apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev openssl -y
 
-WORKDIR /app
+WORKDIR /apps
 
 RUN npm i -g pnpm
 
