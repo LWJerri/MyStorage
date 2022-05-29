@@ -1,7 +1,7 @@
 {
-	"name": "@simonstorage",
-	"version": "1.0.0",
-	"description": "SimonStorage website",
+	"name": "@mystorage",
+	"version": "1.1.0",
+	"description": "MyStorage application",
 	"workspaces": [
 		"apps/*"
 	],
@@ -9,15 +9,14 @@
 		"node": ">= 16"
 	},
 	"scripts": {
-		"prestart": "pnpm --filter=@simonstorage/frontend build",
-		"start": "pnpm --filter=@simonstorage/backend start"
+		"start": "pnpm --filter=@simonstorage/backend start",
+		"dev:backend": "npm --filter=@mystorage/backend dev",
+		"dev:frontend": "npm --filter=@mystorage/frontend dev"
 	},
-	"repository": "https://github.com/LWJerri/SimonStorage",
+	"repository": "https://github.com/LWJerri/MyStorage",
 	"author": "LWJerri (lwjerri.js.org)",
 	"license": "MIT",
 	"devDependencies": {
-		"nodemon": "^2.0.16",
-		"prettier": "^2.6.2",
-		"ts-node": "^10.8.0"
+		"prettier": "^2.6.2"
 	}
 }
