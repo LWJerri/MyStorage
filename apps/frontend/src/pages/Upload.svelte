@@ -6,7 +6,7 @@
   <Navbar />
 
   <form class="my-5" action="/api/file" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
-    <div class="flex justify-center">
+    <div class="flex justify-center px-1">
       <div class="w-96">
         <input class="form-control block w-full text-white rounded" type="file" name="files" multiple required />
       </div>
