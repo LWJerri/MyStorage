@@ -3,8 +3,12 @@ import { prisma } from "../app";
 import { File } from "../helpers/interface";
 import { S3 } from "../helpers/s3";
 
-export default async function (req: FastifyRequest & { body: { files: File | File[] } }, res: FastifyReply) {
-  try {
+export default async function (
+  req: FastifyRequest & { body: { files: File | File[] }; query: { name: string } },
+  res: FastifyReply,
+) {
+  console.log(req.body, req.query.name);
+  /*try {
     const { files } = req.body;
 
     if (!files) return await res.status(404).send({ error: true });
@@ -34,5 +38,5 @@ export default async function (req: FastifyRequest & { body: { files: File | Fil
     console.error("fileUpload error:", err);
 
     return await res.status(503).send({ error: true });
-  }
+  }*/
 }
