@@ -16,7 +16,7 @@
           value={document.baseURI.replace("/upload", "/api/file/")}
           class="input input-bordered w-full rounded my-1"
           name="postURL"
-          disabled
+          hidden
         />
 
         <button type="submit" class="btn btn-sm w-full my-1 btn-outline btn-error">Загрузить</button>
