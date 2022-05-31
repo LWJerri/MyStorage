@@ -15,6 +15,7 @@
           type="text"
           value={document.baseURI.replace("/upload", "/api/file/")}
           class="input input-bordered w-full rounded my-1"
+          name="postURL"
           disabled
         />
 
