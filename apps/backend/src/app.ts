@@ -5,6 +5,7 @@ dotenv.config();
 
 import fastifyModule from "fastify";
 import { fastifyStatic } from "@fastify/static";
+import fastifyMultipart from "@fastify/multipart";
 import indexApi from "./routes/api";
 import indexApiDelete from "./routes/fileDelete";
 import indexApiList from "./routes/fileList";
@@ -16,6 +17,7 @@ export const prisma = new PrismaClient();
 export const fastify = fastifyModule({ logger: false });
 
 fastify
+  .register(fastifyMultipart)
   .register(fastifyStatic, {
     wildcard: false,
     root: path.resolve(__dirname, "..", "..", "..", "apps", "frontend", "dist"),
@@ -34,9 +36,6 @@ fastify
   )
   .get("*", function (req, reply) {
     reply.sendFile("index.html");
-  })
-  .addContentTypeParser("multipart/form-data", function (request, payload, done) {
-    done(null, payload);
   });
 
 boot();
