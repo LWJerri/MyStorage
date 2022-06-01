@@ -13,7 +13,6 @@ model Upload {
   id        String   @id @default(cuid()) @unique
   createdAt DateTime @default(now())
   name      String
-  size      Int
   url       String
   key       String
 
