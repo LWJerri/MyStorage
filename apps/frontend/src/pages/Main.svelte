@@ -1,18 +1,26 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import fileSize from "filesize";
   import { toast } from "@zerodevx/svelte-toast";
   import Navbar from "../components/Navbar.svelte";
 
   $: response = {} as {
     error: boolean;
-    uploads: Array<{ id: string; createdAt: Date; name: string; size: number; url: string; key: string }>;
+    uploads: Array<{ id: string; createdAt: Date; name: string; url: string; key: string }>;
   };
 
+  let apiRequest;
   let search;
 
+  async function getFiles() {
+    apiRequest = await (await fetch("/api/file", { method: "GET" })).json();
+
+    return (response = apiRequest);
+  }
+
   onMount(async () => {
-    const apiRequest = await (await fetch("/api/file", { method: "GET" })).json();
+    await getFiles();
+
+    setInterval(async () => await getFiles(), 5000);
 
     response = apiRequest;
   });
@@ -95,7 +103,6 @@
                 Загружен: {new Date(upload.createdAt).toLocaleDateString()}
                 {new Date(upload.createdAt).toLocaleTimeString()}
               </p>
-              <p>Размер: {fileSize(upload.size)}</p>
             </div>
           </div>
 
