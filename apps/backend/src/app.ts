@@ -14,7 +14,7 @@ import { PrismaClient } from "@prisma/client";
 import path from "path";
 
 export const prisma = new PrismaClient();
-export const fastify = fastifyModule({ logger: false });
+export const fastify = fastifyModule({ logger: true });
 
 fastify
   .register(fastifyMultipart)
