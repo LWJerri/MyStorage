@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import fastifyModule from "fastify";
-import fastifyUpload from "fastify-file-upload";
 import { fastifyStatic } from "@fastify/static";
 import indexApi from "./routes/api";
 import indexApiDelete from "./routes/fileDelete";
@@ -14,14 +13,13 @@ import { PrismaClient } from "@prisma/client";
 import path from "path";
 
 export const prisma = new PrismaClient();
-export const fastify = fastifyModule({ logger: true });
+export const fastify = fastifyModule({ logger: false });
 
 fastify
   .register(fastifyStatic, {
     wildcard: false,
     root: path.resolve(__dirname, "..", "..", "..", "apps", "frontend", "dist"),
   })
-  .register(fastifyUpload)
   .register(
     (instance, opts, next) => {
       instance
@@ -36,6 +34,9 @@ fastify
   )
   .get("*", function (req, reply) {
     reply.sendFile("index.html");
+  })
+  .addContentTypeParser("multipart/form-data", function (request, payload, done) {
+    done(null, payload);
   });
 
 boot();
