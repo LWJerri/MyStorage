@@ -26,7 +26,9 @@ export default async function (req: FastifyRequest, res: FastifyReply) {
           await prisma.upload.create({
             data: {
               name: part.filename,
-              url: data.Location,
+              url: data.Location.includes("cdn.lwjerri.ml")
+                ? data.Location.replace("https://s3.nl-ams.scw.cloud/", "http://")
+                : data.Location,
               key: data.Key,
             },
           });
