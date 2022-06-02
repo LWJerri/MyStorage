@@ -18,3 +18,11 @@ model Upload {
 
   @@map("upload")
 }
+
+model Member {
+  id        String   @id @default(cuid()) @unique
+  createdAt DateTime @default(now())
+  password  String
+
+  @@map("member")
+}
