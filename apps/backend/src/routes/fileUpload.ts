@@ -7,6 +7,8 @@ import { ManagedUpload } from "aws-sdk/clients/s3";
 export default async function (req: FastifyRequest, res: FastifyReply) {
   try {
     const parts = req.files();
+    console.log(req.user);
+    const member = await prisma.member.findUnique({ where: { id: req.user.member_id } });
 
     for await (const part of parts) {
       part.file.pipe(uploadFromStream());
@@ -15,24 +17,28 @@ export default async function (req: FastifyRequest, res: FastifyReply) {
         var pass = new stream.PassThrough();
 
         var params = {
-          Bucket: process.env.S3_BUCKET_NAME,
+          Bucket: member.bucket,
           Key: `${Date.now()}-${part.filename}`,
           Body: pass,
           ACL: "public-read",
           ContentType: part.mimetype,
         };
 
-        S3.upload(params, async function (err: Error, data: ManagedUpload.SendData) {
-          await prisma.upload.create({
-            data: {
-              name: part.filename,
-              url: data.Location.includes("cdn.lwjerri.ml")
-                ? data.Location.replace("https://s3.nl-ams.scw.cloud/", "http://")
-                : data.Location,
-              key: data.Key,
-            },
-          });
-        });
+        S3(member.accessKey, member.secretKey, member.endpoint).upload(
+          params,
+          async function (err: Error, data: ManagedUpload.SendData) {
+            await prisma.upload.create({
+              data: {
+                name: part.filename,
+                url: data.Location.includes("cdn.lwjerri.ml")
+                  ? data.Location.replace("https://s3.nl-ams.scw.cloud/", "http://")
+                  : data.Location,
+                key: data.Key,
+                memberID: member.id,
+              },
+            });
+          },
+        );
 
         return pass;
       }

@@ -10,10 +10,15 @@ export default async function (req: FastifyRequest & { body: { id: string } }, r
 
     const findParams = { where: { id } };
 
-    const upload = await prisma.upload.findUnique(findParams);
+    const [upload, member] = await Promise.all([
+      prisma.upload.findUnique(findParams),
+      prisma.member.findUnique({ where: { id: req.user.member_id } }),
+    ]);
 
     const [buckerDeletedObject, deletedObject] = await Promise.all([
-      S3.deleteObject({ Bucket: process.env.S3_BUCKET_NAME, Key: upload.key }).promise(),
+      S3(member.accessKey, member.secretKey, member.endpoint)
+        .deleteObject({ Bucket: member.bucket, Key: upload.key })
+        .promise(),
       prisma.upload.delete(findParams),
     ]);
 
