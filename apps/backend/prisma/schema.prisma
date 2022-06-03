@@ -1,7 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-1.1.x", "linux-arm64-openssl-1.1.x", "linux-musl"]
-  output = "../node_modules/@prisma/client"
+  output        = "../node_modules/@prisma/client"
 }
 
 datasource db {
@@ -10,19 +10,27 @@ datasource db {
 }
 
 model Upload {
-  id        String   @id @default(cuid()) @unique
+  id        String   @id @unique @default(cuid())
   createdAt DateTime @default(now())
   name      String
   url       String
   key       String
+  memberID  String
+  Member    Member   @relation(fields: [memberID], references: [id])
 
   @@map("upload")
 }
 
 model Member {
-  id        String   @id @default(cuid()) @unique
+  id        String   @id @unique @default(cuid())
   createdAt DateTime @default(now())
+  username  String   @unique
   password  String
+  accessKey String
+  secretKey String
+  bucket    String
+  endpoint  String
+  Upload    Upload[]
 
   @@map("member")
 }
