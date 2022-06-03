@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "member" ALTER COLUMN "accessKey" DROP DEFAULT,
+ALTER COLUMN "bucket" DROP DEFAULT,
+ALTER COLUMN "secretKey" DROP DEFAULT;
