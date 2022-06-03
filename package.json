@@ -1,6 +1,6 @@
 {
   "name": "@mystorage",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "MyStorage application",
   "workspaces": [
     "apps/*"
@@ -11,6 +11,7 @@
   "scripts": {
     "start": "pnpm --filter=@mystorage/backend start",
     "dev:start": "pnpm -r build && pnpm start",
+    "build:frontend": "pnpm --filter=@mystorage/frontend build",
     "dev:backend": "pnpm --filter=@mystorage/backend run dev",
     "dev:frontend": "pnpm --filter=@mystorage/frontend run dev"
   },
