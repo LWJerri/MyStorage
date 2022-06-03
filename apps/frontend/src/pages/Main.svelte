@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { toast } from "@zerodevx/svelte-toast";
   import Navbar from "../components/Navbar.svelte";
+  import cookie from "js-cookie";
 
   $: response = {} as {
     error: boolean;
@@ -12,24 +13,19 @@
   let search;
 
   async function getFiles() {
-    apiRequest = await (await fetch("/api/file", { method: "GET" })).json();
+    apiRequest = await (
+      await fetch("/api/file", { method: "GET", headers: { Authorization: `Bearer ${cookie.get("token")}` } })
+    ).json();
 
     return (response = apiRequest);
   }
-
-  onMount(async () => {
-    await getFiles();
-
-    setInterval(async () => await getFiles(), 5000);
-
-    response = apiRequest;
-  });
 
   async function deleteFile(id: string, name: string) {
     const apiRequest = await fetch("/api/file", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookie.get("token")}`,
       },
 
       body: JSON.stringify({ id }),
@@ -53,18 +49,30 @@
       });
     }
   }
+
+  onMount(async () => {
+    if (!cookie.get("token")) {
+      document.location.href = "/join";
+    }
+
+    await getFiles();
+
+    setInterval(async () => await getFiles(), 5000);
+
+    response = apiRequest;
+  });
 </script>
 
 <div>
   <Navbar />
 
-  {#if response?.uploads?.length > 0}
+  {#if response?.uploads?.length > 0 && cookie.get("token")}
     <div class="mt-5 flex flex-row-reverse px-1">
       <input
         type="text"
         bind:value={search}
         placeholder="Поиск по названию"
-        class="input input-sm input-bordered w-96"
+        class="input input-sm input-bordered rounded w-96"
       />
     </div>
 
@@ -109,8 +117,6 @@
           <div class="my-2 mx-1 space-y-1">
             <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded w-full">Открыть</a>
 
-            <!--<a class="btn btn-sm btn-outline btn-warning rounded w-full" href={upload.url} download>Скачать</a>-->
-
             <button
               on:click={async () => await deleteFile(upload.id, upload.name)}
               class="btn btn-sm btn-outline btn-error rounded w-full">Удалить</button
@@ -120,7 +126,7 @@
       {/each}
     </div>
   {:else if response.error}
-    <div class="alert alert-error shadow-lg">
+    <div class="alert alert-error rounded">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
