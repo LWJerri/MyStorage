@@ -6,17 +6,17 @@ dotenv.config();
 import fastifyModule from "fastify";
 import { fastifyStatic } from "@fastify/static";
 import fastifyMultipart from "@fastify/multipart";
-import indexApi from "./routes/api";
-import indexApiDelete from "./routes/fileDelete";
-import indexApiList from "./routes/fileList";
-import indexApiUpload from "./routes/fileUpload";
+import fastifyCORS from "@fastify/cors";
 import { PrismaClient } from "@prisma/client";
 import path from "path";
+import { apiAPI, fileDeleteAPI, fileListAPI, fileUploadAPI, joinAPI } from "./routes";
+import { verifyData } from "./middleware/auth";
 
 export const prisma = new PrismaClient();
 export const fastify = fastifyModule({ logger: true });
 
 fastify
+  .register(fastifyCORS)
   .register(fastifyMultipart)
   .register(fastifyStatic, {
     wildcard: false,
@@ -25,10 +25,11 @@ fastify
   .register(
     (instance, opts, next) => {
       instance
-        .get("/", indexApi as any)
-        .delete("/file", indexApiDelete as any)
-        .get("/file", indexApiList as any)
-        .post("/file", indexApiUpload as any);
+        .get("/", apiAPI)
+        .delete("/file", { preHandler: verifyData }, fileDeleteAPI)
+        .get("/file", { preHandler: verifyData }, fileListAPI)
+        .post("/file", { preHandler: verifyData }, fileUploadAPI)
+        .post("/join", joinAPI);
 
       next();
     },
