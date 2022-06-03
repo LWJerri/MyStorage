@@ -4,12 +4,14 @@
 
   import Main from "./pages/Main.svelte";
   import Upload from "./pages/Upload.svelte";
+  import Join from "./pages/Join.svelte";
 </script>
 
 <Router>
   <main>
     <SvelteToast />
 
+    <Route path="/join" component={Join} />
     <Route path="/upload" component={Upload} />
     <Route component={Main} />
   </main>
