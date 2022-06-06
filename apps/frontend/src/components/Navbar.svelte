@@ -1,14 +1,23 @@
 <script lang="ts">
-  import cookie from "js-cookie";
+  import { toast } from "@zerodevx/svelte-toast";
+  import { toastError } from "../helpers/toasts";
 
-  function logOut() {
-    cookie.remove("token");
+  interface Logout {
+    error: boolean;
+  }
+
+  async function logOut() {
+    const apiRequest = await fetch("/api/logout", { method: "POST" });
+
+    const response = (await apiRequest.json()) as Response & Logout;
+
+    if (response.error) return toast.push("Произошла ошибка при попытке выйти с аккаунта!", toastError);
 
     return (document.location.href = "/join");
   }
 </script>
 
-<div class="navbar text-white bg-base-300 shadow-lg select-none">
+<div class="navbar text-white bg-base-300 shadow-lg select-none rounded">
   <div class="navbar-start">
     <a href="/" class="ml-2 font-bold text-xl outline-none">MyStorage</a>
   </div>
