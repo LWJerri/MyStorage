@@ -1,3 +1,4 @@
+import "@fastify/cookie";
 import fastify from "fastify";
 
 declare module "fastify" {
