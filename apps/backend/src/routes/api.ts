@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export default async function (req: FastifyRequest, res: FastifyReply) {
+export async function api(req: FastifyRequest, res: FastifyReply) {
   try {
     return await res.status(200).send({ time: new Date().toISOString(), error: false });
   } catch (err) {
