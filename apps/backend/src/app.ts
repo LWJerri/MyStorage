@@ -7,16 +7,18 @@ import fastifyModule from "fastify";
 import { fastifyStatic } from "@fastify/static";
 import fastifyMultipart from "@fastify/multipart";
 import fastifyCORS from "@fastify/cors";
+import fastifyCookie from "@fastify/cookie";
 import { PrismaClient } from "@prisma/client";
 import path from "path";
-import { apiAPI, fileDeleteAPI, fileListAPI, fileUploadAPI, joinAPI } from "./routes";
+import * as routes from "./routes";
 import { verifyData } from "./middleware/auth";
 
 export const prisma = new PrismaClient();
-export const fastify = fastifyModule({ logger: true });
+export const fastify = fastifyModule({ logger: false });
 
 fastify
   .register(fastifyCORS)
+  .register(fastifyCookie, { secret: "MY_STORAGE" })
   .register(fastifyMultipart)
   .register(fastifyStatic, {
     wildcard: false,
@@ -25,11 +27,15 @@ fastify
   .register(
     (instance, opts, next) => {
       instance
-        .get("/", apiAPI)
-        .delete("/file", { preHandler: verifyData }, fileDeleteAPI)
-        .get("/file", { preHandler: verifyData }, fileListAPI)
-        .post("/file", { preHandler: verifyData }, fileUploadAPI)
-        .post("/join", joinAPI);
+        .get("/", routes.api)
+        .delete("/file", { preHandler: verifyData }, routes.deleteFile)
+        .delete("/file/force", { preHandler: verifyData }, routes.forceDeleteFile)
+        .get("/file", { preHandler: verifyData }, routes.files)
+        .post("/file", { preHandler: verifyData }, routes.upload)
+        .post("/join", routes.join)
+        .get("/me", { preHandler: verifyData }, routes.meGET)
+        .put("/me", { preHandler: verifyData }, routes.mePUT)
+        .post("/logout", { preHandler: verifyData }, routes.logout);
 
       next();
     },
