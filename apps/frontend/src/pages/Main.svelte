@@ -2,131 +2,161 @@
   import { onMount } from "svelte";
   import { toast } from "@zerodevx/svelte-toast";
   import Navbar from "../components/Navbar.svelte";
-  import cookie from "js-cookie";
+  import { toastError, toastInfo } from "../helpers/toasts";
+  import MemberInfo from "../components/MemberInfo.svelte";
+  import MemberControl from "../components/MemberControl.svelte";
+  import MemberUploads from "../components/MemberUploads.svelte";
+  import { files } from "../helpers/store";
 
-  $: response = {} as {
+  interface Response {
     error: boolean;
-    uploads: Array<{ id: string; createdAt: Date; name: string; url: string; key: string }>;
-  };
-
-  let apiRequest;
-  let search;
-
-  async function getFiles() {
-    apiRequest = await (
-      await fetch("/api/file", { method: "GET", headers: { Authorization: `Bearer ${cookie.get("token")}` } })
-    ).json();
-
-    return (response = apiRequest);
+    uploads: Array<{ id: string; createdAt: Date; size: number; name: string; url: string; key: string }>;
+    nextPage: boolean;
   }
 
-  async function deleteFile(id: string, name: string) {
-    const apiRequest = await fetch("/api/file", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${cookie.get("token")}`,
-      },
+  interface Member {
+    error: boolean;
+    member: {
+      id: string;
+      createdAt: Date;
+      username: string;
+      accessKey: string;
+      secretKey: string;
+      bucket: string;
+      endpoint: string;
+      showPreview: boolean;
+      maxGB: number;
+    };
+    uploads: {
+      size: number;
+      count: number;
+    };
+  }
 
-      body: JSON.stringify({ id }),
+  $: response = {} as Response;
+  $: member = {} as Member;
+
+  let search: string = "";
+  let isAuth: boolean = false;
+  let startDeleting: boolean = false;
+  let page: number = 1;
+
+  let newInfo = {} as {
+    username: string;
+    password: string;
+    accessKey: string;
+    secretKey: string;
+    bucket: string;
+    endpoint: string;
+    maxGB: number;
+  };
+
+  async function getFiles() {
+    const apiRequest = await (await fetch(`/api/file?page=${page}&key=${search ?? ""}`, { method: "GET" })).json();
+
+    response = apiRequest;
+    files.update((x) => response.uploads);
+  }
+
+  async function getMember() {
+    const apiRequest = await fetch("/api/me", {
+      method: "GET",
     });
 
-    if (apiRequest.status == 302) {
-      response.uploads = response.uploads.filter((upload) => upload.id !== id);
+    const response = (await apiRequest.json()) as Member;
 
-      toast.push(`Файл ${name} удалён!`, {
-        theme: {
-          "--toastBackground": "#48BB78",
-          "--toastBarBackground": "#2F855A",
-        },
-      });
+    if (response.error) {
+      toast.push(`Произошла ошибка при получении данных о пользователе!`, toastError);
     } else {
-      toast.push(`Произошла ошибка при удалении ${name}!`, {
-        theme: {
-          "--toastBackground": "#F56565",
-          "--toastBarBackground": "#C53030",
-        },
-      });
+      member = response;
+      isAuth = true;
     }
   }
 
+  async function forceDeleteFile() {
+    startDeleting = true;
+
+    const apiRequest = await fetch("/api/file/force", {
+      method: "DELETE",
+    });
+
+    const response = await apiRequest.json();
+
+    if (response.error) {
+      toast.push(`Произошла ошибка при удалении файлов!`, toastError);
+    } else {
+      await getFiles();
+
+      toast.push(`Удалено ${response.count} файлов!`, toastInfo);
+    }
+
+    startDeleting = false;
+  }
+
   onMount(async () => {
-    if (!cookie.get("token")) {
+    await getMember();
+
+    if (!isAuth) {
       document.location.href = "/join";
     }
 
     await getFiles();
-
-    setInterval(async () => await getFiles(), 5000);
-
-    response = apiRequest;
   });
 </script>
 
-<div>
+<div class="bg-base-200">
   <Navbar />
 
-  {#if response?.uploads?.length > 0 && cookie.get("token")}
-    <div class="mt-5 flex flex-row-reverse px-1">
-      <input
-        type="text"
-        bind:value={search}
-        placeholder="Поиск по названию"
-        class="input input-sm input-bordered rounded w-96"
-      />
+  <div class="grid gap-1 mt-5 grid-cols-1 md:grid-cols-2">
+    <MemberInfo {member} {newInfo} />
+
+    <MemberControl {member} {page} />
+  </div>
+
+  {#if response?.uploads?.length > 0 && isAuth}
+    <div class="flex justify-center my-2 space-x-1">
+      <button
+        on:click={async () => {
+          page--;
+          await getFiles();
+        }}
+        class="btn btn-sm btn-success btn-outline rounded"
+        disabled={page == 1 ? true : false}>Предыдущая</button
+      >
+
+      <button
+        on:click={async () => {
+          page++;
+          await getFiles();
+        }}
+        disabled={response.nextPage ? false : true}
+        class="btn btn-sm btn-success btn-outline rounded">Следующая</button
+      >
     </div>
 
-    <div class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
-      {#each search?.length > 0 ? response.uploads.filter((i) => i.name
-                .split(".")[0]
-                .indexOf(search) !== -1) : response.uploads as upload}
-        <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
-          <figure>
-            {#if upload.url.endsWith(".png") || upload.url.endsWith(".jpg") || upload.url.endsWith(".jpeg")}
-              <img src={upload.url} alt="preview" class="select-none" />
-            {:else}
-              <svg
-                class="w-64 h-64"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                /></svg
-              >
-            {/if}
-          </figure>
+    <MemberUploads {member} />
 
-          <div class="card-body flex-grow">
-            <h2 class="card-title font-bold">
-              {upload.name.length >= 15 ? upload.name.slice(0, 15) + "..." + upload.name.split(".").pop() : upload.name}
-            </h2>
+    <div class="flex justify-center my-2 space-x-1">
+      <button
+        on:click={async () => {
+          page--;
+          await getFiles();
+        }}
+        class="btn btn-sm btn-success btn-outline rounded"
+        disabled={page == 1 ? true : false}>Предыдущая</button
+      >
 
-            <div>
-              <p>
-                Загружен: {new Date(upload.createdAt).toLocaleDateString()}
-                {new Date(upload.createdAt).toLocaleTimeString()}
-              </p>
-            </div>
-          </div>
-
-          <div class="my-2 mx-1 space-y-1">
-            <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded w-full">Открыть</a>
-
-            <button
-              on:click={async () => await deleteFile(upload.id, upload.name)}
-              class="btn btn-sm btn-outline btn-error rounded w-full">Удалить</button
-            >
-          </div>
-        </div>
-      {/each}
+      <button
+        on:click={async () => {
+          page++;
+          await getFiles();
+        }}
+        disabled={response.nextPage ? false : true}
+        class="btn btn-sm btn-success btn-outline rounded">Следующая</button
+      >
     </div>
   {:else if response.error}
-    <div class="alert alert-error rounded">
+    <div class="alert alert-error rounded mt-5">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +174,7 @@
       </div>
     </div>
   {:else}
-    <div class="alert alert-warning rounded">
+    <div class="alert alert-warning rounded mt-5">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -163,3 +193,21 @@
     </div>
   {/if}
 </div>
+
+<input type="checkbox" id="delete_files" class="modal-toggle" />
+<label for="delete_files" class="modal modal-bottom md:modal-middle cursor-pointer">
+  <label class="modal-box relative rounded" for="">
+    <label for="delete_files" class="btn btn-sm btn-circle absolute right-2 top-2">X</label>
+    <h3 class="text-lg font-bold">Подтвердите удаление</h3>
+    <p class="py-4">
+      <span class="font-bold">Внимание!</span> Данное действие нельзя отменить, все файлы будут безвозвратно удалены с S3
+      и базы данных.
+    </p>
+
+    <button
+      on:click={async () => await forceDeleteFile()}
+      class="btn btn-error btn-outline w-full rounded {startDeleting ? 'loading' : ''}"
+      disabled={startDeleting}>{startDeleting ? "Удаление" : "Удалить"}</button
+    >
+  </label>
+</label>
