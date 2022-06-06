@@ -14,7 +14,7 @@ import * as routes from "./routes";
 import { verifyData } from "./middleware/auth";
 
 export const prisma = new PrismaClient();
-export const fastify = fastifyModule({ logger: false });
+export const fastify = fastifyModule({ logger: true });
 
 fastify
   .register(fastifyCORS)
