@@ -12,6 +12,7 @@ datasource db {
 model Upload {
   id        String   @id @unique @default(cuid())
   createdAt DateTime @default(now())
+  size      Int      @default(0)
   name      String
   url       String
   key       String
@@ -22,15 +23,17 @@ model Upload {
 }
 
 model Member {
-  id        String   @id @unique @default(cuid())
-  createdAt DateTime @default(now())
-  username  String   @unique
-  password  String
-  accessKey String
-  secretKey String
-  bucket    String
-  endpoint  String
-  Upload    Upload[]
+  id          String   @id @unique @default(cuid())
+  createdAt   DateTime @default(now())
+  username    String   @unique
+  password    String
+  accessKey   String
+  secretKey   String
+  bucket      String
+  endpoint    String
+  maxGB       Int      @default(1)
+  showPreview Boolean  @default(false)
+  Upload      Upload[]
 
   @@map("member")
 }
