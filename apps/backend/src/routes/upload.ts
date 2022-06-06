@@ -1,13 +1,19 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
 import { getS3 } from "../helpers/s3";
-import stream, { Stream } from "stream";
-import { ManagedUpload } from "aws-sdk/clients/s3";
 
 export async function upload(req: FastifyRequest & { body: { files: any } }, res: FastifyReply) {
   try {
     const member = await prisma.member.findUnique({ where: { id: req.user.member_id } });
     const uploadS3 = await getS3(req.user.member_id);
+
+    const Bucket = { Bucket: member.bucket };
+
+    try {
+      await uploadS3.headBucket(Bucket).promise();
+    } catch (err) {
+      if (err.statusCode == 404) return await uploadS3.createBucket(Bucket).promise();
+    }
 
     for await (const part of req.files()) {
       const params = {
