@@ -7,10 +7,10 @@ export default defineConfig({
     port: 3001,
     proxy: {
       "/api": {
-        target: process.env.VITE_API_URL ?? "http://localhost:3005",
+        target: process.env.VITE_API_URL ?? "http://0.0.0.0:3005",
         changeOrigin: true,
       },
     },
   },
-  optimizeDeps: { exclude: ["svelte-routing", "js-cookie"] },
+  optimizeDeps: { exclude: ["svelte-routing"] },
 });
