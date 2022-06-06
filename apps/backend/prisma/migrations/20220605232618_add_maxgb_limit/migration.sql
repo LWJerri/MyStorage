@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "upload" ADD COLUMN     "maxGB" INTEGER NOT NULL DEFAULT 1;
