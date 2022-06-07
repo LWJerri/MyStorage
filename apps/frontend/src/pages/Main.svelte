@@ -197,7 +197,11 @@
 <input type="checkbox" id="delete_files" class="modal-toggle" />
 <label for="delete_files" class="modal modal-bottom md:modal-middle cursor-pointer">
   <label class="modal-box relative rounded" for="">
-    <label for="delete_files" class="btn btn-sm btn-circle absolute right-2 top-2">X</label>
+    <label for="delete_files" class="btn btn-sm btn-circle absolute right-2 top-2"
+      ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
+      ></label
+    >
     <h3 class="text-lg font-bold">Подтвердите удаление</h3>
     <p class="py-4">
       <span class="font-bold">Внимание!</span> Данное действие нельзя отменить, все файлы будут безвозвратно удалены с S3
