@@ -1,6 +1,9 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { toastError } from "../helpers/toasts";
+  import MemberUpload from "./MemberUpload.svelte";
+
+  export let member;
 
   interface Logout {
     error: boolean;
@@ -24,7 +27,7 @@
 
   <div class="navbar-end">
     <div class="flex hidden sm:block">
-      <a class="btn btn-outline btn-success rounded" href="/upload">Загрузить</a>
+      <label for="upload" class="btn btn-outline btn-success rounded">Загрузить</label>
       <button class="btn btn-outline btn-error rounded" on:click={() => logOut()}>Выйти</button>
     </div>
 
@@ -41,7 +44,17 @@
 <input type="checkbox" id="menu" class="modal-toggle" />
 <label for="menu" class="modal modal-bottom cursor-pointer">
   <label class="modal-box relative rounded space-y-1" for="">
-    <a class="btn btn-outline btn-success rounded btn-sm w-full" href="/upload">Загрузить</a>
+    <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">Загрузить</label>
     <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}>Выйти</button>
+  </label>
+</label>
+
+<input type="checkbox" id="upload" class="modal-toggle" />
+
+<label for="upload" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <label for="upload" class="btn btn-sm btn-circle absolute right-2 top-2">X</label>
+
+    <MemberUpload {member} />
   </label>
 </label>

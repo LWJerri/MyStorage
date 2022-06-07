@@ -78,7 +78,7 @@
     <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
       {#if member.member.showPreview}
         <figure>
-          {#if upload.url.endsWith(".png") || upload.url.endsWith(".jpg") || upload.url.endsWith(".jpeg")}
+          {#if upload.name.endsWith(".png") || upload.name.endsWith(".jpg") || upload.name.endsWith(".jpeg")}
             <img loading="lazy" src={upload.url} alt="preview" class="select-none" />
           {:else}
             <svg
