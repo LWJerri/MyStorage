@@ -25,6 +25,10 @@ export async function upload(req: FastifyRequest & { body: { files: any } }, res
       };
 
       const s3Response = await uploadS3.upload(params).promise();
+      const url =
+        member.endpoint.replace(/https?:\/\//g, "gateway.storjshare.io") == ""
+          ? uploadS3.getSignedUrl("getObject", { Bucket: member.bucket, Key: s3Response.Key })
+          : s3Response.Location.replace("http://", "https://");
 
       const size = await uploadS3
         .headObject({
@@ -36,7 +40,7 @@ export async function upload(req: FastifyRequest & { body: { files: any } }, res
       await prisma.upload.create({
         data: {
           name: part.filename,
-          url: s3Response.Location.replace("http://", "https://"),
+          url,
           key: s3Response.Key,
           memberID: member.id,
           size: size.ContentLength,
