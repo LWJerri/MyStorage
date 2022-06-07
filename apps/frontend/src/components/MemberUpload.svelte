@@ -25,6 +25,7 @@
   export let member: Member;
   let files: FileList;
   let isUploading: boolean = false;
+  let uploadLimit = member.uploads.size + 104857600 >= member.member.maxGB * Math.pow(1024, 3) ? true : false;
 
   async function uploadFiles() {
     isUploading = true;
@@ -68,8 +69,15 @@
       <button
         type="submit"
         class="btn btn-sm w-full my-1 btn-outline btn-error rounded {isUploading ? 'loading' : ''}"
-        disabled={isUploading}>{isUploading ? "Загрузка" : "Загрузить"}</button
+        disabled={uploadLimit ? true : isUploading}>{isUploading ? "Загрузка" : "Загрузить"}</button
       >
+
+      <p class="my-2 {uploadLimit ? 'block' : 'hidden'}">
+        Ваш установленный лимит в <span class="font-bold">{member.member.maxGB} GB</span> будет скоро превышен, т.к текущий
+        вес загруженных файлов + зарезервированные 100 мб больше лимита.
+      </p>
+
+      
     </div>
   </div>
 </form>

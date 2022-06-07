@@ -56,5 +56,7 @@
     <label for="upload" class="btn btn-sm btn-circle absolute right-2 top-2">X</label>
 
     <MemberUpload {member} />
+
+    <button for="upload" class="flex justify-center btn btn-sm btn-outline btn-wide btn-error">Закрыть</button>
   </label>
 </label>
