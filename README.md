@@ -10,6 +10,7 @@
 - Node.js >= v16 (Not tested in older versions, but maybe it's work).
 - PostgreSQL database.
 - Any S3 hosting [See free S3 list](https://free-for.dev/#/?id=iaas).
+- Redis.
 
 ### Installing
 
