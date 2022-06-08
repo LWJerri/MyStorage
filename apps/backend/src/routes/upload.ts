@@ -1,5 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
+import { redisPub } from "../helpers/redis";
 import { getS3 } from "../helpers/s3";
 
 export async function upload(req: FastifyRequest & { body: { files: any } }, res: FastifyReply) {
@@ -24,15 +25,24 @@ export async function upload(req: FastifyRequest & { body: { files: any } }, res
         ContentType: `${part.mimetype}; charset=utf-8`,
       };
 
+      const isStorJ = member.endpoint.replace(/https?:\/\//g, "") == "gateway.storjshare.io";
+
       const s3Response = await uploadS3.upload(params).promise();
-      const url =
-        member.endpoint.replace(/https?:\/\//g, "") == "gateway.storjshare.io"
-          ? uploadS3.getSignedUrl("getObject", {
-              Bucket: member.bucket,
-              Key: s3Response.Key,
-              Expires: 3600 * 24 * 7,
-            })
-          : s3Response.Location.replace("http://", "https://");
+      let url: string = "";
+
+      if (isStorJ) {
+        let Expires = 10; //3600 * 24 *7
+
+        url = uploadS3.getSignedUrl("getObject", {
+          Bucket: member.bucket,
+          Key: s3Response.Key,
+          Expires,
+        });
+
+        await redisPub.set(`${member.id}:${s3Response.Key}`, Date.now(), "EX", Expires);
+      } else {
+        url = s3Response.Location.replace("http://", "https://");
+      }
 
       const size = await uploadS3
         .headObject({
