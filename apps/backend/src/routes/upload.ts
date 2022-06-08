@@ -31,7 +31,7 @@ export async function upload(req: FastifyRequest & { body: { files: FormData } }
       let url: string = "";
 
       if (isStorJ) {
-        let Expires = 10; //3600 * 24 *7
+        let Expires = 3600 * 24 * 7;
 
         url = uploadS3.getSignedUrl("getObject", {
           Bucket: member.bucket,

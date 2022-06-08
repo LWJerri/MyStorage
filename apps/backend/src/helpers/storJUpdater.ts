@@ -7,14 +7,15 @@ export default async function storJUpdater() {
     const [memberID, Key] = key.split(":");
 
     const member = await prisma.member.findUnique({ where: { id: memberID } });
+    const Expires = 3600 * 24 * 7;
 
     const url = (await getS3(memberID)).getSignedUrl("getObject", {
       Bucket: member.bucket,
       Key,
-      Expires: 10,
+      Expires,
     });
 
     await prisma.upload.update({ where: { key: Key }, data: { url } });
-    await redisPub.set(`${member.id}:${Key}`, Date.now(), "EX", 10);
+    await redisPub.set(`${member.id}:${Key}`, Date.now(), "EX", Expires);
   });
 }
