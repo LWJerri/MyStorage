@@ -59,6 +59,20 @@ Setup AWS CLI & cors.json:
 
 </details>
 
+## Production
+
+You also can use or test this code, just visit the [MyStorage website](https://storage.lwjerri.ml)
+Username - **test**
+Password - **dev**
+
+## Screenshots
+
+![Photo #1](https://i.imgur.com/B74m52b.png)
+![Photo #2](https://i.imgur.com/ZE3TLNM.png)
+![Photo #3](https://i.imgur.com/HgbugL9.png)
+![Photo #4](https://i.imgur.com/2k2BCon.png)
+![Photo #5](https://i.imgur.com/4zJ2y9c.png)
+
 ## Contributing
 
 This project opened for contribution and any suggestions! You can create a new `Issue` or make an `Pull request` with your code changes.
