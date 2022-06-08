@@ -3,7 +3,7 @@ import { prisma } from "../app";
 import { redisPub } from "../helpers/redis";
 import { getS3 } from "../helpers/s3";
 
-export async function upload(req: FastifyRequest & { body: { files: any } }, res: FastifyReply) {
+export async function upload(req: FastifyRequest & { body: { files: FormData } }, res: FastifyReply) {
   try {
     const member = await prisma.member.findUnique({ where: { id: req.user.member_id } });
     const uploadS3 = await getS3(req.user.member_id);
