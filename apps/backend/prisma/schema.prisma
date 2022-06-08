@@ -15,7 +15,7 @@ model Upload {
   size      Int      @default(0)
   name      String
   url       String
-  key       String
+  key       String   @unique
   memberID  String
   Member    Member   @relation(fields: [memberID], references: [id])
 

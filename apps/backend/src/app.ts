@@ -12,6 +12,8 @@ import { PrismaClient } from "@prisma/client";
 import path from "path";
 import * as routes from "./routes";
 import { verifyData } from "./middleware/auth";
+import { redisPub, redisSub } from "./helpers/redis";
+import storJUpdater from "./helpers/storJUpdater";
 
 export const prisma = new PrismaClient();
 export const fastify = fastifyModule({ logger: true });
@@ -51,7 +53,11 @@ async function boot() {
   try {
     console.log("[!]: Starting...");
 
+    await redisPub.config("SET", "notify-keyspace-events", "KEA");
+    await redisSub.subscribe("__keyevent@0__:expired");
     await fastify.listen(3005, "0.0.0.0");
+
+    await storJUpdater();
 
     console.log("[!]: MyStorage application ready!");
   } catch (err) {

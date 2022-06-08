@@ -16,8 +16,10 @@
       showPreview: boolean;
       maxGB: number;
     };
-    uploadsCount: number;
-    uploadsSize: number;
+    uploads: {
+      size: number;
+      count: number;
+    };
   }
 
   export let member: Member;
