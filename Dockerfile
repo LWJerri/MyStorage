@@ -1,6 +1,6 @@
 FROM node:18-slim
 
-RUN apt-get update -y
+RUN apt-get update -y \ && apt-get clean \ && rm -rf /var/lib/apt/lists/*
 RUN apt-get install git curl wget build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev openssl -y --no-install-recommends
 
 WORKDIR /app
