@@ -30,7 +30,7 @@ export async function upload(req: FastifyRequest & { body: { files: any } }, res
           ? uploadS3.getSignedUrl("getObject", {
               Bucket: member.bucket,
               Key: s3Response.Key,
-              Expires: 3600 * 24 * 365 * 10,
+              Expires: 3600 * 24 * 7,
             })
           : s3Response.Location.replace("http://", "https://");
 
