@@ -174,6 +174,7 @@
           <input
             type="number"
             bind:value={newInfo.maxGB}
+            min="1"
             class="input input-sm input-ghost w-32"
             placeholder="MAX {member?.member?.maxGB.toString()} GB"
             disabled={isEditing ? false : true}

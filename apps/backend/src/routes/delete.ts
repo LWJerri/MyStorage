@@ -17,6 +17,8 @@ export async function deleteFile(req: FastifyRequest & { body: { id: string } },
       prisma.member.findUnique({ where: { id: req.user.member_id } }),
     ]);
 
+    if (!upload) return await res.status(404).send({ error: true, text: "Данного файла больше не существует!" });
+
     const deleteParams = {
       Bucket: member.bucket,
       Key: upload.key,

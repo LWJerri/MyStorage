@@ -53,7 +53,7 @@
 
 <input type="checkbox" id="upload" class="modal-toggle" />
 
-<label for="upload" class="modal cursor-pointer">
+<label for="upload" class="modal cursor-pointer rounded">
   <label class="modal-box relative bg-base-300" for="">
     <label for="upload" class="btn btn-sm btn-circle absolute right-2 top-2"
       ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
