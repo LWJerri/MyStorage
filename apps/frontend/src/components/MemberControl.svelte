@@ -40,7 +40,7 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push("Произошла ошибка при изменении параметров предпросмотра!", toastError);
+      toast.push(response?.text ?? "Произошла ошибка при изменении параметров предпросмотра!", toastError);
     } else {
       await getFiles();
 

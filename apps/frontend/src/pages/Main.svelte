@@ -16,6 +16,7 @@
 
   interface Member {
     error: boolean;
+    text?: string;
     member: {
       id: string;
       createdAt: Date;
@@ -66,7 +67,7 @@
     const response = (await apiRequest.json()) as Member;
 
     if (response.error) {
-      toast.push(`Произошла ошибка при получении данных о пользователе!`, toastError);
+      toast.push(response?.text ?? `Произошла ошибка при получении данных о пользователе!`, toastError);
     } else {
       member = response;
       isAuth = true;
@@ -83,7 +84,7 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push(`Произошла ошибка при удалении файлов!`, toastError);
+      toast.push(response?.text ?? `Произошла ошибка при удалении файлов!`, toastError);
     } else {
       await getFiles();
 

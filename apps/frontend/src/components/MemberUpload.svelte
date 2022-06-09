@@ -1,7 +1,6 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { toastError, toastInfo } from "../helpers/toasts";
-  import Navbar from "../components/Navbar.svelte";
 
   interface Member {
     error: boolean;
@@ -47,7 +46,7 @@
     if (response.error) {
       isUploading = false;
 
-      return toast.push(`Произошла ошибка во время загрузки файлов!`, toastError);
+      return toast.push(response?.text ?? `Произошла ошибка во время загрузки файлов!`, toastError);
     } else {
       return (document.location.href = "/");
     }

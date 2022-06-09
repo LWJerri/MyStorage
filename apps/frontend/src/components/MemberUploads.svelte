@@ -50,6 +50,8 @@
     a.download = name;
 
     a.click();
+
+    return toast.push("Файл скачивается, пожалуйста, подождите!", toastInfo);
   }
 
   async function deleteFile(id: string, name: string) {
@@ -64,7 +66,7 @@
     const answer = await apiRequest.json();
 
     if (answer.error) {
-      toast.push(`Произошла ошибка при удалении ${name}!`, toastError);
+      toast.push(answer?.text ?? `Произошла ошибка при удалении ${name}!`, toastError);
     } else {
       response = response.filter((upload) => upload.id !== id);
 

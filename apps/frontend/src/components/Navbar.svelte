@@ -7,14 +7,16 @@
 
   interface Logout {
     error: boolean;
+    text?: string;
   }
 
   async function logOut() {
     const apiRequest = await fetch("/api/logout", { method: "POST" });
 
-    const response = (await apiRequest.json()) as Response & Logout;
+    const response = (await apiRequest.json()) as Logout;
 
-    if (response.error) return toast.push("Произошла ошибка при попытке выйти с аккаунта!", toastError);
+    if (response.error)
+      return toast.push(response?.text ?? "Произошла ошибка при попытке выйти с аккаунта!", toastError);
 
     return (document.location.href = "/join");
   }

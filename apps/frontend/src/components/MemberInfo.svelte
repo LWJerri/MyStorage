@@ -46,7 +46,7 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push("Произошла ошибка при обновлении данных о пользователе!", toastError);
+      toast.push(response?.text ?? "Произошла ошибка при обновлении данных о пользователе!", toastError);
     } else {
       toast.push("Данные о пользователе обновлены!", toastInfo);
     }
