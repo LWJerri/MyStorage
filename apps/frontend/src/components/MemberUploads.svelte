@@ -68,7 +68,7 @@
     if (answer.error) {
       toast.push(answer?.text ?? `Произошла ошибка при удалении ${name}!`, toastError);
     } else {
-      response = response.filter((upload) => upload.id !== id);
+      files.update((files) => response.filter((upload) => upload.id !== id));
 
       toast.push(`Файл ${name} удалён!`, toastInfo);
     }
