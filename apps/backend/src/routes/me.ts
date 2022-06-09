@@ -7,10 +7,16 @@ export async function meGET(req: FastifyRequest, res: FastifyReply) {
   try {
     const findParams = { where: { memberID: req.user.member_id } };
 
-    const [findMember, count, size] = await Promise.all([
+    const [
+      findMember,
+      count,
+      {
+        _sum: { size: size },
+      },
+    ] = await Promise.all([
       prisma.member.findUnique({ where: { id: req.user.member_id } }),
       prisma.upload.count(findParams),
-      (await prisma.upload.aggregate({ _sum: { size: true }, where: findParams.where }))._sum.size,
+      prisma.upload.aggregate({ _sum: { size: true }, where: findParams.where }),
     ]);
 
     const member = exclude(findMember, "password");
@@ -38,14 +44,14 @@ export async function mePUT(
   },
   res: FastifyReply,
 ) {
-  const { password } = req.body;
+  const { password, maxGB } = req.body;
 
   const memberPassword = password ? await hash(password, 10) : undefined;
 
   // Example account
   const getExampleMember = await prisma.member.findUnique({ where: { username: "test" } });
 
-  if (getExampleMember && getExampleMember.id == "cl45qj1q901824wqvqwj1vyx4")
+  if (getExampleMember && getExampleMember.id == req.user.member_id)
     return await res
       .status(403)
       .send({ error: true, text: "Данный аккаунт является тестовым, изменение настроек запрещено!" });
@@ -53,7 +59,7 @@ export async function mePUT(
   try {
     const findMember = await prisma.member.update({
       where: { id: req.user.member_id },
-      data: { ...req.body, password: memberPassword },
+      data: { ...req.body, password: memberPassword, maxGB: maxGB <= 0 ? 1 : maxGB },
     });
 
     const member = exclude(findMember, "password");

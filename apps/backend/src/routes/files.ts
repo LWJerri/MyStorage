@@ -5,7 +5,7 @@ export async function files(req: FastifyRequest & { query: { page: string; key?:
   try {
     const { page, key } = req.query;
     const take = 100; // How many files load per page
-    const skip = take * (Number(page) - 1);
+    const skip = take * (Number(page ?? 1) - 1);
 
     const memberID = req.user.member_id;
 

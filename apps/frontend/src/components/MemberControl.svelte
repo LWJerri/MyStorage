@@ -27,8 +27,6 @@
   let search: string;
 
   async function filePreview() {
-    member.member.showPreview ? (member.member.showPreview = false) : (member.member.showPreview = true);
-
     const apiRequest = await fetch("/api/me", {
       method: "PUT",
       body: JSON.stringify({ showPreview: member.member.showPreview }),
@@ -42,6 +40,7 @@
     if (response.error) {
       toast.push(response?.text ?? "Произошла ошибка при изменении параметров предпросмотра!", toastError);
     } else {
+      member.member.showPreview = !member.member.showPreview;
       await getFiles();
 
       toast.push("Параметры предпросмотра успешно изменены!", toastInfo);
