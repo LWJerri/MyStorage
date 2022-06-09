@@ -1,6 +1,6 @@
 {
   "name": "@mystorage/backend",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "main": "./dist/app.js",
   "scripts": {
     "prebuild": "rm -rf dist",

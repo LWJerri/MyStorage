@@ -42,6 +42,14 @@ export async function mePUT(
 
   const memberPassword = password ? await hash(password, 10) : undefined;
 
+  // Example account
+  const getExampleMember = await prisma.member.findUnique({ where: { username: "test" } });
+
+  if (getExampleMember && getExampleMember.id == "cl45qj1q901824wqvqwj1vyx4")
+    return await res
+      .status(403)
+      .send({ error: true, text: "Данный аккаунт является тестовым, изменение настроек запрещено!" });
+
   try {
     const findMember = await prisma.member.update({
       where: { id: req.user.member_id },

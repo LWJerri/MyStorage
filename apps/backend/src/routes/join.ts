@@ -23,10 +23,6 @@ export async function join(
 
     const findMember = await prisma.member.findUnique({ where: { username } });
 
-    // Example account
-    if (findMember && findMember.id == "cl45qj1q901824wqvqwj1vyx4")
-      return await res.status(403).send({ error: true, text: "Данный аккаунт является тестовым!" });
-
     if (process.env.ADMIN_PASSWORD == admin && !findMember) {
       req.body.admin = undefined;
 
