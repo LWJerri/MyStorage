@@ -7,10 +7,16 @@ export async function meGET(req: FastifyRequest, res: FastifyReply) {
   try {
     const findParams = { where: { memberID: req.user.member_id } };
 
-    const [findMember, count, size] = await Promise.all([
+    const [
+      findMember,
+      count,
+      {
+        _sum: { size: size },
+      },
+    ] = await Promise.all([
       prisma.member.findUnique({ where: { id: req.user.member_id } }),
       prisma.upload.count(findParams),
-      (await prisma.upload.aggregate({ _sum: { size: true }, where: findParams.where }))._sum.size,
+      prisma.upload.aggregate({ _sum: { size: true }, where: findParams.where }),
     ]);
 
     const member = exclude(findMember, "password");
