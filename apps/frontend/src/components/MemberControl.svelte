@@ -29,7 +29,7 @@
   async function filePreview() {
     const apiRequest = await fetch("/api/me", {
       method: "PUT",
-      body: JSON.stringify({ showPreview: member.member.showPreview }),
+      body: JSON.stringify({ showPreview: !member.member.showPreview }),
       headers: {
         "Content-Type": "application/json",
       },
