@@ -34,7 +34,7 @@
 
     a.click();
 
-    return toast.push($_("downloading"), toastInfo);
+    return toast.push($_("other.file.downloading"), toastInfo);
   }
 
   async function deleteFile(id: string, name: string) {
@@ -49,11 +49,11 @@
     const answer = await apiRequest.json();
 
     if (answer.error) {
-      toast.push(answer?.text ?? $_("error.fileDeleteCard", { values: { name } }), toastError);
+      toast.push(answer?.text ?? $_("errors.file.delete", { values: { name } }), toastError);
     } else {
       files.update((files) => response.filter((upload) => upload.id !== id));
 
-      toast.push($_("oneDeleted", { values: { name } }), toastInfo);
+      toast.push($_("info.delete.one", { values: { name } }), toastInfo);
     }
   }
 </script>
@@ -90,26 +90,26 @@
 
         <div>
           <p>
-            {$_("uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
+            {$_("other.uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
           </p>
-          <p>{$_("size", { values: { size: formatBytes(upload.size) } })}</p>
+          <p>{$_("other.size", { values: { size: formatBytes(upload.size) } })}</p>
         </div>
       </div>
 
       <div class="my-2 mx-1 space-y-1">
         <div class="flex">
           <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded mr-1 w-1/2"
-            >{$_("open")}</a
+            >{$_("buttons.open")}</a
           >
           <button
             on:click={async () => await downloadFile(upload.url.replace("http://", "https://"), upload.name)}
-            class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("download")}</button
+            class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("buttons.download")}</button
           >
         </div>
 
         <button
           on:click={async () => await deleteFile(upload.id, upload.name)}
-          class="btn btn-sm btn-outline btn-error rounded w-full">{$_("delete")}</button
+          class="btn btn-sm btn-outline btn-error rounded w-full">{$_("buttons.delete")}</button
         >
       </div>
     </div>

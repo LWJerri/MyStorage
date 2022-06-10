@@ -11,7 +11,7 @@
 
   async function uploadFiles() {
     isUploading = true;
-    toast.push($_("uploadingFile"), { ...toastInfo, duration: 10000 });
+    toast.push($_("other.file.uploading"), { ...toastInfo, duration: 10000 });
 
     const data = new FormData();
 
@@ -29,7 +29,7 @@
     if (response.error) {
       isUploading = false;
 
-      return toast.push(response?.text ?? $_("error.upload"), toastError);
+      return toast.push(response?.text ?? $_("errors.file.upload"), toastError);
     } else {
       return (document.location.href = "/");
     }
@@ -51,11 +51,12 @@
       <button
         type="submit"
         class="btn btn-sm w-full my-1 btn-outline btn-error rounded {isUploading ? 'loading' : ''}"
-        disabled={uploadLimit ? true : isUploading}>{isUploading ? $_("uploading") : $_("upload")}</button
+        disabled={uploadLimit ? true : isUploading}
+        >{isUploading ? $_("buttons.progress.uploading") : $_("buttons.upload")}</button
       >
 
       <p class="my-2 {uploadLimit ? 'block' : 'hidden'}">
-        {$_("uploadLimit", { values: { max: member?.member?.maxGB ?? 1 } })}
+        {$_("info.limit", { values: { max: member?.member?.maxGB ?? 1 } })}
       </p>
     </div>
   </div>

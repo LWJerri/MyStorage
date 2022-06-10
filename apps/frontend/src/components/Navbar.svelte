@@ -12,7 +12,7 @@
 
     const response = (await apiRequest.json()) as Logout;
 
-    if (response.error) return toast.push(response?.text ?? $_("logout"), toastError);
+    if (response.error) return toast.push(response?.text ?? $_("errors.member.logout"), toastError);
 
     return (document.location.href = "/join");
   }
@@ -25,8 +25,8 @@
 
   <div class="navbar-end">
     <div class="flex hidden sm:block">
-      <label for="upload" class="btn btn-outline btn-success rounded">{$_("upload")}</label>
-      <button class="btn btn-outline btn-error rounded" on:click={() => logOut()}>{$_("logout")}</button>
+      <label for="upload" class="btn btn-outline btn-success rounded">{$_("buttons.upload")}</label>
+      <button class="btn btn-outline btn-error rounded" on:click={() => logOut()}>{$_("buttons.logout")}</button>
     </div>
 
     <div class="block sm:hidden">
@@ -42,8 +42,10 @@
 <input type="checkbox" id="menu" class="modal-toggle" />
 <label for="menu" class="modal modal-bottom cursor-pointer">
   <label class="modal-box relative rounded space-y-1" for="">
-    <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">{$_("upload")}</label>
-    <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}>{$_("logout")}</button>
+    <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">{$_("buttons.upload")}</label>
+    <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}
+      >{$_("buttons.logout")}</button
+    >
   </label>
 </label>
 

@@ -37,8 +37,8 @@
     if (!data.password || !data.username) {
       return (error = {
         error: true,
-        text: $_("join.noCredentials", {
-          values: { data: !data.username ? $_("username").toLowerCase() : $_("password").toLowerCase() },
+        text: $_("errors.credentials", {
+          values: { data: !data.username ? $_("other.username").toLowerCase() : $_("other.password").toLowerCase() },
         }),
       });
     }
@@ -58,10 +58,10 @@
 
     if (response.error) {
       error.error = true;
-      error.text = response?.text ?? $_("error.unknown");
+      error.text = response?.text ?? $_("errors.unknown");
     } else {
       error.error = false;
-      if (isRegister) return toast.push($_("join.created", { values: { user: data.username } }), toastInfo);
+      if (isRegister) return toast.push($_("info.created", { values: { user: data.username } }), toastInfo);
 
       return (window.location.href = "/");
     }
@@ -73,33 +73,33 @@
     {#if $isLoading}
       <div class="card rounded w-full md:w-96 bg-base-300 shadow-xl">
         <div class="card-body">
-          <h2 class="text-xl outline-none text-center">{$_("page_loading")}</h2>
+          <h2 class="text-xl outline-none text-center">{$_("other.loading")}</h2>
         </div>
       </div>
     {:else}
       <div class="card rounded w-full md:w-96 bg-base-300 shadow-xl">
         <div class="card-body">
-          <h2 class="text-xl outline-none text-center">{isRegister ? $_("join.register") : $_("join.login")}</h2>
+          <h2 class="text-xl outline-none text-center">{isRegister ? $_("titles.register") : $_("titles.login")}</h2>
 
           <form on:submit|preventDefault={async () => await auth()}>
             <div class="form-control w-full">
-              <span class="label label-text">{$_("username")}</span>
+              <span class="label label-text">{$_("other.username")}</span>
               <input type="text" bind:value={data.username} class="input-sm rounded input input-bordered w-full" />
             </div>
 
             <div class="form-control w-full">
-              <span class="label label-text">{$_("password")}</span>
+              <span class="label label-text">{$_("other.password")}</span>
               <input type="password" bind:value={data.password} class="input-sm rounded input input-bordered w-full" />
             </div>
 
             {#if isRegister}
               <div class="form-control w-full">
-                <span class="label label-text">{$_("accessKey")}</span>
+                <span class="label label-text">{$_("other.accessKey")}</span>
                 <input type="text" bind:value={data.accessKey} class="input-sm rounded input input-bordered w-full" />
               </div>
 
               <div class="form-control w-full">
-                <span class="label label-text">{$_("secretKey")}</span>
+                <span class="label label-text">{$_("other.secretKey")}</span>
                 <input
                   type="password"
                   bind:value={data.secretKey}
@@ -108,17 +108,17 @@
               </div>
 
               <div class="form-control w-full">
-                <span class="label label-text">{$_("s3Bucket")}</span>
+                <span class="label label-text">{$_("other.s3Bucket")}</span>
                 <input type="text" bind:value={data.bucket} class="input-sm rounded input input-bordered w-full" />
               </div>
 
               <div class="form-control w-full">
-                <span class="label label-text">{$_("s3Endpoint")}</span>
+                <span class="label label-text">{$_("other.s3Endpoint")}</span>
                 <input type="text" bind:value={data.endpoint} class="input-sm rounded input input-bordered w-full" />
               </div>
 
               <div class="form-control w-full">
-                <span class="label label-text">{$_("adminPassword")}</span>
+                <span class="label label-text">{$_("other.adminPassword")}</span>
                 <input type="password" bind:value={data.admin} class="input-sm rounded input input-bordered w-full" />
               </div>
             {/if}
@@ -145,13 +145,13 @@
 
             <div class="card-actions justify-end mt-5">
               <button class="btn rounded btn-outline btn-access btn-sm"
-                >{isRegister ? $_("join.create") : $_("join.enter")}</button
+                >{isRegister ? $_("buttons.create") : $_("buttons.enter")}</button
               >
 
               <button
                 on:click={() => (isRegister ? (isRegister = false) : (isRegister = true))}
                 class="btn rounded btn-outline btn-error btn-sm"
-                >{isRegister ? $_("join.cancel") : $_("join.register")}</button
+                >{isRegister ? $_("buttons.cancel") : $_("titles.register")}</button
               >
             </div>
           </form>

@@ -22,9 +22,9 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push(response?.text ?? $_("error.memberEdit"), toastError);
+      toast.push(response?.text ?? $_("errors.member.edit"), toastError);
     } else {
-      toast.push($_("memberUpdated"), toastInfo);
+      toast.push($_("info.update.member"), toastInfo);
     }
   }
 </script>
@@ -32,15 +32,15 @@
 <div class="card rounded card-compact bg-base-300 w-auto select-none">
   <div class="card-body">
     <h2 class="card-title font-bold outline-none">
-      {$_("info")}
-      {isEditing ? `(${$_("editing").toLowerCase()})` : ""}
+      {$_("titles.info")}
+      {isEditing ? `(${$_("other.editing").toLowerCase()})` : ""}
     </h2>
 
     <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("username")}</span>
+          <span class="label-text">{$_("other.username")}</span>
         </label>
         <input
           bind:value={newInfo.username}
@@ -54,7 +54,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("password")}</span>
+          <span class="label-text">{$_("other.password")}</span>
         </label>
         <input
           bind:value={newInfo.password}
@@ -68,7 +68,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("accessKey")}</span>
+          <span class="label-text">{$_("other.accessKey")}</span>
         </label>
         <input
           bind:value={newInfo.accessKey}
@@ -82,7 +82,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("secretKey")}</span>
+          <span class="label-text">{$_("other.secretKey")}</span>
         </label>
         <input
           bind:value={newInfo.secretKey}
@@ -96,7 +96,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("s3Bucket")}</span>
+          <span class="label-text">{$_("other.s3Bucket")}</span>
         </label>
         <input
           bind:value={newInfo.bucket}
@@ -110,7 +110,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("s3Endpoint")}</span>
+          <span class="label-text">{$_("other.s3Endpoint")}</span>
         </label>
         <input
           bind:value={newInfo.endpoint}
@@ -125,7 +125,7 @@
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
           <span class="label-text inline-flex"
-            >{$_("usedSpace")}
+            >{$_("other.space")}
             <svg
               class="w-6 h-6 ml-2 text-red-500 {member?.uploads?.size > 0 &&
               member?.uploads?.size + 10737418240 >= member.member.maxGB * Math.pow(1024, 3)
@@ -165,7 +165,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">{$_("uploadedFiles")}</span>
+          <span class="label-text">{$_("other.file.total")}</span>
         </label>
         <input
           type="text"
@@ -183,7 +183,7 @@
           isEditing ? (isEditing = false) : (isEditing = true);
 
           if (!isEditing) return await updateMember();
-        }}>{isEditing ? $_("save") : $_("edit")}</button
+        }}>{isEditing ? $_("buttons.save") : $_("buttons.edit")}</button
       >
     </div>
   </div>

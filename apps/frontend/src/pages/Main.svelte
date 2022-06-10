@@ -35,7 +35,7 @@
     const response = (await apiRequest.json()) as Member;
 
     if (response.error) {
-      toast.push(response?.text ?? $_("error.memberGet"), toastError);
+      toast.push(response?.text ?? $_("errors.member.get"), toastError);
     } else {
       member = response;
       isAuth = true;
@@ -52,11 +52,11 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push(response?.text ?? $_("error.fileDelete"), toastError);
+      toast.push(response?.text ?? $_("errors.file.forceDelete"), toastError);
     } else {
       await getFiles();
 
-      toast.push($_("deleted", { values: { count: response.count } }), toastInfo);
+      toast.push($_("info.delete.force", { values: { count: response.count } }), toastInfo);
     }
 
     startDeleting = false;
@@ -80,7 +80,7 @@
     <div class="hero-content w-full text-center">
       <div class="card rounded w-full md:w-96 bg-base-300 shadow-xl">
         <div class="card-body">
-          <h2 class="text-xl outline-none text-center">{$_("page_loading")}</h2>
+          <h2 class="text-xl outline-none text-center">{$_("other.loading")}</h2>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@
             await getFiles();
           }}
           class="btn btn-sm btn-success btn-outline rounded"
-          disabled={page == 1 ? true : false}>{$_("pagination.prev")}</button
+          disabled={page == 1 ? true : false}>{$_("buttons.previous")}</button
         >
 
         <button
@@ -112,7 +112,7 @@
             await getFiles();
           }}
           disabled={response.nextPage ? false : true}
-          class="btn btn-sm btn-success btn-outline rounded">{$_("pagination.next")}</button
+          class="btn btn-sm btn-success btn-outline rounded">{$_("buttons.next")}</button
         >
       </div>
 
@@ -125,7 +125,7 @@
             await getFiles();
           }}
           class="btn btn-sm btn-success btn-outline rounded"
-          disabled={page == 1 ? true : false}>{$_("pagination.prev")}</button
+          disabled={page == 1 ? true : false}>{$_("buttons.previous")}</button
         >
 
         <button
@@ -134,7 +134,7 @@
             await getFiles();
           }}
           disabled={response.nextPage ? false : true}
-          class="btn btn-sm btn-success btn-outline rounded">{$_("pagination.next")}</button
+          class="btn btn-sm btn-success btn-outline rounded">{$_("buttons.next")}</button
         >
       </div>
     {:else if response.error}
@@ -152,7 +152,7 @@
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             /></svg
           >
-          <span>{$_("error.loadFiles")}</span>
+          <span>{$_("errors.file.load")}</span>
         </div>
       </div>
     {:else}
@@ -170,7 +170,7 @@
               d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
             /></svg
           >
-          <span class="select-none">{$_("noFiles")}</span>
+          <span class="select-none">{$_("other.file.nothing")}</span>
         </div>
       </div>
     {/if}
@@ -185,13 +185,13 @@
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
       ></label
     >
-    <h3 class="text-lg font-bold">{$_("deleteModal.title")}</h3>
-    <p class="py-4">{$_("deleteModal.description")}</p>
+    <h3 class="text-lg font-bold">{$_("other.forceDelete.title")}</h3>
+    <p class="py-4">{$_("other.forceDelete.description")}</p>
 
     <button
       on:click={async () => await forceDeleteFile()}
       class="btn btn-error btn-outline w-full rounded {startDeleting ? 'loading' : ''}"
-      disabled={startDeleting}>{startDeleting ? $_("deleteModal.deleting") : $_("delete")}</button
+      disabled={startDeleting}>{startDeleting ? $_("buttons.progress.deleting") : $_("buttons.delete")}</button
     >
   </label>
 </label>
