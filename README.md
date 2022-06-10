@@ -20,10 +20,7 @@
 - Setup your `.env` file.
 - Build production code `pnpm -r build`.
 - Run builded code, just type `pnpm start`.
-
-OR
-
-- Use `Dockerfile`.
+- Open website - `localhost:3005`.
 
 ## Troubleshooting
 
@@ -72,7 +69,7 @@ Username & password - **test**
 ![Photo #2](https://i.imgur.com/ZE3TLNM.png)
 ![Photo #3](https://i.imgur.com/HgbugL9.png)
 ![Photo #4](https://i.imgur.com/2k2BCon.png)
-![Photo #5](https://i.imgur.com/4zJ2y9c.png)
+![Photo #5](https://i.imgur.com/yt01f18.png)
 
 ## Contributing
 
