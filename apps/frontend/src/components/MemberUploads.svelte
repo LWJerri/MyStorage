@@ -4,28 +4,11 @@
   import { toastError, toastInfo } from "../helpers/toasts";
   import axios from "axios";
   import { files } from "../helpers/store";
-
-  interface Member {
-    error: boolean;
-    member: {
-      id: string;
-      createdAt: Date;
-      username: string;
-      accessKey: string;
-      secretKey: string;
-      bucket: string;
-      endpoint: string;
-      showPreview: boolean;
-      maxGB: number;
-    };
-    uploads: {
-      size: number;
-      count: number;
-    };
-  }
+  import type { Member, Response } from "../helpers/interfaces";
+  import { _ } from "svelte-i18n";
 
   export let member: Member;
-  let response: Array<{ id: string; createdAt: Date; size: number; name: string; url: string; key: string }>;
+  let response: Response["uploads"];
 
   files.subscribe((data) => {
     response = data;
@@ -51,7 +34,7 @@
 
     a.click();
 
-    return toast.push("Файл скачивается, пожалуйста, подождите!", toastInfo);
+    return toast.push($_("downloading"), toastInfo);
   }
 
   async function deleteFile(id: string, name: string) {
@@ -66,11 +49,11 @@
     const answer = await apiRequest.json();
 
     if (answer.error) {
-      toast.push(answer?.text ?? `Произошла ошибка при удалении ${name}!`, toastError);
+      toast.push(answer?.text ?? $_("error.fileDeleteCard", { values: { name } }), toastError);
     } else {
       files.update((files) => response.filter((upload) => upload.id !== id));
 
-      toast.push(`Файл ${name} удалён!`, toastInfo);
+      toast.push($_("oneDeleted", { values: { name } }), toastInfo);
     }
   }
 </script>
@@ -107,22 +90,26 @@
 
         <div>
           <p>
-            Загружен: {new Date(upload.createdAt).toLocaleString()}
+            {$_("uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
           </p>
-          <p>Размер: {formatBytes(upload.size)}</p>
+          <p>{$_("size", { values: { size: formatBytes(upload.size) } })}</p>
         </div>
       </div>
 
       <div class="my-2 mx-1 space-y-1">
-        <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded w-full">Открыть</a>
-        <button
-          on:click={async () => await downloadFile(upload.url.replace("http://", "https://"), upload.name)}
-          class="btn btn-sm btn-outline btn-accent rounded w-full">Скачать</button
-        >
+        <div class="flex">
+          <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded mr-1 w-1/2"
+            >{$_("open")}</a
+          >
+          <button
+            on:click={async () => await downloadFile(upload.url.replace("http://", "https://"), upload.name)}
+            class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("download")}</button
+          >
+        </div>
 
         <button
           on:click={async () => await deleteFile(upload.id, upload.name)}
-          class="btn btn-sm btn-outline btn-error rounded w-full">Удалить</button
+          class="btn btn-sm btn-outline btn-error rounded w-full">{$_("delete")}</button
         >
       </div>
     </div>

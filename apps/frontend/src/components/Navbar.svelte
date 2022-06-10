@@ -1,22 +1,18 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
+  import { _ } from "svelte-i18n";
+  import type { Logout, Member } from "../helpers/interfaces";
   import { toastError } from "../helpers/toasts";
   import MemberUpload from "./MemberUpload.svelte";
 
-  export let member;
-
-  interface Logout {
-    error: boolean;
-    text?: string;
-  }
+  export let member: Member;
 
   async function logOut() {
     const apiRequest = await fetch("/api/logout", { method: "POST" });
 
     const response = (await apiRequest.json()) as Logout;
 
-    if (response.error)
-      return toast.push(response?.text ?? "Произошла ошибка при попытке выйти с аккаунта!", toastError);
+    if (response.error) return toast.push(response?.text ?? $_("logout"), toastError);
 
     return (document.location.href = "/join");
   }
@@ -24,13 +20,13 @@
 
 <div class="navbar text-white bg-base-300 shadow-lg select-none rounded">
   <div class="navbar-start">
-    <a href="/" class="ml-2 font-bold text-xl outline-none">MyStorage</a>
+    <a href="/" class="ml-2 font-bold text-xl outline-none" translate="no">MyStorage</a>
   </div>
 
   <div class="navbar-end">
     <div class="flex hidden sm:block">
-      <label for="upload" class="btn btn-outline btn-success rounded">Загрузить</label>
-      <button class="btn btn-outline btn-error rounded" on:click={() => logOut()}>Выйти</button>
+      <label for="upload" class="btn btn-outline btn-success rounded">{$_("upload")}</label>
+      <button class="btn btn-outline btn-error rounded" on:click={() => logOut()}>{$_("logout")}</button>
     </div>
 
     <div class="block sm:hidden">
@@ -46,8 +42,8 @@
 <input type="checkbox" id="menu" class="modal-toggle" />
 <label for="menu" class="modal modal-bottom cursor-pointer">
   <label class="modal-box relative rounded space-y-1" for="">
-    <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">Загрузить</label>
-    <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}>Выйти</button>
+    <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">{$_("upload")}</label>
+    <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}>{$_("logout")}</button>
   </label>
 </label>
 

@@ -1,25 +1,8 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
+  import { _ } from "svelte-i18n";
+  import type { Member } from "../helpers/interfaces";
   import { toastError, toastInfo } from "../helpers/toasts";
-
-  interface Member {
-    error: boolean;
-    member: {
-      id: string;
-      createdAt: Date;
-      username: string;
-      accessKey: string;
-      secretKey: string;
-      bucket: string;
-      endpoint: string;
-      showPreview: boolean;
-      maxGB: number;
-    };
-    uploads: {
-      size: number;
-      count: number;
-    };
-  }
 
   export let member: Member;
   let files: FileList;
@@ -28,7 +11,7 @@
 
   async function uploadFiles() {
     isUploading = true;
-    toast.push(`Загрузка файлов, пожалуйста, подождите...`, { ...toastInfo, duration: 10000 });
+    toast.push($_("uploadingFile"), { ...toastInfo, duration: 10000 });
 
     const data = new FormData();
 
@@ -46,7 +29,7 @@
     if (response.error) {
       isUploading = false;
 
-      return toast.push(response?.text ?? `Произошла ошибка во время загрузки файлов!`, toastError);
+      return toast.push(response?.text ?? $_("error.upload"), toastError);
     } else {
       return (document.location.href = "/");
     }
@@ -68,12 +51,11 @@
       <button
         type="submit"
         class="btn btn-sm w-full my-1 btn-outline btn-error rounded {isUploading ? 'loading' : ''}"
-        disabled={uploadLimit ? true : isUploading}>{isUploading ? "Загрузка" : "Загрузить"}</button
+        disabled={uploadLimit ? true : isUploading}>{isUploading ? $_("uploading") : $_("upload")}</button
       >
 
       <p class="my-2 {uploadLimit ? 'block' : 'hidden'}">
-        Ваш установленный лимит в <span class="font-bold">{member?.member?.maxGB ?? 1} GB</span> будет скоро превышен, т.к
-        текущий вес загруженных файлов + зарезервированные 100 мб больше лимита.
+        {$_("uploadLimit", { values: { max: member?.member?.maxGB ?? 1 } })}
       </p>
     </div>
   </div>

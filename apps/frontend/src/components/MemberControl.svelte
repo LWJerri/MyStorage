@@ -2,29 +2,34 @@
   import { toast } from "@zerodevx/svelte-toast";
   import { toastError, toastInfo } from "../helpers/toasts";
   import { files } from "../helpers/store";
-
-  interface Member {
-    error: boolean;
-    member: {
-      id: string;
-      createdAt: Date;
-      username: string;
-      accessKey: string;
-      secretKey: string;
-      bucket: string;
-      endpoint: string;
-      showPreview: boolean;
-      maxGB: number;
-    };
-    uploads: {
-      size: number;
-      count: number;
-    };
-  }
+  import type { Member } from "../helpers/interfaces";
+  import { _, locales, locale } from "svelte-i18n";
 
   export let member: Member;
   export let page: number;
   let search: string;
+  let lang: string;
+
+  async function updateLanguage() {
+    const apiRequest = await fetch("/api/me", {
+      method: "PUT",
+      body: JSON.stringify({ language: lang }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const response = await apiRequest.json();
+
+    if (response.error) {
+      toast.push(response?.text ?? $_("error.memberEdit"), toastError);
+    } else {
+      toast.push($_("languageUpdated"), toastInfo);
+
+      window.localStorage.setItem("lang", lang);
+      locale.set(lang);
+    }
+  }
 
   async function filePreview() {
     const apiRequest = await fetch("/api/me", {
@@ -38,12 +43,12 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push(response?.text ?? "Произошла ошибка при изменении параметров предпросмотра!", toastError);
+      toast.push(response?.text ?? $_("error.preview"), toastError);
     } else {
       member.member.showPreview = !member.member.showPreview;
       await getFiles();
 
-      toast.push("Параметры предпросмотра успешно изменены!", toastInfo);
+      toast.push($_("previewUpdated"), toastInfo);
     }
   }
 
@@ -57,11 +62,11 @@
 
 <div class="card rounded card-compact bg-base-300 select-none">
   <div class="card-body">
-    <h2 class="card-title font-bold outline-none">Управление</h2>
+    <h2 class="card-title font-bold outline-none">{$_("manage")}</h2>
 
     <div class="form-control">
       <label class="label cursor-pointer">
-        <span class="label-text">Отображать превью</span>
+        <span class="label-text">{$_("showPreview")}</span>
         <input
           type="checkbox"
           on:click={async () => await filePreview()}
@@ -72,7 +77,7 @@
 
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <label class="label cursor-pointer">
-        <span class="label-text">Удалить файлы</span>
+        <span class="label-text">{$_("deleteFiles")}</span>
         <label for="delete_files" class="btn btn-outline rounded btn-error btn-sm modal-button"
           ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             ><path
@@ -86,17 +91,31 @@
       </label>
     </div>
 
+    <!-- svelte-ignore a11y-label-has-associated-control -->
+    <label class="label">
+      <span class="label-text">Смена языка</span>
+
+      <select class="select select-sm" bind:value={lang} on:change={async () => await updateLanguage()}>
+        <option disabled selected>Выберите язык</option>
+        {#each $locales as locale}
+          <option value={locale}>{locale.toUpperCase()}</option>
+        {/each}
+      </select>
+    </label>
+
+    <p />
+
     <div class="card-actions justify-start border-t border-gray-700 pt-2">
       <form on:submit|preventDefault={async () => await getFiles()} class="w-full">
-        <span class="label-text">Поиск файла</span>
+        <span class="label-text">{$_("searchFiles")}</span>
         <label class="input-group mt-2">
           <input
             type="text"
-            placeholder="Поиск по названию файла"
+            placeholder={$_("findPlaceholder")}
             class="input input-sm w-full rounded"
             bind:value={search}
           />
-          <button class="btn btn-sm btn-error">Найти</button>
+          <button class="btn btn-sm btn-error">{$_("find")}</button>
         </label>
       </form>
     </div>
