@@ -148,9 +148,7 @@
                 >{isRegister ? $_("buttons.create") : $_("buttons.enter")}</button
               >
 
-              <button
-                on:click={() => (isRegister ? (isRegister = false) : (isRegister = true))}
-                class="btn rounded btn-outline btn-error btn-sm"
+              <button on:click={() => (isRegister = !isRegister)} class="btn rounded btn-outline btn-error btn-sm"
                 >{isRegister ? $_("buttons.cancel") : $_("titles.register")}</button
               >
             </div>

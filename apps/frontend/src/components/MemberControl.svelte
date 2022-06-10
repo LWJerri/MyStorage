@@ -93,10 +93,10 @@
 
     <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="label">
-      <span class="label-text">Смена языка</span>
+      <span class="label-text">{$_("other.lang.title")}</span>
 
       <select class="select select-sm" bind:value={lang} on:change={async () => await updateLanguage()}>
-        <option disabled selected>Выберите язык</option>
+        <option disabled selected>{$_("other.lang.body")}</option>
         {#each $locales as locale}
           <option value={locale}>{locale.toUpperCase()}</option>
         {/each}

@@ -102,7 +102,7 @@
             >{$_("buttons.open")}</a
           >
           <button
-            on:click={async () => await downloadFile(upload.url.replace("http://", "https://"), upload.name)}
+            on:click={async () => await downloadFile(upload.url, upload.name)}
             class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("buttons.download")}</button
           >
         </div>
