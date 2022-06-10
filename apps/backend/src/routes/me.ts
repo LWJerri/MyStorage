@@ -40,6 +40,7 @@ export async function mePUT(
       bucket: string;
       endpoint: string;
       maxGB: number;
+      language: string;
     };
   },
   res: FastifyReply,
