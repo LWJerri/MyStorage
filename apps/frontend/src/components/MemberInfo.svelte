@@ -1,38 +1,14 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { formatBytes } from "bytes-formatter";
+  import { _ } from "svelte-i18n";
+  import type { Member } from "../helpers/interfaces";
   import { toastError, toastInfo } from "../helpers/toasts";
 
   let isEditing: boolean = false;
 
-  export let newInfo: {
-    username: string;
-    password: string;
-    accessKey: string;
-    secretKey: string;
-    bucket: string;
-    endpoint: string;
-    maxGB: number;
-  };
-
-  export let member: {
-    error: boolean;
-    member: {
-      id: string;
-      createdAt: Date;
-      username: string;
-      accessKey: string;
-      secretKey: string;
-      bucket: string;
-      endpoint: string;
-      showPreview: boolean;
-      maxGB: number;
-    };
-    uploads: {
-      count: number;
-      size: number;
-    };
-  };
+  export let newInfo: Member["member"] & { password?: string };
+  export let member: Member;
 
   async function updateMember() {
     const apiRequest = await fetch("/api/me", {
@@ -46,22 +22,25 @@
     const response = await apiRequest.json();
 
     if (response.error) {
-      toast.push(response?.text ?? "Произошла ошибка при обновлении данных о пользователе!", toastError);
+      toast.push(response?.text ?? $_("errors.member.edit"), toastError);
     } else {
-      toast.push("Данные о пользователе обновлены!", toastInfo);
+      toast.push($_("info.update.member"), toastInfo);
     }
   }
 </script>
 
 <div class="card rounded card-compact bg-base-300 w-auto select-none">
   <div class="card-body">
-    <h2 class="card-title font-bold outline-none">Информация {isEditing ? "(редактирование)" : ""}</h2>
+    <h2 class="card-title font-bold outline-none">
+      {$_("titles.info")}
+      {isEditing ? `(${$_("other.editing").toLowerCase()})` : ""}
+    </h2>
 
     <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">Имя пользователя</span>
+          <span class="label-text">{$_("other.username")}</span>
         </label>
         <input
           bind:value={newInfo.username}
@@ -75,7 +54,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">Пароль</span>
+          <span class="label-text">{$_("other.password")}</span>
         </label>
         <input
           bind:value={newInfo.password}
@@ -89,7 +68,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">S3 Access Key</span>
+          <span class="label-text">{$_("other.accessKey")}</span>
         </label>
         <input
           bind:value={newInfo.accessKey}
@@ -103,7 +82,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">S3 Secret key</span>
+          <span class="label-text">{$_("other.secretKey")}</span>
         </label>
         <input
           bind:value={newInfo.secretKey}
@@ -117,7 +96,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">S3 Bucket</span>
+          <span class="label-text">{$_("other.s3Bucket")}</span>
         </label>
         <input
           bind:value={newInfo.bucket}
@@ -131,7 +110,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">S3 Endpoint</span>
+          <span class="label-text">{$_("other.s3Endpoint")}</span>
         </label>
         <input
           bind:value={newInfo.endpoint}
@@ -146,7 +125,8 @@
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
           <span class="label-text inline-flex"
-            >Использовано памяти <svg
+            >{$_("other.space")}
+            <svg
               class="w-6 h-6 ml-2 text-red-500 {member?.uploads?.size > 0 &&
               member?.uploads?.size + 10737418240 >= member.member.maxGB * Math.pow(1024, 3)
                 ? 'block'
@@ -185,7 +165,7 @@
       <div class="form-control w-full">
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
-          <span class="label-text">Загружено файлов</span>
+          <span class="label-text">{$_("other.file.total")}</span>
         </label>
         <input
           type="text"
@@ -203,7 +183,7 @@
           isEditing ? (isEditing = false) : (isEditing = true);
 
           if (!isEditing) return await updateMember();
-        }}>{isEditing ? "Сохранить" : "Редактировать"}</button
+        }}>{isEditing ? $_("buttons.save") : $_("buttons.edit")}</button
       >
     </div>
   </div>
