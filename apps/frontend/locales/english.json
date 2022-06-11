@@ -1,0 +1,92 @@
+{
+  "errors": {
+    "credentials": "Enter {data}",
+    "previewUpdate": "Some error happened when you try to change the setting for files preview!",
+    "file": {
+      "upload": "Some error happened when files loading!",
+      "forceDelete": "Some error happened when deleting files!",
+      "delete": "Some error happened when deleting {name}!",
+      "load": "Some error happened when loading files!"
+    },
+    "unknown": "Unknown error",
+    "member": {
+      "get": "Some error happened when getting data about member!",
+      "edit": "Some error happened when information about user updating!",
+      "logout": "Some error happened when you try to log out from your account!"
+    }
+  },
+
+  "info": {
+    "limit": "Your set limit of {max} GB will be exceeded soon, because the current weight of uploaded files + reserved 100 mb is more than the limit.",
+    "created": "Member {user} created!",
+    "update": {
+      "language": "Language updated!",
+      "member": "Information about member updated!",
+      "preview": "Settings for preview successfully updated!"
+    },
+    "delete": { "one": "File {name} deleted!", "force": "{count} files deleted!" }
+  },
+
+  "buttons": {
+    "progress": {
+      "deleting": "Deleting",
+      "uploading": "Uploading"
+    },
+    "delete": "Delete",
+    "logout": "Logout",
+    "open": "Open",
+    "upload": "Upload",
+    "download": "Sownload",
+    "next": "Next",
+    "previous": "Previous",
+    "find": "Search",
+
+    "create": "Create",
+    "cancel": "Cancel",
+    "enter": "Enter",
+    "edit": "Edit",
+    "save": "Save"
+  },
+
+  "titles": {
+    "login": "Authorization",
+    "register": "Registration",
+    "info": "Information",
+    "manage": "Manage"
+  },
+
+  "other": {
+    "loading": "Page loading...",
+    "username": "Username",
+    "password": "Password",
+    "accessKey": "S3 Access Key",
+    "secretKey": "S3 Secret Key",
+    "s3Bucket": "Name of Bucket",
+    "s3Endpoint": "S3 Endpoint",
+    "adminPassword": "Admin-password",
+    "uploaded": "Uploaded: {date}",
+    "size": "Size: {size}",
+    "space": "Memory used",
+    "editing": "Editing",
+    "preview": "Show preview",
+
+    "lang": {
+      "title": "Change language",
+      "body": "Choose language"
+    },
+
+    "file": {
+      "total": "Files uploaded",
+      "search": "File search",
+      "placeholder": "Search by name of a file",
+      "nothing": "List of uploaded files is empty!",
+      "downloading": "File downloading, please, wait some time!",
+      "uploading": "File uploading, please, wait some time..."
+    },
+
+    "forceDelete": {
+      "title": "Confirm deletion",
+      "description": "Attention! This action cannot be undone, all files will be unreachably deleted from S3 and the database."
+    }
+  }
+}
