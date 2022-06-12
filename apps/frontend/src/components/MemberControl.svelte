@@ -24,10 +24,10 @@
     if (response.error) {
       toast.push(response?.text ?? $_("errors.member.edit"), toastError);
     } else {
-      toast.push($_("info.update.language"), toastInfo);
-
       window.localStorage.setItem("lang", lang);
       locale.set(lang);
+
+      toast.push($_("info.update.language"), toastInfo);
     }
   }
 
