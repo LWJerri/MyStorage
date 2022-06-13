@@ -4,7 +4,7 @@ import ukrainian from "../locales/ukrainian.json";
 import russian from "../locales/russian.json";
 import english from "../locales/english.json";
 
-addMessages("ukrinian", ukrainian);
+addMessages("ukrainian", ukrainian);
 addMessages("russian", russian);
 addMessages("english", english);
 
