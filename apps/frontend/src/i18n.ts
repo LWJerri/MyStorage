@@ -1,12 +1,12 @@
 import { addMessages, init } from "svelte-i18n";
 
-import ukrainian from "../locales/ukrainian.json";
-import russian from "../locales/russian.json";
-import english from "../locales/english.json";
+import uk from "../locales/uk.json";
+import ru from "../locales/ru.json";
+import en from "../locales/en.json";
 
-addMessages("ukrainian", ukrainian);
-addMessages("russian", russian);
-addMessages("english", english);
+addMessages("uk", uk);
+addMessages("ru", ru);
+addMessages("en", en);
 
 const memberLang = window.localStorage.getItem("lang");
 

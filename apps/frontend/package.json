@@ -1,6 +1,6 @@
 {
   "name": "@mystorage/frontend",
-  "version": "4.1.3",
+  "version": "4.2.0",
   "type": "module",
   "scripts": {
     "prebuild": "rm -rf dist",
