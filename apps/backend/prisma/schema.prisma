@@ -31,7 +31,7 @@ model Member {
   secretKey   String
   bucket      String
   endpoint    String
-  language    String   @default("russian")
+  language    String   @default("ru")
   maxGB       Int      @default(1)
   showPreview Boolean  @default(false)
   Upload      Upload[]
