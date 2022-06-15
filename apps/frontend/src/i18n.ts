@@ -11,6 +11,6 @@ addMessages("en", en);
 const memberLang = window.localStorage.getItem("lang");
 
 init({
-  fallbackLocale: "russian",
+  fallbackLocale: "ru",
   initialLocale: memberLang,
 });
