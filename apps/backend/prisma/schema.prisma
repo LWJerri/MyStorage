@@ -17,6 +17,7 @@ model Upload {
   url       String
   key       String   @unique
   memberID  String
+  tags      String[]
   Member    Member   @relation(fields: [memberID], references: [id])
 
   @@map("upload")
