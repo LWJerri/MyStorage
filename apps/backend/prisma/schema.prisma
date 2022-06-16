@@ -32,6 +32,7 @@ model Member {
   secretKey   String
   bucket      String
   endpoint    String
+  tags        String[]
   language    String   @default("ru")
   maxGB       Int      @default(1)
   showPreview Boolean  @default(false)
