@@ -12,6 +12,7 @@ export interface Member {
     showPreview: boolean;
     maxGB: number;
     language: string;
+    tags: string[];
   };
   uploads: {
     size: number;
