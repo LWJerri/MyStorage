@@ -20,13 +20,16 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "@nanostores/persistent": "^0.5.3",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
     "bytes-formatter": "^21.6.12",
     "daisyui": "^2.15.2",
+    "nanostores": "^0.5.12",
     "postcss": "^8.4.14",
     "svelte-i18n": "^3.4.0",
     "svelte-navigator": "^3.1.6",
+    "svrollbar": "^0.12.0",
     "tslib": "^2.4.0"
   }
 }
