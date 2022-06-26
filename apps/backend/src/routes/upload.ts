@@ -1,3 +1,4 @@
+import { PutObjectRequest } from "aws-sdk/clients/s3";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
 import { redisPub } from "../helpers/redis";
@@ -23,7 +24,7 @@ export async function upload(req: FastifyRequest & { body: { files: FormData } }
         Body: part.file,
         ACL: "public-read",
         ContentType: `${part.mimetype}; charset=utf-8`,
-      };
+      } as PutObjectRequest;
 
       const isStorJ = member.endpoint.replace(/https?:\/\//g, "") == "gateway.storjshare.io";
 
