@@ -16,7 +16,7 @@
     "@fastify/cookie": "^6.0.0",
     "@fastify/cors": "^7.0.0",
     "@fastify/multipart": "^6.0.0",
-    "@fastify/static": "^5.0.2",
+    "@fastify/static": "^6.4.0",
     "@prisma/client": "^3.14.0",
     "@types/ioredis": "^4.28.10",
     "@types/node": "^17.0.40",
