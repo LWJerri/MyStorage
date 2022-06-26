@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@fastify/cookie": "^6.0.0",
-    "@fastify/cors": "^7.0.0",
+    "@fastify/cors": "^8.0.0",
     "@fastify/multipart": "^6.0.0",
     "@fastify/static": "^6.4.0",
     "@prisma/client": "^3.14.0",
