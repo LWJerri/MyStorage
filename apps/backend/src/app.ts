@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import fastifyModule from "fastify";
-import { fastifyStatic } from "@fastify/static";
+import fastifyStatic from "@fastify/static";
 import fastifyMultipart from "@fastify/multipart";
 import fastifyCORS from "@fastify/cors";
 import fastifyCookie from "@fastify/cookie";
@@ -55,7 +55,7 @@ async function boot() {
 
     await redisPub.config("SET", "notify-keyspace-events", "KEA");
     await redisSub.subscribe("__keyevent@0__:expired");
-    await fastify.listen(3005, "0.0.0.0");
+    await fastify.listen({ host: "0.0.0.0", port: 3005 });
 
     await storJUpdater();
 
