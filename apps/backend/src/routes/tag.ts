@@ -9,7 +9,7 @@ export async function addFileTag(req: FastifyRequest & { body: { fileID: string;
 
     if (!findMember) return await res.status(403).send({ error: true, text: "Member not found!" });
     if (!fileID || !tag)
-      return await res.status(403).send({ error: true, text: `Укажите ${!fileID ? "fileID" : "tag"}!` });
+      return await res.status(403).send({ error: true, text: `Provide ${!fileID ? "fileID" : "tag"}!` });
 
     const findFile = await prisma.upload.findUnique({ where: { id: fileID } });
 
@@ -35,7 +35,7 @@ export async function removeFileTag(
 
     if (!findMember) return await res.status(403).send({ error: true, text: "Member not found!" });
     if (!fileID || !tag)
-      return await res.status(403).send({ error: true, text: `Укажите ${!fileID ? "fileID" : "tag"}!` });
+      return await res.status(403).send({ error: true, text: `Provide ${!fileID ? "fileID" : "tag"}!` });
 
     const findFile = await prisma.upload.findUnique({ where: { id: fileID } });
 
@@ -77,8 +77,6 @@ export async function deleteTag(req: FastifyRequest & { body: { tag: string } },
     if (!findMember) return res.status(404).send({ error: true, text: "Member not found!" });
 
     const filesWithTag = await prisma.upload.findMany({ where: { memberID: findMember.id, tags: { has: tag } } });
-
-    console.log(filesWithTag.length);
 
     for await (const file of filesWithTag) {
       const newFileTags = file.tags.filter((x) => x !== tag);
