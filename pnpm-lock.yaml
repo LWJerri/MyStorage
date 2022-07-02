@@ -14,7 +14,7 @@ importers:
       '@fastify/cors': ^8.0.0
       '@fastify/multipart': ^7.1.0
       '@fastify/static': ^6.4.0
-      '@prisma/client': ^4.0.0
+      '@prisma/client': 4.0.0
       '@types/bcryptjs': ^2.4.2
       '@types/ioredis': ^4.28.10
       '@types/jsonwebtoken': ^8.5.8
@@ -31,6 +31,7 @@ importers:
       source-map-support: ^0.5.21
       stream: ^0.0.2
       ts-node: ^10.8.1
+      tsx: ^3.7.0
       typescript: ^4.7.4
     dependencies:
       '@fastify/cookie': 7.0.0
@@ -55,6 +56,7 @@ importers:
       '@types/jsonwebtoken': 8.5.8
       nodemon: 2.0.18
       ts-node: 10.8.1_qiyc72axg2v44xl4yovan2v55u
+      tsx: 3.7.0
       typescript: 4.7.4
 
   apps/frontend:
@@ -75,6 +77,7 @@ importers:
       svelte-i18n: ^3.4.0
       svelte-navigator: ^3.1.6
       svelte-preprocess: ^4.10.7
+      svelte-select: ^4.4.7
       svrollbar: ^0.12.0
       tailwindcss: ^3.1.4
       tslib: ^2.4.0
@@ -90,6 +93,7 @@ importers:
       postcss: 8.4.14
       svelte-i18n: 3.4.0_svelte@3.48.0
       svelte-navigator: 3.1.6_lvfi2wesz6u4l5rfbnetbucfmm
+      svelte-select: 4.4.7
       svrollbar: 0.12.0
       tslib: 2.4.0
     devDependencies:
@@ -111,6 +115,27 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+    dev: true
+
+  /@esbuild-kit/cjs-loader/2.3.0:
+    resolution: {integrity: sha512-KInrVt8wlKLhWy7+y4a+E+0uBJoWgdx6Xupy+rrF4MFHA/dEt22ACvvChOZSyiqtQieYPtbPkVYSjbC7mOrFVw==}
+    dependencies:
+      '@esbuild-kit/core-utils': 2.0.2
+      get-tsconfig: 4.1.0
+    dev: true
+
+  /@esbuild-kit/core-utils/2.0.2:
+    resolution: {integrity: sha512-clNYQUsqtc36pzW5EufMsahcbLG45EaW3YDyf0DlaS0eCMkDXpxIlHwPC0rndUwG6Ytk9sMSD5k1qHbwYEC/OQ==}
+    dependencies:
+      esbuild: 0.14.48
+      source-map-support: 0.5.21
+    dev: true
+
+  /@esbuild-kit/esm-loader/2.4.0:
+    resolution: {integrity: sha512-zS720jXh06nfg5yAzm6oob4sWN9VTP2E1SonhFgEb6zCBswa4S8fOQ/4Bksz1flDgn56NPqoTTDn2XmWRyMG9Q==}
+    dependencies:
+      '@esbuild-kit/core-utils': 2.0.2
+      get-tsconfig: 4.1.0
     dev: true
 
   /@fastify/ajv-compiler/3.1.0:
@@ -607,7 +632,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001361
-      electron-to-chromium: 1.4.176
+      electron-to-chromium: 1.4.177
       node-releases: 2.0.5
       update-browserslist-db: 1.0.4_browserslist@4.21.1
     dev: false
@@ -622,7 +647,6 @@ packages:
 
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
-    dev: false
 
   /buffer/4.9.2:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
@@ -937,8 +961,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium/1.4.176:
-    resolution: {integrity: sha512-92JdgyRlcNDwuy75MjuFSb3clt6DGJ2IXSpg0MCjKd3JV9eSmuUAIyWiGAp/EtT0z2D4rqbYqThQLV90maH3Zw==}
+  /electron-to-chromium/1.4.177:
+    resolution: {integrity: sha512-FYPir3NSBEGexSZUEeht81oVhHfLFl6mhUKSkjHN/iB/TwEIt/WHQrqVGfTLN5gQxwJCQkIJBe05eOXjI7omgg==}
     dev: false
 
   /emitter-component/1.1.1:
@@ -1351,6 +1375,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       pump: 3.0.0
+    dev: true
+
+  /get-tsconfig/4.1.0:
+    resolution: {integrity: sha512-bhshxJhpfmeQ8x4fAvDqJV2VfGp5TfHdLpmBpNZZhMoVyfIrOippBW4mayC3DT9Sxuhcyl56Efw61qL28hG4EQ==}
     dev: true
 
   /glob-parent/5.1.2:
@@ -2403,12 +2431,10 @@ packages:
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
-    dev: false
 
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
-    dev: false
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
@@ -2578,6 +2604,10 @@ packages:
       typescript: 4.7.4
     dev: true
 
+  /svelte-select/4.4.7:
+    resolution: {integrity: sha512-fIf9Z8rPI6F8naHZ9wjXT0Pv5gLyhdHAFkHFJnCfVVfELE8e82uOoF0xEVQP6Kir+b4Q5yOvNAzZ61WbSU6A0A==}
+    dev: false
+
   /svelte/3.48.0:
     resolution: {integrity: sha512-fN2YRm/bGumvjUpu6yI3BpvZnpIm9I6A7HR4oUNYd7ggYyIwSA/BX7DJ+UXXffLp6XNcUijyLvttbPVCYa/3xQ==}
     engines: {node: '>= 8'}
@@ -2707,6 +2737,17 @@ packages:
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: false
+
+  /tsx/3.7.0:
+    resolution: {integrity: sha512-cYPixpDs2AeCjhTspIeCjgiRzXTnIeaYrQT9jkvqlenxRYZpT7cLSRR0PcWUqy8VESDjkTI0/HkYW/qWC4Sj1A==}
+    hasBin: true
+    dependencies:
+      '@esbuild-kit/cjs-loader': 2.3.0
+      '@esbuild-kit/core-utils': 2.0.2
+      '@esbuild-kit/esm-loader': 2.4.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
 
   /type-fest/0.20.2:
     resolution: {integrity: sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==}
