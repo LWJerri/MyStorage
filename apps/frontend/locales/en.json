@@ -1,92 +1,120 @@
 {
-  "errors": {
-    "credentials": "Enter {data}",
-    "previewUpdate": "Some error happened when you try to change the setting for files preview!",
-    "file": {
-      "upload": "Some error happened when files loading!",
-      "forceDelete": "Some error happened when deleting files!",
-      "delete": "Some error happened when deleting {name}!",
-      "load": "Some error happened when loading files!"
-    },
-    "unknown": "Unknown error",
-    "member": {
-      "get": "Some error happened when getting data about member!",
-      "edit": "Some error happened when information about user updating!",
-      "logout": "Some error happened when you try to log out from your account!"
-    }
-  },
-
-  "info": {
-    "limit": "Your set limit of {max} GB will be exceeded soon, because the current weight of uploaded files + reserved 100 mb is more than the limit.",
-    "created": "Member {user} created!",
-    "update": {
-      "language": "Language updated!",
-      "member": "Information about member updated!",
-      "preview": "Settings for preview successfully updated!"
-    },
-    "delete": { "one": "File {name} deleted!", "force": "{count} files deleted!" }
-  },
-
   "buttons": {
+    "cancel": "Cancel",
+    "create": "Create",
+    "delete": "Delete",
+    "download": "Download",
+    "edit": "Edit",
+    "enter": "Enter",
+    "find": "Search",
+    "logout": "Logout",
+    "next": "Next",
+    "open": "Open",
+    "previous": "Previous",
     "progress": {
       "deleting": "Deleting",
       "uploading": "Uploading"
     },
-    "delete": "Delete",
-    "logout": "Logout",
-    "open": "Open",
-    "upload": "Upload",
-    "download": "Sownload",
-    "next": "Next",
-    "previous": "Previous",
-    "find": "Search",
-
-    "create": "Create",
-    "cancel": "Cancel",
-    "enter": "Enter",
-    "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "upload": "Upload"
   },
-
-  "titles": {
-    "login": "Authorization",
-    "register": "Registration",
-    "info": "Information",
-    "manage": "Manage"
-  },
-
-  "other": {
-    "loading": "Page loading...",
-    "username": "Username",
-    "password": "Password",
-    "accessKey": "S3 Access Key",
-    "secretKey": "S3 Secret Key",
-    "s3Bucket": "Name of Bucket",
-    "s3Endpoint": "S3 Endpoint",
-    "adminPassword": "Admin-password",
-    "uploaded": "Uploaded: {date}",
-    "size": "Size: {size}",
-    "space": "Memory used",
-    "editing": "Editing",
-    "preview": "Show preview",
-
-    "lang": {
-      "title": "Change language",
-      "body": "Choose language"
+  "errors": {
+    "credentials": "Enter {data}",
+    "delete": {
+      "tagAddError": "Some error happens when try to add new tag to file",
+      "tagError": "Some error happens when try to remove tag {tag} from file!"
     },
-
     "file": {
-      "total": "Files uploaded",
-      "search": "File search",
-      "placeholder": "Search by name of a file",
-      "nothing": "List of uploaded files is empty!",
+      "delete": "Some error happened when deleting {name}!",
+      "forceDelete": "Some error happened when deleting files!",
+      "load": "Some error happened when loading files!",
+      "upload": "Some error happened when files loading!"
+    },
+    "member": {
+      "edit": "Some error happened when information about user updating!",
+      "get": "Some error happened when getting data about member!",
+      "logout": "Some error happened when you try to log out from your account!"
+    },
+    "previewUpdate": "Some error happened when you try to change the setting for files preview!",
+    "tagsCreate": "Some error happens when try to create new tag!",
+    "tagsUpdate": "Some errors happen when try to delete tag!",
+    "unknown": "Unknown error"
+  },
+  "info": {
+    "add": {
+      "tag": "Tag {tag} added!"
+    },
+    "created": "Member {user} created!",
+    "delete": {
+      "force": "{count} files deleted!",
+      "one": "File {name} deleted!",
+      "tag": "Tag {tag} removed from file!"
+    },
+    "limit": "Your set limit of {max} GB will be exceeded soon, because the current weight of uploaded files + reserved 100 mb is more than the limit.",
+    "update": {
+      "language": "Language updated!",
+      "member": "Information about member updated!",
+      "preview": "Settings for preview successfully updated!",
+      "tags": "Tag deleted!"
+    }
+  },
+  "other": {
+    "accessKey": "S3 Access Key",
+    "adminPassword": "Admin-password",
+    "editing": "Editing",
+    "file": {
       "downloading": "File downloading, please, wait some time!",
+      "nothing": "List of uploaded files is empty!",
+      "placeholder": "Search by name of a file",
+      "search": "File search (Input sensative)",
+      "tag": "Choose tag (optional)",
+      "tagFile": "File tags:",
+      "total": "Files uploaded",
+      "upload": {
+        "tag": "Select tag for files (Optional)"
+      },
       "uploading": "File uploading, please, wait some time..."
     },
-
     "forceDelete": {
-      "title": "Confirm deletion",
-      "description": "Attention! This action cannot be undone, all files will be unreachably deleted from S3 and the database."
-    }
+      "description": "Attention! This action cannot be undone, all files will be unreachably deleted from S3 and the database.",
+      "title": "Confirm deletion"
+    },
+    "lang": {
+      "body": "Choose language",
+      "title": "Change language"
+    },
+    "loading": "Page loading...",
+    "modal": {
+      "tag": {
+        "create": "Create",
+        "placeholder": "Type name for new tag",
+        "title": "Creating new tag"
+      }
+    },
+    "password": "Password",
+    "passwordData": {
+      "placeholder": "You secret password",
+      "title": "Password"
+    },
+    "preview": "Show preview",
+    "s3Bucket": "Name of Bucket",
+    "s3Endpoint": "S3 Endpoint",
+    "secretKey": "S3 Secret Key",
+    "size": "Size: {size}",
+    "space": "Memory used",
+    "tag": {
+      "added": "New tag added!",
+      "search": "Search by file tag",
+      "title": "Available tags (Click to delete)",
+      "void": "Tag cannot be a void"
+    },
+    "uploaded": "Uploaded: {date}",
+    "username": "Username"
+  },
+  "titles": {
+    "info": "Information",
+    "login": "Authorization",
+    "manage": "Manage",
+    "register": "Registration"
   }
 }

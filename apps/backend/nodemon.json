@@ -1,5 +1,5 @@
 {
   "watch": ["./src/"],
-  "exec": "pnpm build && pnpm start",
+  "exec": "tsx ./src/app.ts",
   "ext": "ts"
 }

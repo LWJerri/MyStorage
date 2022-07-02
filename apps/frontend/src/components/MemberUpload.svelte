@@ -1,13 +1,16 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { _ } from "svelte-i18n";
-  import type { Member } from "../helpers/interfaces";
+  import type { Member, Tag } from "../helpers/interfaces";
   import { toastError, toastInfo } from "../helpers/toasts";
+  import Select from "svelte-select";
 
   export let member: Member;
   let files: FileList;
   let isUploading: boolean = false;
   let uploadLimit = member?.uploads?.size + 104857600 >= member?.member?.maxGB * Math.pow(1024, 3) ? true : false;
+  let tags: Tag[];
+  let fileTags = [] as string[];
 
   async function uploadFiles() {
     isUploading = true;
@@ -19,7 +22,11 @@
       data.append("files[]", file, file.name);
     }
 
-    const apiRequest = await fetch("/api/file", {
+    tags?.map((x) => {
+      return fileTags.push(x.value);
+    });
+
+    const apiRequest = await fetch(`/api/file?tags=${fileTags}`, {
       method: "POST",
       body: data,
     });
@@ -31,6 +38,8 @@
 
       return toast.push(response?.text ?? $_("errors.file.upload"), toastError);
     } else {
+      tags = [];
+
       return (document.location.href = "/");
     }
   }
@@ -48,6 +57,19 @@
         required
       />
 
+      {#if member.member?.tags.length > 0}
+        <div class="form-control my-5">
+          <!-- svelte-ignore a11y-label-has-associated-control -->
+          <label class="label">
+            <span class="label-text">{$_("other.file.upload.tag")}</span>
+          </label>
+
+          <div class="test">
+            <Select items={member.member?.tags} isMulti={true} bind:value={tags} />
+          </div>
+        </div>
+      {/if}
+
       <button
         type="submit"
         class="btn btn-sm w-full my-1 btn-outline btn-error rounded {isUploading ? 'loading' : ''}"
@@ -61,3 +83,17 @@
     </div>
   </div>
 </form>
+
+<style>
+  .test {
+    --inputColor: black;
+    --itemColor: black;
+    --itemHoverColor: black;
+    --background: #191a21;
+    --multiClearBG: black;
+    --multiClearHoverBG: black;
+    --multiItemActiveBG: white;
+    --multiItemActiveColor: black;
+    --multiItemBG: black;
+  }
+</style>

@@ -9,10 +9,20 @@
 
   export let member: Member;
   let response: Response["uploads"];
+  let newFileTag = "" as string;
 
   files.subscribe((data) => {
     response = data;
   });
+
+  function ext(name: string) {
+    const extReg = /(?:\.([^.]+))?$/;
+    const ext = extReg.exec(name)[1].toLowerCase();
+
+    if (ext == "png" || ext == "jpg" || ext == "jpeg") return true;
+
+    return false;
+  }
 
   async function downloadFile(url: string, name: string) {
     const blob = await axios.get(url, {
@@ -56,14 +66,58 @@
       toast.push($_("info.delete.one", { values: { name } }), toastInfo);
     }
   }
+
+  async function deleteTag(fileID: string, tag: string) {
+    const apiRequest = await fetch("/api/tag/file", {
+      method: "DELETE",
+      body: JSON.stringify({ fileID, tag }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const answer = await apiRequest.json();
+
+    if (answer.error) {
+      toast.push(answer?.text ?? $_("errors.delete.tagError", { values: { tag } }), toastError);
+    } else {
+      response = response.filter((x) => x.id !== fileID);
+      response.push(answer.file);
+
+      toast.push($_("info.delete.tag", { values: { tag } }), toastInfo);
+    }
+  }
+
+  async function addFileTag(fileID: string) {
+    const tag = newFileTag;
+
+    const apiRequest = await fetch("/api/tag/file", {
+      method: "POST",
+      body: JSON.stringify({ fileID, tag }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const answer = await apiRequest.json();
+
+    if (answer.error) {
+      toast.push(answer?.text ?? $_("errors.delete.tagAddError", { values: { tag } }), toastError);
+    } else {
+      response = response.filter((x) => x.id !== fileID);
+      response.push(answer.file);
+
+      toast.push($_("info.add.tag", { values: { tag } }), toastInfo);
+    }
+  }
 </script>
 
-<div class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
+<div class="grid gap-[0.75rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
   {#each response as upload}
     <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
       {#if member.member.showPreview}
         <figure>
-          {#if upload.name.endsWith(".png") || upload.name.endsWith(".jpg") || upload.name.endsWith(".jpeg")}
+          {#if ext(upload.name)}
             <img loading="lazy" src={upload.url} alt="preview" class="select-none" />
           {:else}
             <svg
@@ -93,6 +147,33 @@
             {$_("other.uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
           </p>
           <p>{$_("other.size", { values: { size: formatBytes(upload.size) } })}</p>
+        </div>
+
+        <div class="select-none">
+          <div class="flex justify-between">
+            <p>{$_("other.file.tagFile")}</p>
+
+            <div>
+              <select
+                tabindex={Date.now()}
+                class="select select-sm [--rounded-btn:0.25rem]"
+                bind:value={newFileTag}
+                on:change={async () => await addFileTag(upload.id)}
+              >
+                {#each member.member?.tags as tag}
+                  <option>{tag}</option>
+                {/each}
+              </select>
+            </div>
+          </div>
+          {#each upload?.tags as tag}
+            <div
+              class="badge badge-ghost hover:badge-outline m-0.5"
+              on:click={async () => await deleteTag(upload.id, tag)}
+            >
+              {tag}
+            </div>
+          {/each}
         </div>
       </div>
 

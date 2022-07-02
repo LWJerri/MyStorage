@@ -29,33 +29,18 @@ export async function meGET(req: FastifyRequest, res: FastifyReply) {
   }
 }
 
-export async function mePUT(
-  req: FastifyRequest & {
-    body: {
-      showPreview: boolean;
-      username: string;
-      password: string;
-      accessKey: string;
-      secretKey: string;
-      bucket: string;
-      endpoint: string;
-      maxGB: number;
-      language: string;
-    };
-  },
-  res: FastifyReply,
-) {
+export async function mePUT(req: FastifyRequest & { body: { password: string; maxGB: number } }, res: FastifyReply) {
   const { password, maxGB } = req.body;
 
   const memberPassword = password ? await hash(password, 10) : undefined;
 
-  // Example account
-  const getExampleMember = await prisma.member.findUnique({ where: { username: "test" } });
+  const getExampleMember = await prisma.member.findUnique({ where: { id: "cl45qj1q901824wqvqwj1vyx4" } }); // Example account
 
   if (getExampleMember && getExampleMember.id == req.user.member_id)
-    return await res
-      .status(403)
-      .send({ error: true, text: "Данный аккаунт является тестовым, изменение настроек запрещено!" });
+    return await res.status(403).send({
+      error: true,
+      text: "You can't change profile settings, because this is demo account! Please, contact with developer if you wanna create your own account!",
+    });
 
   try {
     const findMember = await prisma.member.update({

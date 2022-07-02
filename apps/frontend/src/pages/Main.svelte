@@ -21,7 +21,7 @@
   let newInfo = {} as Member["member"] & { password?: string };
 
   async function getFiles() {
-    const apiRequest = await (await fetch(`/api/file?page=${page}&key=${search ?? ""}`, { method: "GET" })).json();
+    const apiRequest = await (await fetch(`/api/file?page=${page}`, { method: "GET" })).json();
 
     response = apiRequest;
     files.update((x) => response.uploads);
@@ -89,7 +89,7 @@
   <div>
     <Navbar {member} />
 
-    <div class="grid gap-1 mt-5 grid-cols-1 md:grid-cols-2">
+    <div class="grid gap-[0.75rem] mt-5 grid-cols-1 md:grid-cols-2">
       <MemberInfo {member} {newInfo} />
 
       <MemberControl {member} {page} />
@@ -102,8 +102,8 @@
             page--;
             await getFiles();
           }}
-          class="btn btn-sm btn-success btn-outline rounded"
-          disabled={page == 1 ? true : false}>{$_("buttons.previous")}</button
+          class="btn btn-sm btn-success btn-outline rounded {page == 1 ? 'hidden' : 'block'}"
+          >{$_("buttons.previous")}</button
         >
 
         <button
@@ -111,32 +111,12 @@
             page++;
             await getFiles();
           }}
-          disabled={response.nextPage ? false : true}
-          class="btn btn-sm btn-success btn-outline rounded">{$_("buttons.next")}</button
+          class="btn btn-sm btn-success btn-outline rounded {response.nextPage ? 'block' : 'hidden'}"
+          >{$_("buttons.next")}</button
         >
       </div>
 
       <MemberUploads {member} />
-
-      <div class="flex justify-center my-2 space-x-1">
-        <button
-          on:click={async () => {
-            page--;
-            await getFiles();
-          }}
-          class="btn btn-sm btn-success btn-outline rounded"
-          disabled={page == 1 ? true : false}>{$_("buttons.previous")}</button
-        >
-
-        <button
-          on:click={async () => {
-            page++;
-            await getFiles();
-          }}
-          disabled={response.nextPage ? false : true}
-          class="btn btn-sm btn-success btn-outline rounded">{$_("buttons.next")}</button
-        >
-      </div>
     {:else if response.error}
       <div class="alert alert-error rounded mt-5">
         <div>
@@ -179,7 +159,7 @@
 
 <input type="checkbox" id="delete_files" class="modal-toggle" />
 <label for="delete_files" class="modal modal-bottom md:modal-middle cursor-pointer">
-  <label class="modal-box relative rounded" for="">
+  <label class="modal-box relative bg-base-300 rounded" for="">
     <label for="delete_files" class="btn btn-sm btn-circle absolute right-2 top-2"
       ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg

@@ -8,7 +8,7 @@ import fastifyStatic from "@fastify/static";
 import fastifyMultipart from "@fastify/multipart";
 import fastifyCORS from "@fastify/cors";
 import fastifyCookie from "@fastify/cookie";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from ".prisma/client";
 import path from "path";
 import * as routes from "./routes";
 import { verifyData } from "./middleware/auth";
@@ -35,6 +35,10 @@ fastify
         .get("/file", { preHandler: verifyData }, routes.files)
         .post("/file", { preHandler: verifyData }, routes.upload)
         .post("/join", routes.join)
+        .post("/tag", { preHandler: verifyData }, routes.addTag)
+        .delete("/tag", { preHandler: verifyData }, routes.deleteTag)
+        .post("/tag/file", { preHandler: verifyData }, routes.addFileTag)
+        .delete("/tag/file", { preHandler: verifyData }, routes.removeFileTag)
         .get("/me", { preHandler: verifyData }, routes.meGET)
         .put("/me", { preHandler: verifyData }, routes.mePUT)
         .post("/logout", { preHandler: verifyData }, routes.logout);
