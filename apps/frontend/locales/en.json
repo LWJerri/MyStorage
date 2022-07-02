@@ -3,7 +3,7 @@
     "cancel": "Cancel",
     "create": "Create",
     "delete": "Delete",
-    "download": "Sownload",
+    "download": "Download",
     "edit": "Edit",
     "enter": "Enter",
     "find": "Search",
@@ -20,6 +20,10 @@
   },
   "errors": {
     "credentials": "Enter {data}",
+    "delete": {
+      "tagAddError": "Some error happens when try to add new tag to file",
+      "tagError": "Some error happens when try to remove tag {tag} from file!"
+    },
     "file": {
       "delete": "Some error happened when deleting {name}!",
       "forceDelete": "Some error happened when deleting files!",
@@ -32,14 +36,19 @@
       "logout": "Some error happened when you try to log out from your account!"
     },
     "previewUpdate": "Some error happened when you try to change the setting for files preview!",
+    "tagsCreate": "Some error happens when try to create new tag!",
     "tagsUpdate": "Some errors happen when try to delete tag!",
     "unknown": "Unknown error"
   },
   "info": {
+    "add": {
+      "tag": "Tag {tag} added!"
+    },
     "created": "Member {user} created!",
     "delete": {
       "force": "{count} files deleted!",
-      "one": "File {name} deleted!"
+      "one": "File {name} deleted!",
+      "tag": "Tag {tag} removed from file!"
     },
     "limit": "Your set limit of {max} GB will be exceeded soon, because the current weight of uploaded files + reserved 100 mb is more than the limit.",
     "update": {
@@ -57,8 +66,13 @@
       "downloading": "File downloading, please, wait some time!",
       "nothing": "List of uploaded files is empty!",
       "placeholder": "Search by name of a file",
-      "search": "File search",
+      "search": "File search (Input sensative)",
+      "tag": "Choose tag (optional)",
+      "tagFile": "File tags:",
       "total": "Files uploaded",
+      "upload": {
+        "tag": "Select tag for files (Optional)"
+      },
       "uploading": "File uploading, please, wait some time..."
     },
     "forceDelete": {
@@ -70,7 +84,18 @@
       "title": "Change language"
     },
     "loading": "Page loading...",
+    "modal": {
+      "tag": {
+        "create": "Create",
+        "placeholder": "Type name for new tag",
+        "title": "Creating new tag"
+      }
+    },
     "password": "Password",
+    "passwordData": {
+      "placeholder": "You secret password",
+      "title": "Password"
+    },
     "preview": "Show preview",
     "s3Bucket": "Name of Bucket",
     "s3Endpoint": "S3 Endpoint",
@@ -78,7 +103,10 @@
     "size": "Size: {size}",
     "space": "Memory used",
     "tag": {
-      "title": "Available tags (Click to delete)"
+      "added": "New tag added!",
+      "search": "Search by file tag",
+      "title": "Available tags (Click to delete)",
+      "void": "Tag cannot be a void"
     },
     "uploaded": "Uploaded: {date}",
     "username": "Username"
