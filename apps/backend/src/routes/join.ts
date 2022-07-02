@@ -38,17 +38,17 @@ export async function join(
     }
 
     if (process.env.ADMIN_PASSWORD == admin && findMember) {
-      return await res.status(403).send({ error: true, text: "Данный участник уже зарегистрирован!" });
+      return await res.status(403).send({ error: true, text: "Member already exsist!" });
     }
 
     if (admin && process.env.ADMIN_PASSWORD != admin) {
-      return await res.status(403).send({ error: true, text: "Указан некорректный админ-пароль!" });
+      return await res.status(403).send({ error: true, text: "Provided incorrect admin password!" });
     }
 
     if (findMember) {
       const comparePassword = await compare(password, findMember.password);
 
-      if (!comparePassword) return await res.status(403).send({ error: true, text: "Пароль не совпадает!" });
+      if (!comparePassword) return await res.status(403).send({ error: true, text: "Password doesen't match!" });
 
       const token = sign({ member_id: findMember.id, username }, process.env.TOKEN_KEY, { expiresIn: "24h" });
 
@@ -58,7 +58,7 @@ export async function join(
         .send({ error: false });
     }
 
-    return await res.status(404).send({ error: true, text: "Пользователь не найден!" });
+    return await res.status(404).send({ error: true, text: "Member not found!" });
   } catch (err) {
     console.error("join error:", err);
 
