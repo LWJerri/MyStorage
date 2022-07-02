@@ -156,7 +156,7 @@
             <div>
               <select
                 tabindex={Date.now()}
-                class="select select-sm [--rounded-btn:0.25rem]"
+                class="select select-sm [--rounded-btn:0.25rem] {!member.member?.tags.length ? 'hidden' : 'block'}"
                 bind:value={newFileTag}
                 on:change={async () => await addFileTag(upload.id)}
               >
