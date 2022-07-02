@@ -65,11 +65,14 @@ Username & password - **test**
 
 ## Screenshots
 
-![Photo #1](https://i.imgur.com/B74m52b.png)
-![Photo #2](https://i.imgur.com/ZE3TLNM.png)
-![Photo #3](https://i.imgur.com/HgbugL9.png)
-![Photo #4](https://i.imgur.com/2k2BCon.png)
-![Photo #5](https://i.imgur.com/yt01f18.png)
+![Photo #1](https://i.imgur.com/fvFE5i0.png)
+![Photo #2](https://i.imgur.com/X5qKIJw.png)
+![Photo #3](https://i.imgur.com/HFEkrCJ.png)
+![Photo #4](https://i.imgur.com/ctwfDgm.png)
+![Photo #5](https://i.imgur.com/HwkYzvP.png)
+![Photo #6](https://i.imgur.com/f5eU0vm.png)
+![Photo #7](https://i.imgur.com/C2qG45r.png)
+![Photo #8](https://i.imgur.com/1864Ca4.png)
 
 ## Contributing
 
