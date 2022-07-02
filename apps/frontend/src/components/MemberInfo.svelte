@@ -55,7 +55,7 @@
       {isEditing ? `(${$_("other.editing").toLowerCase()})` : ""}
     </h2>
     <div class={$infoPanel ? "hidden" : "block"}>
-      <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
+      <div class="grid gap-[0.75rem] grid-cols-1 md:grid-cols-2">
         <div class="form-control w-full">
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label class="label">
@@ -73,12 +73,12 @@
         <div class="form-control w-full">
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label class="label">
-            <span class="label-text">{$_("other.password")}</span>
+            <span class="label-text">{$_("other.passwordData.title")}</span>
           </label>
           <input
             bind:value={newInfo.password}
             type="password"
-            placeholder="Мяф"
+            placeholder={$_("other.passwordData.placeholder")}
             class="input-ghost input input-sm input-bordered w-full rounded"
             disabled={isEditing ? false : true}
           />
@@ -140,7 +140,7 @@
           />
         </div>
 
-        <div class="form-control w-full">
+        <div class="form-control w-full [--rounded-btn:0.25rem]">
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label class="label">
             <span class="label-text inline-flex"
