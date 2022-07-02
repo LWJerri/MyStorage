@@ -42,6 +42,20 @@ export interface Error {
 
 export interface Response {
   error: boolean;
-  uploads: Array<{ id: string; createdAt: Date; size: number; name: string; url: string; key: string }>;
+  uploads: Array<{
+    id: string;
+    createdAt: Date;
+    size: number;
+    name: string;
+    url: string;
+    key: string;
+    tags?: string[];
+  }>;
   nextPage: boolean;
+}
+
+export interface Tag {
+  index: number;
+  value: string;
+  label: string;
 }
