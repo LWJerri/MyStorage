@@ -251,7 +251,7 @@
       class="my-5 input ounded input-sm rounded w-full w-full"
     />
 
-    <button class="btn btn-success btn-outline w-full rounded" on:click={async () => await addNewTag()}
+    <button class="btn btn-sm btn-success btn-outline w-full rounded" on:click={async () => await addNewTag()}
       >{$_("other.modal.tag.create")}</button
     >
   </label>

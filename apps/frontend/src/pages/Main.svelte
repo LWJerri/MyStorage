@@ -170,7 +170,7 @@
 
     <button
       on:click={async () => await forceDeleteFile()}
-      class="btn btn-error btn-outline w-full rounded {startDeleting ? 'loading' : ''}"
+      class="btn btn-error btn-sm btn-outline w-full rounded {startDeleting ? 'loading' : ''}"
       disabled={startDeleting}>{startDeleting ? $_("buttons.progress.deleting") : $_("buttons.delete")}</button
     >
   </label>
