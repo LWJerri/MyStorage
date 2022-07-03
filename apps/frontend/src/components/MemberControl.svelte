@@ -180,7 +180,7 @@
         >
           <option disabled selected>{$_("other.lang.body")}</option>
           {#each $locales as locale}
-            <option value={locale}>{locale.toUpperCase()}</option>
+            <option value={locale}>{$_("name", { locale })}</option>
           {/each}
         </select>
       </label>
