@@ -209,11 +209,11 @@
     <table class="table w-full table-zebra rounded">
       <thead>
         <tr>
-          <th class="bg-base-300">File Name</th>
-          <th class="bg-base-300">Uploaded</th>
-          <th class="bg-base-300">Size</th>
-          <th class="bg-base-300">Tags</th>
-          <th class="bg-base-300 text-center">Actions</th>
+          <th class="bg-base-300">{$_("table.filename")}</th>
+          <th class="bg-base-300">{$_("table.uploaded")}</th>
+          <th class="bg-base-300">{$_("table.size")}</th>
+          <th class="bg-base-300">{$_("table.tags")}</th>
+          <th class="bg-base-300 text-center">{$_("table.actions")}</th>
         </tr>
       </thead>
       <tbody>

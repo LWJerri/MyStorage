@@ -1,5 +1,4 @@
 {
-  "name": "Русский",
   "buttons": {
     "cancel": "Отмена",
     "create": "Создать",
@@ -59,6 +58,7 @@
       "tags": "Тег удалён!"
     }
   },
+  "name": "Русский",
   "other": {
     "accessKey": "S3 Access Key",
     "adminPassword": "Админ-пароль",
@@ -111,6 +111,13 @@
     },
     "uploaded": "Загружен: {date}",
     "username": "Имя пользователя"
+  },
+  "table": {
+    "actions": "Действия",
+    "filename": "Название файла",
+    "size": "Размер",
+    "tags": "Теги",
+    "uploaded": "Загружен"
   },
   "titles": {
     "info": "Информация",

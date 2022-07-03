@@ -1,5 +1,4 @@
 {
-  "name": "English",
   "buttons": {
     "cancel": "Cancel",
     "create": "Create",
@@ -59,6 +58,7 @@
       "tags": "Tag deleted!"
     }
   },
+  "name": "English",
   "other": {
     "accessKey": "S3 Access Key",
     "adminPassword": "Admin-password",
@@ -111,6 +111,13 @@
     },
     "uploaded": "Uploaded: {date}",
     "username": "Username"
+  },
+  "table": {
+    "actions": "Actions",
+    "filename": "File name",
+    "size": "Size",
+    "tags": "Tags",
+    "uploaded": "Uploaded"
   },
   "titles": {
     "info": "Information",
