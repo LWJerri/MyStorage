@@ -25,8 +25,8 @@
 
   <div class="navbar-end">
     <div class="flex hidden sm:block">
-      <label for="upload" class="btn btn-outline btn-success rounded">{$_("buttons.upload")}</label>
-      <button class="btn btn-outline btn-error rounded" on:click={() => logOut()}>{$_("buttons.logout")}</button>
+      <label for="upload" class="btn btn-sm btn-outline btn-success rounded">{$_("buttons.upload")}</label>
+      <button class="btn btn-outline btn-sm btn-error rounded" on:click={() => logOut()}>{$_("buttons.logout")}</button>
     </div>
 
     <div class="block sm:hidden">
