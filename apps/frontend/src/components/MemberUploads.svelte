@@ -3,9 +3,10 @@
   import { formatBytes } from "bytes-formatter";
   import { toastError, toastInfo } from "../helpers/toasts";
   import axios from "axios";
-  import { files } from "../helpers/store";
+  import { files, fileType } from "../helpers/store";
   import type { Member, Response } from "../helpers/interfaces";
   import { _ } from "svelte-i18n";
+  import { uploadDisplay } from "../helpers/nanostore";
 
   export let member: Member;
   let response: Response["uploads"];
@@ -110,89 +111,162 @@
       toast.push($_("info.add.tag", { values: { tag } }), toastInfo);
     }
   }
+
+  let fileTypeDisplay = true;
+
+  fileType.subscribe((x) => {
+    fileTypeDisplay = x;
+  });
 </script>
 
-<div class="grid gap-[0.75rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
-  {#each response as upload}
-    <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
-      {#if member.member.showPreview}
-        <figure>
-          {#if ext(upload.name)}
-            <img loading="lazy" src={upload.url} alt="preview" class="select-none" />
-          {:else}
-            <svg
-              class="w-64 h-64"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-              /></svg
-            >
-          {/if}
-        </figure>
-      {/if}
-
-      <div class="card-body flex-grow">
-        <h2 class="card-title font-bold">
-          {upload.name.length >= 15 ? upload.name.slice(0, 15) + "..." + upload.name.split(".").pop() : upload.name}
-        </h2>
-
-        <div>
-          <p>
-            {$_("other.uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
-          </p>
-          <p>{$_("other.size", { values: { size: formatBytes(upload.size) } })}</p>
-        </div>
-
-        <div class="select-none">
-          <div class="flex justify-between">
-            <p>{$_("other.file.tagFile")}</p>
-
-            <div>
-              <select
-                tabindex={Date.now()}
-                class="select select-sm [--rounded-btn:0.25rem] {!member.member?.tags.length ? 'hidden' : 'block'}"
-                bind:value={newFileTag}
-                on:change={async () => await addFileTag(upload.id)}
+{#if fileTypeDisplay}
+  <div class="grid gap-[0.75rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
+    {#each response as upload}
+      <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
+        {#if member.member.showPreview}
+          <figure>
+            {#if ext(upload.name)}
+              <img loading="lazy" src={upload.url} alt="preview" class="select-none" />
+            {:else}
+              <svg
+                class="w-64 h-64"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                /></svg
               >
-                {#each member.member?.tags as tag}
-                  <option>{tag}</option>
-                {/each}
-              </select>
-            </div>
+            {/if}
+          </figure>
+        {/if}
+
+        <div class="card-body flex-grow">
+          <h2 class="card-title font-bold">
+            {upload.name.length >= 15 ? upload.name.slice(0, 15) + "..." + upload.name.split(".").pop() : upload.name}
+          </h2>
+
+          <div>
+            <p>
+              {$_("other.uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
+            </p>
+            <p>{$_("other.size", { values: { size: formatBytes(upload.size) } })}</p>
           </div>
-          {#each upload?.tags as tag}
-            <div
-              class="badge badge-ghost hover:badge-outline m-0.5"
-              on:click={async () => await deleteTag(upload.id, tag)}
-            >
-              {tag}
+
+          <div class="select-none">
+            <div class="flex justify-between">
+              <p>{$_("other.file.tagFile")}</p>
+
+              <div>
+                <select
+                  tabindex={Date.now()}
+                  class="select select-sm [--rounded-btn:0.25rem] {!member.member?.tags.length ? 'hidden' : 'block'}"
+                  bind:value={newFileTag}
+                  on:change={async () => await addFileTag(upload.id)}
+                >
+                  {#each member.member?.tags as tag}
+                    <option>{tag}</option>
+                  {/each}
+                </select>
+              </div>
             </div>
-          {/each}
+            {#each upload?.tags as tag}
+              <div
+                class="badge badge-ghost hover:badge-outline m-0.5"
+                on:click={async () => await deleteTag(upload.id, tag)}
+              >
+                {tag}
+              </div>
+            {/each}
+          </div>
         </div>
-      </div>
 
-      <div class="my-2 mx-1 space-y-1">
-        <div class="flex">
-          <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded mr-1 w-1/2"
-            >{$_("buttons.open")}</a
-          >
+        <div class="my-2 mx-1 space-y-1">
+          <div class="flex">
+            <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded mr-1 w-1/2"
+              >{$_("buttons.open")}</a
+            >
+            <button
+              on:click={async () => await downloadFile(upload.url, upload.name)}
+              class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("buttons.download")}</button
+            >
+          </div>
+
           <button
-            on:click={async () => await downloadFile(upload.url, upload.name)}
-            class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("buttons.download")}</button
+            on:click={async () => await deleteFile(upload.id, upload.name)}
+            class="btn btn-sm btn-outline btn-error rounded w-full">{$_("buttons.delete")}</button
           >
         </div>
-
-        <button
-          on:click={async () => await deleteFile(upload.id, upload.name)}
-          class="btn btn-sm btn-outline btn-error rounded w-full">{$_("buttons.delete")}</button
-        >
       </div>
-    </div>
-  {/each}
-</div>
+    {/each}
+  </div>
+{:else}
+  <div class="overflow-x-auto select-none">
+    <table class="table w-full table-zebra rounded">
+      <thead>
+        <tr>
+          <th class="bg-base-300">File Name</th>
+          <th class="bg-base-300">Uploaded</th>
+          <th class="bg-base-300">Size</th>
+          <th class="bg-base-300">Tags</th>
+          <th class="bg-base-300 text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each response as upload}
+          <tr>
+            <td>
+              {upload.name.length >= 15
+                ? upload.name.slice(0, 15) + "..." + upload.name.split(".").pop()
+                : upload.name}</td
+            >
+            <td>{new Date(upload.createdAt).toLocaleString()}</td>
+            <td>{formatBytes(upload.size)}</td>
+            <td class="max-h-16 overflow-y-auto">
+              {#each upload?.tags as tag}
+                <div
+                  class="flex badge badge-ghost hover:badge-outline m-0.5"
+                  on:click={async () => await deleteTag(upload.id, tag)}
+                >
+                  {tag}
+                </div>
+              {/each}
+            </td>
+            <td class="flex justify-center">
+              <div class="flex space-x-2">
+                <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded"
+                  >{$_("buttons.open")}</a
+                >
+                <button
+                  on:click={async () => await downloadFile(upload.url, upload.name)}
+                  class="btn btn-sm btn-outline btn-accent rounded">{$_("buttons.download")}</button
+                >
+
+                <button
+                  on:click={async () => await deleteFile(upload.id, upload.name)}
+                  class="btn btn-sm btn-outline btn-error rounded">{$_("buttons.delete")}</button
+                >
+                <div>
+                  <select
+                    tabindex={Date.now()}
+                    class="select select-sm [--rounded-btn:0.25rem] {!member.member?.tags.length ? 'hidden' : 'block'}"
+                    bind:value={newFileTag}
+                    on:change={async () => await addFileTag(upload.id)}
+                  >
+                    {#each member.member?.tags as tag}
+                      <option>{tag}</option>
+                    {/each}
+                  </select>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
+{/if}

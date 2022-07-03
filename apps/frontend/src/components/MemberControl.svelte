@@ -1,10 +1,10 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { toastError, toastInfo } from "../helpers/toasts";
-  import { files } from "../helpers/store";
+  import { files, fileType } from "../helpers/store";
   import type { Member } from "../helpers/interfaces";
   import { _, locales, locale } from "svelte-i18n";
-  import { managePanel } from "../helpers/nanostore";
+  import { managePanel, uploadDisplay } from "../helpers/nanostore";
 
   export let member: Member;
   export let page: number;
@@ -12,6 +12,7 @@
   let tagKey: string;
   let lang: string;
   let tag: string;
+  let localToggle: boolean;
 
   async function updateLanguage() {
     const apiRequest = await fetch("/api/me", {
@@ -115,6 +116,16 @@
       toast.push($_("other.tag.added"), toastInfo);
     }
   }
+
+  function uploadVisiblityType() {
+    uploadDisplay.set(!uploadDisplay.get());
+    fileType.set(uploadDisplay.get());
+
+    localToggle = uploadDisplay.get();
+  }
+
+  fileType.set(uploadDisplay.get());
+  localToggle = uploadDisplay.get();
 </script>
 
 <div class="card rounded card-compact bg-base-300 select-none">
@@ -147,6 +158,40 @@
             checked={member.member?.showPreview}
           />
         </label>
+
+        <div class="label cursor-pointer">
+          <span class="label-text">Uploads display type</span>
+
+          <div class="hover:text-yellow-400" on:click={() => uploadVisiblityType()}>
+            <svg
+              class="w-6 h-6 {localToggle ? 'hidden' : 'block'}"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+              /></svg
+            >
+
+            <svg
+              class="w-6 h-6 {localToggle ? 'block' : 'hidden'}"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+              /></svg
+            >
+          </div>
+        </div>
 
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label cursor-pointer">
