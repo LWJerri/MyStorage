@@ -77,7 +77,8 @@ Username & password - **test**
 2. Accont & display uploads manage panel.
 3. Upload, search and deleting files.
 4. Add, remove, edit tags for uploaded files.
-5. ...other features will be added soon.
+5. Change column type for uploaded files.
+6. ...other features will be added soon.
 
 ## Localization
 
