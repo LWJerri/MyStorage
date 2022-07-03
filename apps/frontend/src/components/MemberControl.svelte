@@ -235,8 +235,8 @@
 </div>
 
 <input type="checkbox" id="add_tags" class="modal-toggle" />
-<label for="add_tags" class="modal modal-bottom md:modal-middle cursor-pointer">
-  <label class="modal-box relative bg-base-300 rounded" for="">
+<div class="modal">
+  <div class="modal-box rounded bg-base-300 relative">
     <label for="add_tags" class="btn btn-sm btn-circle absolute right-2 top-2"
       ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
@@ -254,5 +254,5 @@
     <button class="btn btn-sm btn-success btn-outline w-full rounded" on:click={async () => await addNewTag()}
       >{$_("other.modal.tag.create")}</button
     >
-  </label>
-</label>
+  </div>
+</div>

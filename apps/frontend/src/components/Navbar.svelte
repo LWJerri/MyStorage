@@ -41,7 +41,7 @@
 
 <input type="checkbox" id="menu" class="modal-toggle" />
 <label for="menu" class="modal modal-bottom cursor-pointer">
-  <label class="modal-box relative rounded space-y-1" for="">
+  <label class="modal-box rounded bg-base-300 relative space-y-1" for="">
     <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">{$_("buttons.upload")}</label>
     <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}
       >{$_("buttons.logout")}</button
@@ -51,7 +51,7 @@
 
 <input type="checkbox" id="upload" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box bg-base-300 rounded relative">
+  <div class="modal-box rounded bg-base-300 relative">
     <label for="upload" class="btn btn-sm btn-circle absolute right-2 top-2"
       ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
