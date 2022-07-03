@@ -1,7 +1,6 @@
 import { DeleteObjectRequest } from "aws-sdk/clients/s3";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
-import { redisPub } from "../helpers/redis";
 import { getS3 } from "../helpers/s3";
 
 export async function deleteFile(req: FastifyRequest & { body: { id: string } }, res: FastifyReply) {
@@ -29,7 +28,6 @@ export async function deleteFile(req: FastifyRequest & { body: { id: string } },
     const [deletedObjectS3, file] = await Promise.all([
       uploadS3.deleteObject(deleteParams).promise(),
       prisma.upload.delete(findParams),
-      redisPub.del(`${member.id}:${upload.key}`),
     ]);
 
     return await res.status(200).send({ ...file, error: false });
@@ -51,7 +49,6 @@ export async function forceDeleteFile(req: FastifyRequest, res: FastifyReply) {
 
     for (const upload of uploads) {
       uploadS3.deleteObject({ Bucket: upload.Member.bucket, Key: upload.key }).promise();
-      redisPub.del(`${upload.Member.id}:${upload.key}`);
     }
 
     const count = await prisma.upload.deleteMany({
