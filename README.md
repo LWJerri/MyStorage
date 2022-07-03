@@ -10,7 +10,6 @@
 - Node.js >= v16 (Not tested in older versions, but maybe it's work).
 - PostgreSQL database.
 - Any S3 hosting [See free S3 list](https://free-for.dev/#/?id=iaas).
-- Redis.
 
 ### Installing
 
@@ -24,11 +23,20 @@
 
 ## Troubleshooting
 
-**CORS error:** You can't download your uploaded file and see in the console CORS error. Some buckets require edit CORS privacy to direct download files.
+### **Links contain query params with 'X-' information:**
 
 <details>
-<summary>SCALEWAY FIX</summary>
-<br>
+<summary>Main problem</summary>
+Some object storages support only temp links and don't provide a live link to files. I faced this problem when trying to connect StorJ storage and resolved this problem by just writing the file id to Redis and regenerating it when key time expires.
+
+Unfortunate, it's terrible, I removed this feature with Redis and recommend you choose another object storage service.
+
+</details>
+
+### **CORS error:** You can't download your uploaded file and see in the console CORS error. Some buckets require edit CORS privacy to direct download files.
+
+<details>
+<summary>Fix for Scaleway</summary>
 Setup AWS CLI & cors.json:
 
 1. Create `cors.json` file with CORS rules on desktop.
@@ -63,13 +71,35 @@ You also can use or test this code, just visit the [MyStorage website](https://s
 
 Username & password - **test**
 
+## Features
+
+1. Simple auth system, support multi accounts.
+2. Accont & display uploads manage panel.
+3. Upload, search and deleting files.
+4. Add, remove, edit tags for uploaded files.
+5. Change column type for uploaded files.
+6. ...other features will be added soon.
+
+## Localization
+
+MyStorage has localization support. Actual list with available languages at this moment:
+
+- **English**
+- **Ukrainian**
+- **Russian**
+
+Anyone can open a pull request and suggest new translating or fix already exists localizations.
+
 ## Screenshots
 
-![Photo #1](https://i.imgur.com/B74m52b.png)
-![Photo #2](https://i.imgur.com/ZE3TLNM.png)
-![Photo #3](https://i.imgur.com/HgbugL9.png)
-![Photo #4](https://i.imgur.com/2k2BCon.png)
-![Photo #5](https://i.imgur.com/yt01f18.png)
+![Photo #1](https://i.imgur.com/dtmQFqL.png)
+![Photo #2](https://i.imgur.com/qn4nRio.png)
+![Photo #3](https://i.imgur.com/mYZELG9.png)
+![Photo #4](https://i.imgur.com/Mldqe7i.png)
+![Photo #5](https://i.imgur.com/ZNlKg6E.png)
+![Photo #6](https://i.imgur.com/oIbnjgS.png)
+![Photo #7](https://i.imgur.com/48WFiD5.png)
+![Photo #8](https://i.imgur.com/QrKsxhz.png)
 
 ## Contributing
 

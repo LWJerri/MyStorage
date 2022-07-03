@@ -34,6 +34,7 @@
   }
 
   async function auth() {
+    if (isRegister || (!isRegister && !data.username)) return (error.error = false);
     if (!data.password || !data.username) {
       return (error = {
         error: true,
@@ -82,23 +83,23 @@
           <h2 class="text-xl outline-none text-center">{isRegister ? $_("titles.register") : $_("titles.login")}</h2>
 
           <form on:submit|preventDefault={async () => await auth()}>
-            <div class="form-control w-full">
+            <div class="form-control w-full mb-5">
               <span class="label label-text">{$_("other.username")}</span>
               <input type="text" bind:value={data.username} class="input-sm rounded input input-bordered w-full" />
             </div>
 
-            <div class="form-control w-full">
+            <div class="form-control w-full mb-5">
               <span class="label label-text">{$_("other.password")}</span>
               <input type="password" bind:value={data.password} class="input-sm rounded input input-bordered w-full" />
             </div>
 
             {#if isRegister}
-              <div class="form-control w-full">
+              <div class="form-control w-full mb-5">
                 <span class="label label-text">{$_("other.accessKey")}</span>
                 <input type="text" bind:value={data.accessKey} class="input-sm rounded input input-bordered w-full" />
               </div>
 
-              <div class="form-control w-full">
+              <div class="form-control w-full mb-5">
                 <span class="label label-text">{$_("other.secretKey")}</span>
                 <input
                   type="password"
@@ -107,17 +108,17 @@
                 />
               </div>
 
-              <div class="form-control w-full">
+              <div class="form-control w-full mb-5">
                 <span class="label label-text">{$_("other.s3Bucket")}</span>
                 <input type="text" bind:value={data.bucket} class="input-sm rounded input input-bordered w-full" />
               </div>
 
-              <div class="form-control w-full">
+              <div class="form-control w-full mb-5">
                 <span class="label label-text">{$_("other.s3Endpoint")}</span>
                 <input type="text" bind:value={data.endpoint} class="input-sm rounded input input-bordered w-full" />
               </div>
 
-              <div class="form-control w-full">
+              <div class="form-control w-full mb-5">
                 <span class="label label-text">{$_("other.adminPassword")}</span>
                 <input type="password" bind:value={data.admin} class="input-sm rounded input input-bordered w-full" />
               </div>

@@ -58,6 +58,7 @@
       "tags": "Tag deleted!"
     }
   },
+  "name": "English",
   "other": {
     "accessKey": "S3 Access Key",
     "adminPassword": "Admin-password",
@@ -111,10 +112,17 @@
     "uploaded": "Uploaded: {date}",
     "username": "Username"
   },
+  "table": {
+    "actions": "Actions",
+    "filename": "File name",
+    "size": "Size",
+    "tags": "Tags",
+    "uploaded": "Uploaded"
+  },
   "titles": {
     "info": "Information",
     "login": "Authorization",
     "manage": "Manage",
-    "register": "Registration"
+    "register": "Register"
   }
 }

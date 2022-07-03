@@ -29,8 +29,11 @@ export async function meGET(req: FastifyRequest, res: FastifyReply) {
   }
 }
 
-export async function mePUT(req: FastifyRequest & { body: { password: string; maxGB: number } }, res: FastifyReply) {
-  const { password, maxGB } = req.body;
+export async function mePUT(
+  req: FastifyRequest & { body: { password: string; maxGB: number; username: string } },
+  res: FastifyReply,
+) {
+  const { password, maxGB, username } = req.body;
 
   const memberPassword = password ? await hash(password, 10) : undefined;
 
@@ -41,6 +44,13 @@ export async function mePUT(req: FastifyRequest & { body: { password: string; ma
       error: true,
       text: "You can't change profile settings, because this is demo account! Please, contact with developer if you wanna create your own account!",
     });
+
+  if (username) {
+    const findWithUsername = await prisma.member.findUnique({ where: { username } });
+
+    if (findWithUsername)
+      return await res.status(403).send({ error: true, text: "Member with this username already exsist!" });
+  }
 
   try {
     const findMember = await prisma.member.update({

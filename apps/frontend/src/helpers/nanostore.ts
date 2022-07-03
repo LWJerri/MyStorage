@@ -9,3 +9,8 @@ export const infoPanel = persistentAtom<boolean>("infoPanel", false, {
   encode: JSON.stringify,
   decode: JSON.parse,
 });
+
+export const uploadDisplay = persistentAtom<boolean>("uploadType", false, {
+  encode: JSON.stringify,
+  decode: JSON.parse,
+});

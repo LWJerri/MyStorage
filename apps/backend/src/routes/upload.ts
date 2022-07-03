@@ -1,6 +1,6 @@
+import { PutObjectRequest } from "aws-sdk/clients/s3";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
-import { redisPub } from "../helpers/redis";
 import { getS3 } from "../helpers/s3";
 
 export async function upload(
@@ -26,26 +26,11 @@ export async function upload(
         Body: part.file,
         ACL: "public-read",
         ContentType: `${part.mimetype}; charset=utf-8`,
-      };
-
-      const isStorJ = member.endpoint.replace(/https?:\/\//g, "") == "gateway.storjshare.io";
+      } as PutObjectRequest;
 
       const s3Response = await uploadS3.upload(params).promise();
-      let url: string = "";
 
-      if (isStorJ) {
-        let Expires = 3600 * 24 * 7;
-
-        url = uploadS3.getSignedUrl("getObject", {
-          Bucket,
-          Key: s3Response.Key,
-          Expires,
-        });
-
-        await redisPub.set(`${member.id}:${s3Response.Key}`, Date.now(), "EX", Expires);
-      } else {
-        url = s3Response.Location.replace("http://", "https://");
-      }
+      const url = s3Response.Location.replace("http://", "https://");
 
       const size = await uploadS3
         .headObject({

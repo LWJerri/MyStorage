@@ -58,6 +58,7 @@
       "tags": "Тег видалено!"
     }
   },
+  "name": "Український",
   "other": {
     "accessKey": "S3 Access Key",
     "adminPassword": "Адмін-пароль",
@@ -110,6 +111,13 @@
     },
     "uploaded": "Завантажений: {date}",
     "username": "Ім'я користувача"
+  },
+  "table": {
+    "actions": "Дії",
+    "filename": "Назва файлу",
+    "size": "Розмір",
+    "tags": "Теги",
+    "uploaded": "Завантажений"
   },
   "titles": {
     "info": "Інформація",
