@@ -1,6 +1,6 @@
 {
   "name": "mystorage",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "MyStorage application",
   "workspaces": [
     "apps/*"
@@ -13,7 +13,8 @@
     "dev:start": "pnpm -r build && pnpm start",
     "build:frontend": "pnpm --filter=@mystorage/frontend build",
     "dev:backend": "pnpm --filter=@mystorage/backend run dev",
-    "dev:frontend": "pnpm --filter=@mystorage/frontend run dev"
+    "dev:frontend": "pnpm --filter=@mystorage/frontend run dev",
+    "dev:backend2": "pnpm --filter=@mystorage/backend2 run dev"
   },
   "repository": "https://github.com/LWJerri/MyStorage",
   "author": "LWJerri (lwjerri.js.org)",
