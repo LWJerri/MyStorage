@@ -15,9 +15,17 @@
     "dev:backend": "pnpm --filter=@mystorage/backend run dev",
     "dev:frontend": "pnpm --filter=@mystorage/frontend run dev"
   },
-  "repository": "https://github.com/LWJerri/MyStorage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LWJerri/MyStorage.git"
+  },
+  "keywords": [],
   "author": "LWJerri (lwjerri.js.org)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LWJerri/MyStorage/issues"
+  },
+  "homepage": "https://github.com/LWJerri/MyStorage#readme",
   "devDependencies": {
     "prettier": "^2.7.1"
   }
