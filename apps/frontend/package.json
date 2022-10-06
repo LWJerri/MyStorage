@@ -24,7 +24,7 @@
   "dependencies": {
     "@nanostores/persistent": "^0.7.0",
     "autoprefixer": "^10.4.12",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "bytes-formatter": "^21.6.12",
     "daisyui": "^2.31.0",
     "nanostores": "^0.7.0",
