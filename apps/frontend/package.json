@@ -7,7 +7,7 @@
     "build": "vite build",
     "dev": "vite"
   },
-  "author": "LWJerri (lwjerri.js.org)",
+  "author": "LWJerri (lwjerri.dev)",
   "license": "MIT",
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.2",
