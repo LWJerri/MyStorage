@@ -10,7 +10,7 @@
     "dev": "nodemon",
     "migrate:deploy": "pnpm prisma migrate deploy"
   },
-  "author": "LWJerri (lwjerri.js.org)",
+  "author": "LWJerri (lwjerri.dev)",
   "license": "MIT",
   "dependencies": {
     "@fastify/cookie": "^8.3.0",
