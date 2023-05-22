@@ -65,12 +65,6 @@ Setup AWS CLI & cors.json:
 
 </details>
 
-## Production
-
-You also can use or test this code, just visit the [MyStorage website](https://storage.lwjerri.ml/)
-
-Username & password - **test**
-
 ## Features
 
 1. Simple auth system, support multi accounts.
