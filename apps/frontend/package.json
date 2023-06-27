@@ -28,7 +28,7 @@
     "bytes-formatter": "^21.6.12",
     "daisyui": "^3.0.1",
     "nanostores": "^0.7.1",
-    "postcss": "^8.4.20",
+    "postcss": "^8.4.24",
     "svelte-i18n": "^3.6.0",
     "svelte-navigator": "^3.2.2",
     "svelte-select": "^5.6.1",
