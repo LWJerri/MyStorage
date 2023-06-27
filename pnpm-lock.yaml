@@ -88,8 +88,8 @@ importers:
         specifier: ^10.4.13
         version: 10.4.13(postcss@8.4.24)
       axios:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.4.0
+        version: 1.4.0
       bytes-formatter:
         specifier: ^21.6.12
         version: 21.6.12
@@ -809,8 +809,8 @@ packages:
       xml2js: 0.4.19
     dev: false
 
-  /axios@1.2.1:
-    resolution: {integrity: sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==}
+  /axios@1.4.0:
+    resolution: {integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==}
     dependencies:
       follow-redirects: 1.15.1
       form-data: 4.0.0
