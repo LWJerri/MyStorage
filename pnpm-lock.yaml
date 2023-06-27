@@ -109,8 +109,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(svelte@3.55.0)(typescript@5.1.3)
       svelte-select:
-        specifier: ^5.0.1
-        version: 5.0.1(svelte@3.55.0)(typescript@5.1.3)
+        specifier: ^5.6.1
+        version: 5.6.1
       svrollbar:
         specifier: ^0.12.0
         version: 0.12.0
@@ -470,14 +470,14 @@ packages:
       - supports-color
     dev: false
 
-  /@floating-ui/core@1.0.4:
-    resolution: {integrity: sha512-FPFLbg2b06MIw1dqk2SOEMAMX3xlrreGjcui5OTxfBDtaKTmh0kioOVjT8gcfl58juawL/yF+S+gnq8aUYQx/Q==}
+  /@floating-ui/core@1.3.1:
+    resolution: {integrity: sha512-Bu+AMaXNjrpjh41znzHqaz3r2Nr8hHuHZT6V2LBKMhyMl0FgKA62PNYbqnfgmzOhoWZj70Zecisbo4H1rotP5g==}
     dev: false
 
-  /@floating-ui/dom@1.0.12:
-    resolution: {integrity: sha512-HeG/wHoa2laUHlDX3xkzqlUqliAfa+zqV04LaKIwNCmCNaW2p0fQi4/Kd0LB4GdFoJ2UllLFq5gWnXAd67lg7w==}
+  /@floating-ui/dom@1.4.2:
+    resolution: {integrity: sha512-VKmvHVatWnewmGGy+7Mdy4cTJX71Pli6v/Wjb5RQBuq5wjUYx+Ef+kRThi8qggZqDgD8CogCpqhRoVp3+yQk+g==}
     dependencies:
-      '@floating-ui/core': 1.0.4
+      '@floating-ui/core': 1.3.1
     dev: false
 
   /@formatjs/ecma402-abstract@1.11.4:
@@ -2674,14 +2674,11 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /svelte-floating-ui@1.1.6(svelte@3.55.0)(typescript@5.1.3):
-    resolution: {integrity: sha512-lJfrc34+xSxKs+5AtnYj32uRIjaxGjhT92cOiNL3zEqaJ755JxUqXCf6tk+9G1wkCuqkK9A8tscVBsyY3iLmVQ==}
+  /svelte-floating-ui@1.2.8:
+    resolution: {integrity: sha512-8Ifi5CD2Ui7FX7NjJRmutFtXjrB8T/FMNoS2H8P81t5LHK4I9G4NIs007rLWG/nRl7y+zJUXa3tWuTjYXw/O5A==}
     dependencies:
-      '@floating-ui/dom': 1.0.12
-      svelte2tsx: 0.5.23(svelte@3.55.0)(typescript@5.1.3)
-    transitivePeerDependencies:
-      - svelte
-      - typescript
+      '@floating-ui/core': 1.3.1
+      '@floating-ui/dom': 1.4.2
     dev: false
 
   /svelte-hmr@0.15.1(svelte@3.55.0):
@@ -2769,30 +2766,15 @@ packages:
       typescript: 5.1.3
     dev: true
 
-  /svelte-select@5.0.1(svelte@3.55.0)(typescript@5.1.3):
-    resolution: {integrity: sha512-lmuTy4TrNeGikf+Fls+Bnwumly8GCazINtVTfzbCfHatpR3HHYqnDzLB59hLFso6XCHgI8PqQZLHJBE9DiybgQ==}
+  /svelte-select@5.6.1:
+    resolution: {integrity: sha512-Powj91VAWyaNMSSOQ0E29UMTw/ExWsHEsA83H7yQgfji2S2DhG6Rs5qZHslZ+ihbCPxXel5uEzwLsSqDABkQDw==}
     dependencies:
-      '@floating-ui/dom': 1.0.12
-      svelte-floating-ui: 1.1.6(svelte@3.55.0)(typescript@5.1.3)
-    transitivePeerDependencies:
-      - svelte
-      - typescript
+      '@floating-ui/dom': 1.4.2
+      svelte-floating-ui: 1.2.8
     dev: false
 
   /svelte2tsx@0.1.193(svelte@3.55.0)(typescript@5.1.3):
     resolution: {integrity: sha512-vzy4YQNYDnoqp2iZPnJy7kpPAY6y121L0HKrSBjU/IWW7DQ6T7RMJed2VVHFmVYm0zAGYMDl9urPc6R4DDUyhg==}
-    peerDependencies:
-      svelte: ^3.24
-      typescript: ^4.1.2
-    dependencies:
-      dedent-js: 1.0.1
-      pascal-case: 3.1.2
-      svelte: 3.55.0
-      typescript: 5.1.3
-    dev: false
-
-  /svelte2tsx@0.5.23(svelte@3.55.0)(typescript@5.1.3):
-    resolution: {integrity: sha512-jYFnugTQRFmUpvLXPQrKzVYcW5ErT+0QCxg027Zx9BuvYefMZFuoBSTDYe7viPEFGrPPiLgT2m7f5n9khE7f7Q==}
     peerDependencies:
       svelte: ^3.24
       typescript: ^4.1.2
