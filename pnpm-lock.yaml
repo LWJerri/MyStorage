@@ -94,8 +94,8 @@ importers:
         specifier: ^21.6.12
         version: 21.6.12
       daisyui:
-        specifier: ^3.0.1
-        version: 3.0.1(postcss@8.4.24)
+        specifier: ^3.1.7
+        version: 3.1.7(postcss@8.4.24)
       nanostores:
         specifier: ^0.7.1
         version: 0.7.1
@@ -997,8 +997,9 @@ packages:
       type: 1.2.0
     dev: false
 
-  /daisyui@3.0.1(postcss@8.4.24):
-    resolution: {integrity: sha512-UJQ90ffDRgIEsDYdYpsFuEwc1fDXejm64oK2JFNNgmUyxbOgYveM1EphCLhxPj85nNGybBoHWx87Kua+24iT8w==}
+  /daisyui@3.1.7(postcss@8.4.24):
+    resolution: {integrity: sha512-VQhaunQlB7Buo+AbE+S3i6H/eYknKEuKVHG67y7sbG58uEjeLK6n2rojG3YE7fwoOss6ldbUL8Oy0MyoJi0CHw==}
+    engines: {node: '>=16.9.0'}
     peerDependencies:
       postcss: ^8
     dependencies:
