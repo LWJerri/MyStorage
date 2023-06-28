@@ -18,8 +18,8 @@ importers:
         specifier: ^8.3.0
         version: 8.3.0
       '@fastify/cors':
-        specifier: ^8.2.0
-        version: 8.2.0
+        specifier: ^8.3.0
+        version: 8.3.0
       '@fastify/multipart':
         specifier: ^7.3.0
         version: 7.3.0
@@ -422,8 +422,8 @@ packages:
       fastify-plugin: 4.2.1
     dev: false
 
-  /@fastify/cors@8.2.0:
-    resolution: {integrity: sha512-qDgwpmg6C4D0D3nh8MTMuRXWyEwPnDZDBODaJv90FP2o9ukbahJByW4FtrM5Bpod5KbTf1oIExBmpItbUTQmHg==}
+  /@fastify/cors@8.3.0:
+    resolution: {integrity: sha512-oj9xkka2Tg0MrwuKhsSUumcAkfp2YCnKxmFEusi01pjk1YrdDsuSYTHXEelWNW+ilSy/ApZq0c2SvhKrLX0H1g==}
     dependencies:
       fastify-plugin: 4.2.1
       mnemonist: 0.39.5
