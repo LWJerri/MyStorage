@@ -125,8 +125,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       '@zerodevx/svelte-toast':
-        specifier: ^0.9.0
-        version: 0.9.0(svelte@3.55.0)
+        specifier: ^0.9.5
+        version: 0.9.5(svelte@3.55.0)
       prettier:
         specifier: ^2.8.1
         version: 2.8.1
@@ -716,10 +716,10 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /@zerodevx/svelte-toast@0.9.0(svelte@3.55.0):
-    resolution: {integrity: sha512-oHPwb5rTyqSz7tE2shS6CJapq1n5vkD46QKiloOh/VFlB20CB6IV0ZF2i4VfqH5+FW+Udf7SvjttkpIZf0wRKg==}
+  /@zerodevx/svelte-toast@0.9.5(svelte@3.55.0):
+    resolution: {integrity: sha512-JLeB/oRdJfT+dz9A5bgd3Z7TuQnBQbeUtXrGIrNWMGqWbabpepBF2KxtWVhL2qtxpRqhae2f6NAOzH7xs4jUSw==}
     peerDependencies:
-      svelte: ^3.55.1
+      svelte: ^3.57.0 || ^4.0.0
     dependencies:
       svelte: 3.55.0
     dev: true
