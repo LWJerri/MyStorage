@@ -122,8 +122,8 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2(svelte@3.55.0)(vite@4.3.9)
       '@tsconfig/svelte':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^5.0.0
+        version: 5.0.0
       '@zerodevx/svelte-toast':
         specifier: ^0.9.5
         version: 0.9.5(svelte@3.55.0)
@@ -687,8 +687,8 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
-  /@tsconfig/svelte@4.0.0:
-    resolution: {integrity: sha512-NlCBbTpDFz6Outgs8JoqdQls9xAWPJAnjRnkqa60GQymjiAE3gliwNZ5TohZF3w3cZ4x8wpe0Ow5Y9hs1EnDXA==}
+  /@tsconfig/svelte@5.0.0:
+    resolution: {integrity: sha512-iu5BqFjU0+OcLTNQp7fHe6Bf6zdNeJ9IZjLZMqWLuGzVFm/xx+lm//Tf6koPyRmxo55/Snm6RRQ990n89cRKFw==}
     dev: true
 
   /@types/bcryptjs@2.4.2:
