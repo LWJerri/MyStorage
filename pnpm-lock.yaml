@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       prettier:
-        specifier: ^2.8.1
-        version: 2.8.1
+        specifier: ^3.0.0
+        version: 3.0.0
 
   apps/backend:
     dependencies:
@@ -128,11 +128,11 @@ importers:
         specifier: ^0.9.5
         version: 0.9.5(svelte@3.55.0)
       prettier:
-        specifier: ^2.8.1
-        version: 2.8.1
+        specifier: ^3.0.0
+        version: 3.0.0
       prettier-plugin-svelte:
         specifier: ^2.10.1
-        version: 2.10.1(prettier@2.8.1)(svelte@3.55.0)
+        version: 2.10.1(prettier@3.0.0)(svelte@3.55.0)
       svelte:
         specifier: ^3.55.0
         version: 3.55.0
@@ -2379,19 +2379,19 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /prettier-plugin-svelte@2.10.1(prettier@2.8.1)(svelte@3.55.0):
+  /prettier-plugin-svelte@2.10.1(prettier@3.0.0)(svelte@3.55.0):
     resolution: {integrity: sha512-Wlq7Z5v2ueCubWo0TZzKc9XHcm7TDxqcuzRuGd0gcENfzfT4JZ9yDlCbEgxWgiPmLHkBjfOtpAWkcT28MCDpUQ==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0 || ^4.0.0-next.0
     dependencies:
-      prettier: 2.8.1
+      prettier: 3.0.0
       svelte: 3.55.0
     dev: true
 
-  /prettier@2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
-    engines: {node: '>=10.13.0'}
+  /prettier@3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
