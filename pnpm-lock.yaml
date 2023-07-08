@@ -82,8 +82,8 @@ importers:
   apps/frontend:
     dependencies:
       '@nanostores/persistent':
-        specifier: ^0.7.0
-        version: 0.7.0(nanostores@0.9.3)
+        specifier: ^0.9.0
+        version: 0.9.0(nanostores@0.9.3)
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
@@ -602,11 +602,11 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /@nanostores/persistent@0.7.0(nanostores@0.9.3):
-    resolution: {integrity: sha512-4PAInL/T1hbftZUJ0cmgdFHBMalUoq7BUXFBy7QfyMv/8X3LPTYNh/yxspL7+J+XM3UNvVI7IFRMMs6FBasjhQ==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
+  /@nanostores/persistent@0.9.0(nanostores@0.9.3):
+    resolution: {integrity: sha512-9OvMOWs0NRiFXmZQXYsb7vGKTt+3XM0/gHl/gGdRTGvYBSaUwJrcmrOx8oc2jmj3QEGoT7JoeUStTGZUy0fSsw==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     peerDependencies:
-      nanostores: ^0.7.0
+      nanostores: ^0.9.0
     dependencies:
       nanostores: 0.9.3
     dev: false
