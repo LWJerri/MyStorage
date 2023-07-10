@@ -34,7 +34,7 @@
     "@types/jsonwebtoken": "^9.0.2",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
-    "tsx": "^3.12.1",
+    "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   }
 }
