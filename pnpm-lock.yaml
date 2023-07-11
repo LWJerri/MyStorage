@@ -36,8 +36,8 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
       aws-sdk:
-        specifier: ^2.1411.0
-        version: 2.1411.0
+        specifier: ^2.1414.0
+        version: 2.1414.0
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
@@ -859,8 +859,8 @@ packages:
       - supports-color
     dev: false
 
-  /aws-sdk@2.1411.0:
-    resolution: {integrity: sha512-853lbvI72rQqswidtNQ8+VCh2XiIWmP1g7oDMmDL330bpn8BPLTq+rgyKbax87gHt5W0jHGytrpFeVrYd9CgJg==}
+  /aws-sdk@2.1414.0:
+    resolution: {integrity: sha512-WhqTWiTZRUxWITvUG5VMPYGdCLNAm4zOTDIiotbErR9x+uDExk2CAGbXE8HH11+tD8PhZVXyukymSiG+7rJMMg==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
