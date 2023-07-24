@@ -3,15 +3,15 @@ import "source-map-support/register";
 import dotenv from "dotenv";
 dotenv.config();
 
-import fastifyModule from "fastify";
-import fastifyStatic from "@fastify/static";
-import fastifyMultipart from "@fastify/multipart";
-import fastifyCORS from "@fastify/cors";
-import fastifyCookie from "@fastify/cookie";
 import { PrismaClient } from ".prisma/client";
+import fastifyCookie from "@fastify/cookie";
+import fastifyCORS from "@fastify/cors";
+import fastifyMultipart from "@fastify/multipart";
+import fastifyStatic from "@fastify/static";
+import fastifyModule from "fastify";
 import path from "path";
-import * as routes from "./routes";
 import { verifyData } from "./middleware/auth";
+import * as routes from "./routes";
 
 export const prisma = new PrismaClient();
 export const fastify = fastifyModule({ logger: true });
