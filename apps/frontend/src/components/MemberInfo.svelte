@@ -1,9 +1,9 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { formatBytes } from "bytes-formatter";
-  import { infoPanel } from "../helpers/nanostore";
   import { _ } from "svelte-i18n";
   import type { Member } from "../helpers/interfaces";
+  import { infoPanel } from "../helpers/nanostore";
   import { toastError, toastInfo } from "../helpers/toasts";
 
   let isEditing: boolean = false;

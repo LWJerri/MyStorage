@@ -1,9 +1,9 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
   import { _ } from "svelte-i18n";
+  import Select from "svelte-select";
   import type { Member, Tag } from "../helpers/interfaces";
   import { toastError, toastInfo } from "../helpers/toasts";
-  import Select from "svelte-select";
 
   export let member: Member;
   let files: FileList;
@@ -65,7 +65,7 @@
           </label>
 
           <div class="test">
-            <Select items={member.member?.tags} isMulti={true} bind:value={tags} />
+            <Select items={member.member?.tags} bind:value={tags} />
           </div>
         </div>
       {/if}

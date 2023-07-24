@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { toast } from "@zerodevx/svelte-toast";
-  import Navbar from "../components/Navbar.svelte";
-  import { toastError, toastInfo } from "../helpers/toasts";
-  import MemberInfo from "../components/MemberInfo.svelte";
+  import { onMount } from "svelte";
+  import { _, isLoading } from "svelte-i18n";
   import MemberControl from "../components/MemberControl.svelte";
+  import MemberInfo from "../components/MemberInfo.svelte";
   import MemberUploads from "../components/MemberUploads.svelte";
-  import { files } from "../helpers/store";
+  import Navbar from "../components/Navbar.svelte";
   import type { Member, Response } from "../helpers/interfaces";
-  import { isLoading, _ } from "svelte-i18n";
+  import { files } from "../helpers/store";
+  import { toastError, toastInfo } from "../helpers/toasts";
 
   $: response = {} as Response;
   $: member = {} as Member;

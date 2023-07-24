@@ -1,7 +1,7 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
-  import type { RegisterOrLogin, Error } from "../helpers/interfaces";
-  import { isLoading, _ } from "svelte-i18n";
+  import { _, isLoading } from "svelte-i18n";
+  import type { Error, RegisterOrLogin } from "../helpers/interfaces";
   import { toastInfo } from "../helpers/toasts";
 
   let isRegister: boolean = false;

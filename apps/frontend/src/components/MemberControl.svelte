@@ -1,10 +1,10 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
-  import { toastError, toastInfo } from "../helpers/toasts";
-  import { files, fileType } from "../helpers/store";
+  import { _, locale, locales } from "svelte-i18n";
   import type { Member } from "../helpers/interfaces";
-  import { _, locales, locale } from "svelte-i18n";
   import { managePanel, uploadDisplay } from "../helpers/nanostore";
+  import { fileType, files } from "../helpers/store";
+  import { toastError, toastInfo } from "../helpers/toasts";
 
   export let member: Member;
   export let page: number;
@@ -293,7 +293,7 @@
       bind:value={tag}
       type="text"
       placeholder={$_("other.modal.tag.placeholder")}
-      class="my-5 input ounded input-sm rounded w-full w-full"
+      class="my-5 input ounded input-sm rounded w-full"
     />
 
     <button class="btn btn-sm btn-success btn-outline w-full rounded" on:click={async () => await addNewTag()}

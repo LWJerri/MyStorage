@@ -1,8 +1,8 @@
 import { addMessages, init } from "svelte-i18n";
 
-import uk from "../locales/uk.json";
-import ru from "../locales/ru.json";
 import en from "../locales/en.json";
+import ru from "../locales/ru.json";
+import uk from "../locales/uk.json";
 
 addMessages("uk", uk);
 addMessages("ru", ru);
