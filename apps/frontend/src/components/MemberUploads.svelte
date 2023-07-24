@@ -1,12 +1,11 @@
 <script lang="ts">
   import { toast } from "@zerodevx/svelte-toast";
-  import { formatBytes } from "bytes-formatter";
-  import { toastError, toastInfo } from "../helpers/toasts";
   import axios from "axios";
-  import { files, fileType } from "../helpers/store";
-  import type { Member, Response } from "../helpers/interfaces";
+  import { formatBytes } from "bytes-formatter";
   import { _ } from "svelte-i18n";
-  import { uploadDisplay } from "../helpers/nanostore";
+  import type { Member, Response } from "../helpers/interfaces";
+  import { fileType, files } from "../helpers/store";
+  import { toastError, toastInfo } from "../helpers/toasts";
 
   export let member: Member;
   let response: Response["uploads"];

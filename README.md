@@ -33,7 +33,7 @@ Unfortunate, it's terrible, I removed this feature with Redis and recommend you 
 
 </details>
 
-### **CORS error:** You can't download your uploaded file and see in the console CORS error. Some buckets require edit CORS privacy to direct download files.
+### **CORS error:** You can't download your uploaded file and see in the console CORS error. Some buckets require edit CORS privacy to direct download files
 
 <details>
 <summary>Fix for Scaleway</summary>

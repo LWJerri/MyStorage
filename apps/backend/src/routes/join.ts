@@ -1,7 +1,7 @@
-import { FastifyReply, FastifyRequest } from "fastify";
-import { prisma } from "../app";
 import { compare, hash } from "bcryptjs";
+import { FastifyReply, FastifyRequest } from "fastify";
 import { sign } from "jsonwebtoken";
+import { prisma } from "../app";
 import { exclude } from "../helpers/exclude";
 
 export async function join(

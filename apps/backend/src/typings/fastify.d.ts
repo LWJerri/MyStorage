@@ -1,5 +1,5 @@
 import "@fastify/cookie";
-import fastify from "fastify";
+import "fastify";
 
 declare module "fastify" {
   interface FastifyRequest {

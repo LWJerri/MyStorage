@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Route, Router } from "svelte-navigator";
   import { SvelteToast } from "@zerodevx/svelte-toast";
+  import { Route, Router } from "svelte-navigator";
 
-  import Main from "./pages/Main.svelte";
   import Join from "./pages/Join.svelte";
+  import Main from "./pages/Main.svelte";
 </script>
 
 <Router>
