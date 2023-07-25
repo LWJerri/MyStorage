@@ -21,8 +21,8 @@ importers:
         specifier: ^8.3.0
         version: 8.3.0
       '@fastify/multipart':
-        specifier: ^7.7.0
-        version: 7.7.0
+        specifier: ^7.7.3
+        version: 7.7.3
       '@fastify/static':
         specifier: ^6.10.2
         version: 6.10.2
@@ -444,10 +444,6 @@ packages:
     resolution: {integrity: sha512-E8Hfdvs1bG6u0N4vN5Nty6JONUfTdOciyD5rn8KnEsLKIenvOVcr210BQR9t34PRkNyjqnMLGk3e0BsaxRdL+g==}
     dev: false
 
-  /@fastify/error@3.0.0:
-    resolution: {integrity: sha512-dPRyT40GiHRzSCll3/Jn2nPe25+E1VXc9tDwRAIKwFCxd5Np5wzgz1tmooWG3sV0qKgrBibihVoCna2ru4SEFg==}
-    dev: false
-
   /@fastify/error@3.3.0:
     resolution: {integrity: sha512-dj7vjIn1Ar8sVXj2yAXiMNCJDmS9MQ9XMlIecX2dIzzhjSHCyKo4DdXjXMs7wKW2kj6yvVRSpuQjOZ3YLrh56w==}
     dev: false
@@ -458,12 +454,12 @@ packages:
       fast-json-stringify: 5.7.0
     dev: false
 
-  /@fastify/multipart@7.7.0:
-    resolution: {integrity: sha512-lE5v6+MVbLYmPL8yUHrvyezEOLQbZulEPL8itwGqPbNxL2pWdAN1HWEZ7f3VdwyR6wmQdOcpfZ0zdCU4BbWKzw==}
+  /@fastify/multipart@7.7.3:
+    resolution: {integrity: sha512-MG4Gd9FNEXc8qx0OgqoXM10EGO/dN/0iVQ8SrpFMU3d6F6KUfcqD2ZyoQhkm9LWrbiMgdHv5a43x78lASdn5GA==}
     dependencies:
       '@fastify/busboy': 1.0.0
       '@fastify/deepmerge': 1.1.0
-      '@fastify/error': 3.0.0
+      '@fastify/error': 3.3.0
       '@fastify/swagger': 8.8.0
       '@fastify/swagger-ui': 1.9.3
       end-of-stream: 1.4.4
