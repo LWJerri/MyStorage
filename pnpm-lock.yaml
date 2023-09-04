@@ -193,7 +193,7 @@ packages:
   /@esbuild-kit/esm-loader@2.5.5:
     resolution: {integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==}
     dependencies:
-      '@esbuild-kit/core-utils': 3.0.0
+      '@esbuild-kit/core-utils': 3.2.2
       get-tsconfig: 4.6.2
     dev: true
 
