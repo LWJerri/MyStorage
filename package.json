@@ -9,6 +9,7 @@
     "start": "pnpm --filter=@mystorage/backend start",
     "dev:start": "pnpm -r build && pnpm start",
     "build:frontend": "pnpm --filter=@mystorage/frontend build",
+    "build:backend": "pnpm --filter=@mystorage/backend build",
     "dev:backend": "pnpm --filter=@mystorage/backend run dev",
     "dev:frontend": "pnpm --filter=@mystorage/frontend run dev"
   },
