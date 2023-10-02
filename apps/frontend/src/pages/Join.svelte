@@ -34,7 +34,8 @@
   }
 
   async function auth() {
-    if (isRegister || (!isRegister && !data.username)) return (error.error = false);
+    // if (isRegister || (!isRegister && !data.username)) return (error.error = false);
+    // console.log("1");
     if (!data.password || !data.username) {
       return (error = {
         error: true,
