@@ -72,64 +72,64 @@
 <div class="hero min-h-screen select-none">
   <div class="hero-content w-full text-center">
     {#if $isLoading}
-      <div class="card rounded w-full md:w-96 bg-base-300 shadow-xl">
+      <div class="card bg-base-300 w-full rounded shadow-xl md:w-96">
         <div class="card-body">
-          <h2 class="text-xl outline-none text-center">{$_("other.loading")}</h2>
+          <h2 class="text-center text-xl outline-none">{$_("other.loading")}</h2>
         </div>
       </div>
     {:else}
-      <div class="card rounded w-full md:w-96 bg-base-300 shadow-xl">
+      <div class="card bg-base-300 w-full rounded shadow-xl md:w-96">
         <div class="card-body">
-          <h2 class="text-xl outline-none text-center">{isRegister ? $_("titles.register") : $_("titles.login")}</h2>
+          <h2 class="text-center text-xl outline-none">{isRegister ? $_("titles.register") : $_("titles.login")}</h2>
 
           <form on:submit|preventDefault={async () => await auth()}>
-            <div class="form-control w-full mb-5">
+            <div class="form-control mb-5 w-full">
               <span class="label label-text">{$_("other.username")}</span>
-              <input type="text" bind:value={data.username} class="input-sm rounded input input-bordered w-full" />
+              <input type="text" bind:value={data.username} class="input-sm input input-bordered w-full rounded" />
             </div>
 
-            <div class="form-control w-full mb-5">
+            <div class="form-control mb-5 w-full">
               <span class="label label-text">{$_("other.password")}</span>
-              <input type="password" bind:value={data.password} class="input-sm rounded input input-bordered w-full" />
+              <input type="password" bind:value={data.password} class="input-sm input input-bordered w-full rounded" />
             </div>
 
             {#if isRegister}
-              <div class="form-control w-full mb-5">
+              <div class="form-control mb-5 w-full">
                 <span class="label label-text">{$_("other.accessKey")}</span>
-                <input type="text" bind:value={data.accessKey} class="input-sm rounded input input-bordered w-full" />
+                <input type="text" bind:value={data.accessKey} class="input-sm input input-bordered w-full rounded" />
               </div>
 
-              <div class="form-control w-full mb-5">
+              <div class="form-control mb-5 w-full">
                 <span class="label label-text">{$_("other.secretKey")}</span>
                 <input
                   type="password"
                   bind:value={data.secretKey}
-                  class="input-sm rounded input input-bordered w-full"
+                  class="input-sm input input-bordered w-full rounded"
                 />
               </div>
 
-              <div class="form-control w-full mb-5">
+              <div class="form-control mb-5 w-full">
                 <span class="label label-text">{$_("other.s3Bucket")}</span>
-                <input type="text" bind:value={data.bucket} class="input-sm rounded input input-bordered w-full" />
+                <input type="text" bind:value={data.bucket} class="input-sm input input-bordered w-full rounded" />
               </div>
 
-              <div class="form-control w-full mb-5">
+              <div class="form-control mb-5 w-full">
                 <span class="label label-text">{$_("other.s3Endpoint")}</span>
-                <input type="text" bind:value={data.endpoint} class="input-sm rounded input input-bordered w-full" />
+                <input type="text" bind:value={data.endpoint} class="input-sm input input-bordered w-full rounded" />
               </div>
 
-              <div class="form-control w-full mb-5">
+              <div class="form-control mb-5 w-full">
                 <span class="label label-text">{$_("other.adminPassword")}</span>
-                <input type="password" bind:value={data.admin} class="input-sm rounded input input-bordered w-full" />
+                <input type="password" bind:value={data.admin} class="input-sm input input-bordered w-full rounded" />
               </div>
             {/if}
 
             {#if error.error}
-              <div class="mt-5 alert rounded alert-error alert-sm shadow-lg">
+              <div class="alert alert-error alert-sm mt-5 rounded shadow-lg">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="stroke-current flex-shrink-0 h-6 w-6"
+                    class="h-6 w-6 flex-shrink-0 stroke-current"
                     fill="none"
                     viewBox="0 0 24 24"
                     ><path
@@ -144,12 +144,12 @@
               </div>
             {/if}
 
-            <div class="card-actions justify-end mt-5">
-              <button class="btn rounded btn-outline btn-access btn-sm"
+            <div class="card-actions mt-5 justify-end">
+              <button class="btn btn-outline btn-access btn-sm rounded"
                 >{isRegister ? $_("buttons.create") : $_("buttons.enter")}</button
               >
 
-              <button on:click={() => (isRegister = !isRegister)} class="btn rounded btn-outline btn-error btn-sm"
+              <button on:click={() => (isRegister = !isRegister)} class="btn btn-outline btn-error btn-sm rounded"
                 >{isRegister ? $_("buttons.cancel") : $_("titles.register")}</button
               >
             </div>

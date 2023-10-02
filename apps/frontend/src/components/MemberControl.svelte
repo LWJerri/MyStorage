@@ -128,12 +128,14 @@
   localToggle = uploadDisplay.get();
 </script>
 
-<div class="card rounded card-compact bg-base-300 select-none">
+<div class="card card-compact bg-base-300 select-none rounded">
   <div class="card-body">
     <h2 class="card-title font-bold outline-none">
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <svg
         on:click={() => panelDisplay()}
-        class="w-7 h-7 btn btn-xs btn-outline"
+        class="btn btn-xs btn-outline h-7 w-7"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -162,9 +164,11 @@
         <div class="label cursor-pointer">
           <span class="label-text">Uploads display type</span>
 
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-no-static-element-interactions -->
           <div class="hover:text-yellow-400" on:click={() => uploadVisiblityType()}>
             <svg
-              class="w-6 h-6 {localToggle ? 'hidden' : 'block'}"
+              class="h-6 w-6 {localToggle ? 'hidden' : 'block'}"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -178,7 +182,7 @@
             >
 
             <svg
-              class="w-6 h-6 {localToggle ? 'block' : 'hidden'}"
+              class="h-6 w-6 {localToggle ? 'block' : 'hidden'}"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -196,9 +200,9 @@
         <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label cursor-pointer">
           <span class="label-text">{$_("buttons.delete")}</span>
-          <label for="delete_files" class="btn btn-outline rounded btn-error btn-sm modal-button"
+          <label for="delete_files" class="btn btn-outline btn-error btn-sm modal-button rounded"
             ><svg
-              class="w-6 h-6"
+              class="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -233,8 +237,8 @@
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <label class="label flex">
         <span class="label-text">{$_("other.tag.title")}</span>
-        <label for="add_tags" class="btn btn-outline rounded btn-success btn-sm modal-button"
-          ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        <label for="add_tags" class="btn btn-outline btn-success btn-sm modal-button rounded"
+          ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             ><path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -248,6 +252,8 @@
       <div class="{member.member?.tags.length > 0 ? 'max-h-32' : ''} mb-5 overflow-y-auto">
         {#if member.member?.tags.length > 0}
           {#each member.member?.tags as tag}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
             <div class="badge badge-ghost hover:badge-outline m-0.5" on:click={() => removeTag(tag)}>{tag}</div>
           {/each}
         {/if}
@@ -260,7 +266,7 @@
             <input
               type="text"
               placeholder={$_("other.file.placeholder")}
-              class="input input-sm rounded w-full"
+              class="input input-sm w-full rounded"
               bind:value={search}
             />
             {#if member.member?.tags.length > 0}
@@ -281,9 +287,9 @@
 
 <input type="checkbox" id="add_tags" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box rounded bg-base-300 relative">
+  <div class="modal-box bg-base-300 relative rounded">
     <label for="add_tags" class="btn btn-sm btn-circle absolute right-2 top-2"
-      ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+      ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
       ></label
     >
@@ -293,7 +299,7 @@
       bind:value={tag}
       type="text"
       placeholder={$_("other.modal.tag.placeholder")}
-      class="my-5 input ounded input-sm rounded w-full"
+      class="input ounded input-sm my-5 w-full rounded"
     />
 
     <button class="btn btn-sm btn-success btn-outline w-full rounded" on:click={async () => await addNewTag()}

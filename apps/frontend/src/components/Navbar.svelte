@@ -18,9 +18,9 @@
   }
 </script>
 
-<div class="navbar text-white bg-base-300 shadow-lg select-none rounded">
+<div class="navbar bg-base-300 select-none rounded text-white shadow-lg">
   <div class="navbar-start">
-    <a href="/" class="ml-2 font-bold text-xl outline-none" translate="no">MyStorage</a>
+    <a href="/" class="ml-2 text-xl font-bold outline-none" translate="no">MyStorage</a>
   </div>
 
   <div class="navbar-end">
@@ -31,7 +31,7 @@
 
     <div class="block sm:hidden">
       <label for="menu" class="btn modal-button rounded"
-        ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
           ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg
         ></label
       >
@@ -41,9 +41,9 @@
 
 <input type="checkbox" id="menu" class="modal-toggle" />
 <label for="menu" class="modal modal-bottom cursor-pointer">
-  <label class="modal-box rounded bg-base-300 relative space-y-1" for="">
-    <label for="upload" class="btn btn-outline btn-success rounded btn-sm w-full">{$_("buttons.upload")}</label>
-    <button class="btn btn-outline btn-error rounded w-full btn-sm" on:click={() => logOut()}
+  <label class="modal-box bg-base-300 relative space-y-1 rounded" for="">
+    <label for="upload" class="btn btn-outline btn-success btn-sm w-full rounded">{$_("buttons.upload")}</label>
+    <button class="btn btn-outline btn-error btn-sm w-full rounded" on:click={() => logOut()}
       >{$_("buttons.logout")}</button
     >
   </label>
@@ -51,9 +51,9 @@
 
 <input type="checkbox" id="upload" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box rounded bg-base-300 relative">
+  <div class="modal-box bg-base-300 relative rounded">
     <label for="upload" class="btn btn-sm btn-circle absolute right-2 top-2"
-      ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+      ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
       ></label
     >
