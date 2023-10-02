@@ -15,7 +15,7 @@ export const fastify = fastifyModule({ logger: true });
 fastify
   .register(fastifyCORS)
   .register(fastifyCookie, { secret: process.env.TOKEN_KEY })
-  .register(fastifyMultipart)
+  .register(fastifyMultipart, { limits: { fileSize: 214748364 } })
   .register(fastifyStatic, {
     wildcard: false,
     root: path.resolve(__dirname, "..", "..", "..", "apps", "frontend", "dist"),
