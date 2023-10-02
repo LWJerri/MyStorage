@@ -10,29 +10,29 @@
   "author": "LWJerri (lwjerri.dev)",
   "license": "MIT",
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "@tsconfig/svelte": "^5.0.0",
+    "@sveltejs/vite-plugin-svelte": "^2.4.6",
+    "@tsconfig/svelte": "^5.0.2",
     "@zerodevx/svelte-toast": "^0.9.5",
-    "prettier": "^3.0.0",
-    "prettier-plugin-svelte": "^3.0.0",
-    "svelte": "^4.0.5",
+    "prettier": "^3.0.3",
+    "prettier-plugin-svelte": "^3.0.3",
+    "svelte": "^4.2.1",
     "svelte-preprocess": "^5.0.4",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.3"
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.9.1",
-    "autoprefixer": "^10.4.14",
-    "axios": "^1.4.0",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.5.1",
     "bytes-formatter": "^21.6.12",
-    "daisyui": "^3.4.0",
+    "daisyui": "^3.8.2",
     "nanostores": "^0.9.3",
-    "postcss": "^8.4.27",
-    "svelte-i18n": "^3.7.0",
+    "postcss": "^8.4.31",
+    "svelte-i18n": "^3.7.4",
     "svelte-navigator": "^3.2.2",
-    "svelte-select": "^5.6.1",
+    "svelte-select": "^5.7.0",
     "svrollbar": "^0.12.0",
-    "tslib": "^2.6.0"
+    "tslib": "^2.6.2"
   }
 }

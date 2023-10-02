@@ -2,9 +2,6 @@
   "name": "mystorage",
   "version": "3.5.0",
   "description": "MyStorage application",
-  "workspaces": [
-    "apps/*"
-  ],
   "engines": {
     "node": ">=18"
   },
@@ -27,6 +24,8 @@
   },
   "homepage": "https://github.com/LWJerri/MyStorage#readme",
   "devDependencies": {
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.3",
+    "prettier-plugin-svelte": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4"
   }
 }
