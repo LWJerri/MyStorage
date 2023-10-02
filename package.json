@@ -6,7 +6,7 @@
     "apps/*"
   ],
   "engines": {
-    "node": ">= 16"
+    "node": ">=18"
   },
   "scripts": {
     "start": "pnpm --filter=@mystorage/backend start",
