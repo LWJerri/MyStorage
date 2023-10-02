@@ -17,7 +17,7 @@
 
   function ext(name: string) {
     const extReg = /(?:\.([^.]+))?$/;
-    const ext = extReg.exec(name)[1].toLowerCase();
+    const ext = extReg.exec(name)![1].toLowerCase();
 
     if (ext == "png" || ext == "jpg" || ext == "jpeg") return true;
 
@@ -119,16 +119,16 @@
 </script>
 
 {#if fileTypeDisplay}
-  <div class="grid gap-[0.75rem] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 md:px-1">
+  <div class="mt-5 grid gap-[0.75rem] sm:grid-cols-1 md:grid-cols-2 md:px-1 lg:grid-cols-4">
     {#each response as upload}
-      <div class="card card-compact bg-base-300 shadow-lg rounded flex flex-col">
+      <div class="card card-compact bg-base-300 flex flex-col rounded shadow-lg">
         {#if member.member.showPreview}
           <figure>
             {#if ext(upload.name)}
               <img loading="lazy" src={upload.url} alt="preview" class="select-none" />
             {:else}
               <svg
-                class="w-64 h-64"
+                class="h-64 w-64"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -173,39 +173,43 @@
                 </select>
               </div>
             </div>
-            {#each upload?.tags as tag}
-              <div
-                class="badge badge-ghost hover:badge-outline m-0.5"
-                on:click={async () => await deleteTag(upload.id, tag)}
-              >
-                {tag}
-              </div>
-            {/each}
+            {#if upload?.tags?.length}
+              {#each upload?.tags as tag}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <div
+                  class="badge badge-ghost hover:badge-outline m-0.5"
+                  on:click={async () => await deleteTag(upload.id, tag)}
+                >
+                  {tag}
+                </div>
+              {/each}
+            {/if}
           </div>
         </div>
 
-        <div class="my-2 mx-1 space-y-1">
+        <div class="mx-1 my-2 space-y-1">
           <div class="flex">
-            <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded mr-1 w-1/2"
+            <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success mr-1 w-1/2 rounded"
               >{$_("buttons.open")}</a
             >
             <button
               on:click={async () => await downloadFile(upload.url, upload.name)}
-              class="btn btn-sm btn-outline btn-accent rounded flex-1">{$_("buttons.download")}</button
+              class="btn btn-sm btn-outline btn-accent flex-1 rounded">{$_("buttons.download")}</button
             >
           </div>
 
           <button
             on:click={async () => await deleteFile(upload.id, upload.name)}
-            class="btn btn-sm btn-outline btn-error rounded w-full">{$_("buttons.delete")}</button
+            class="btn btn-sm btn-outline btn-error w-full rounded">{$_("buttons.delete")}</button
           >
         </div>
       </div>
     {/each}
   </div>
 {:else}
-  <div class="overflow-x-auto select-none">
-    <table class="table w-full table-zebra rounded">
+  <div class="select-none overflow-x-auto">
+    <table class="table-zebra table w-full rounded">
       <thead>
         <tr>
           <th class="bg-base-300">{$_("table.filename")}</th>
@@ -226,14 +230,18 @@
             <td>{new Date(upload.createdAt).toLocaleString()}</td>
             <td>{formatBytes(upload.size)}</td>
             <td class="max-h-16 overflow-y-auto">
-              {#each upload?.tags as tag}
-                <div
-                  class="flex badge badge-ghost hover:badge-outline m-0.5"
-                  on:click={async () => await deleteTag(upload.id, tag)}
-                >
-                  {tag}
-                </div>
-              {/each}
+              {#if upload?.tags?.length}
+                {#each upload?.tags as tag}
+                  <!-- svelte-ignore a11y-no-static-element-interactions -->
+                  <!-- svelte-ignore a11y-click-events-have-key-events -->
+                  <div
+                    class="badge badge-ghost hover:badge-outline m-0.5 flex"
+                    on:click={async () => await deleteTag(upload.id, tag)}
+                  >
+                    {tag}
+                  </div>
+                {/each}
+              {/if}
             </td>
             <td class="flex justify-center">
               <div class="flex space-x-2">

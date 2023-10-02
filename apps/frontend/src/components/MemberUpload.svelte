@@ -50,7 +50,7 @@
     <div class="w-96">
       <input
         bind:files
-        class="form-control block w-full text-white rounded my-1"
+        class="form-control my-1 block w-full rounded text-white"
         type="file"
         name="files"
         multiple
@@ -72,7 +72,7 @@
 
       <button
         type="submit"
-        class="btn btn-sm w-full my-1 btn-outline btn-error rounded {isUploading ? 'loading' : ''}"
+        class="btn btn-sm btn-outline btn-error my-1 w-full rounded {isUploading ? 'loading' : ''}"
         disabled={uploadLimit ? true : isUploading}
         >{isUploading ? $_("buttons.progress.uploading") : $_("buttons.upload")}</button
       >

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { SvelteToast } from "@zerodevx/svelte-toast";
   import { Route, Router } from "svelte-navigator";
-
   import Join from "./pages/Join.svelte";
   import Main from "./pages/Main.svelte";
 </script>

@@ -1,13 +1,9 @@
-import "source-map-support/register";
-
-import dotenv from "dotenv";
-dotenv.config();
-
 import { PrismaClient } from ".prisma/client";
 import fastifyCookie from "@fastify/cookie";
 import fastifyCORS from "@fastify/cors";
 import fastifyMultipart from "@fastify/multipart";
 import fastifyStatic from "@fastify/static";
+import "dotenv/config";
 import fastifyModule from "fastify";
 import path from "path";
 import { verifyData } from "./middleware/auth";
@@ -18,8 +14,8 @@ export const fastify = fastifyModule({ logger: true });
 
 fastify
   .register(fastifyCORS)
-  .register(fastifyCookie, { secret: "MY_STORAGE" })
-  .register(fastifyMultipart)
+  .register(fastifyCookie, { secret: process.env.TOKEN_KEY })
+  .register(fastifyMultipart, { limits: { fileSize: 214748364 } })
   .register(fastifyStatic, {
     wildcard: false,
     root: path.resolve(__dirname, "..", "..", "..", "apps", "frontend", "dist"),

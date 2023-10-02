@@ -19,7 +19,7 @@ export async function upload(
       if (err.statusCode == 404) return await uploadS3.createBucket({ Bucket: Bucket }).promise();
     }
 
-    for await (const part of req.files()) {
+    for await (const part of req.files({ limits: { fieldSize: 214748364 } })) {
       const params = {
         Bucket,
         Key: `${Date.now()}-${part.filename}`,

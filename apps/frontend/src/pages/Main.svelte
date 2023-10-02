@@ -13,7 +13,6 @@
   $: response = {} as Response;
   $: member = {} as Member;
 
-  let search: string = "";
   let isAuth: boolean = false;
   let startDeleting: boolean = false;
   let page: number = 1;
@@ -78,9 +77,9 @@
 {#if $isLoading}
   <div class="hero min-h-screen select-none">
     <div class="hero-content w-full text-center">
-      <div class="card rounded w-full md:w-96 bg-base-300 shadow-xl">
+      <div class="card bg-base-300 w-full rounded shadow-xl md:w-96">
         <div class="card-body">
-          <h2 class="text-xl outline-none text-center">{$_("other.loading")}</h2>
+          <h2 class="text-center text-xl outline-none">{$_("other.loading")}</h2>
         </div>
       </div>
     </div>
@@ -89,14 +88,14 @@
   <div>
     <Navbar {member} />
 
-    <div class="grid gap-[0.75rem] mt-5 grid-cols-1 md:grid-cols-2">
+    <div class="mt-5 grid grid-cols-1 gap-[0.75rem] md:grid-cols-2">
       <MemberInfo {member} {newInfo} />
 
       <MemberControl {member} {page} />
     </div>
 
     {#if response?.uploads?.length > 0 && isAuth}
-      <div class="flex justify-center my-2 space-x-1">
+      <div class="my-2 flex justify-center space-x-1">
         <button
           on:click={async () => {
             page--;
@@ -118,11 +117,11 @@
 
       <MemberUploads {member} />
     {:else if response.error}
-      <div class="alert alert-error rounded mt-5">
+      <div class="alert alert-error mt-5 rounded">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="stroke-current flex-shrink-0 h-6 w-6"
+            class="h-6 w-6 flex-shrink-0 stroke-current"
             fill="none"
             viewBox="0 0 24 24"
             ><path
@@ -136,11 +135,11 @@
         </div>
       </div>
     {:else}
-      <div class="alert alert-warning rounded mt-5">
+      <div class="alert alert-warning mt-5 rounded">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="stroke-current flex-shrink-0 h-6 w-6"
+            class="h-6 w-6 flex-shrink-0 stroke-current"
             fill="none"
             viewBox="0 0 24 24"
             ><path
@@ -159,9 +158,9 @@
 
 <input type="checkbox" id="delete_files" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box rounded bg-base-300 relative">
+  <div class="modal-box bg-base-300 relative rounded">
     <label for="delete_files" class="btn btn-sm btn-circle absolute right-2 top-2"
-      ><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+      ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
       ></label
     >

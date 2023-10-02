@@ -34,12 +34,14 @@
   }
 </script>
 
-<div class="card rounded card-compact bg-base-300 w-auto select-none">
+<div class="card card-compact bg-base-300 w-auto select-none rounded">
   <div class="card-body">
     <h2 class="card-title font-bold outline-none">
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <svg
         on:click={() => panelDisplay()}
-        class="w-7 h-7 btn btn-xs btn-outline"
+        class="btn btn-xs btn-outline h-7 w-7"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -55,7 +57,7 @@
       {isEditing ? `(${$_("other.editing").toLowerCase()})` : ""}
     </h2>
     <div class={$infoPanel ? "hidden" : "block"}>
-      <div class="grid gap-[0.75rem] grid-cols-1 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-[0.75rem] md:grid-cols-2">
         <div class="form-control w-full">
           <!-- svelte-ignore a11y-label-has-associated-control -->
           <label class="label">
@@ -146,7 +148,7 @@
             <span class="label-text inline-flex"
               >{$_("other.space")}
               <svg
-                class="w-6 h-6 ml-2 text-red-500 {member?.uploads?.size > 0 &&
+                class="ml-2 h-6 w-6 text-red-500 {member?.uploads?.size > 0 &&
                 member?.uploads?.size + 10737418240 >= member.member.maxGB * Math.pow(1024, 3)
                   ? 'block'
                   : 'hidden'}"
@@ -195,7 +197,7 @@
         </div>
       </div>
 
-      <div class="card-actions justify-end mt-5">
+      <div class="card-actions mt-5 justify-end">
         <button
           class="btn btn-outline btn-sm btn-error rounded"
           on:click={async () => {
