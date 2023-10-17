@@ -29,7 +29,7 @@
     "daisyui": "^3.8.2",
     "nanostores": "^0.9.3",
     "postcss": "^8.4.31",
-    "svelte-i18n": "^3.7.4",
+    "svelte-i18n": "^4.0.0",
     "svelte-navigator": "^3.2.2",
     "svelte-select": "^5.7.0",
     "svrollbar": "^0.12.0",
