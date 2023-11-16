@@ -10,7 +10,7 @@
   "author": "LWJerri (lwjerri.dev)",
   "license": "MIT",
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.6",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@tsconfig/svelte": "^5.0.2",
     "@zerodevx/svelte-toast": "^0.9.5",
     "prettier": "^3.0.3",
