@@ -26,7 +26,7 @@
     "autoprefixer": "^10.4.16",
     "axios": "^1.5.1",
     "bytes-formatter": "^21.6.12",
-    "daisyui": "^3.8.2",
+    "daisyui": "^4.1.1",
     "nanostores": "^0.9.3",
     "postcss": "^8.4.31",
     "svelte-i18n": "^4.0.0",
