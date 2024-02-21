@@ -83,7 +83,7 @@ importers:
     dependencies:
       '@nanostores/persistent':
         specifier: ^0.9.1
-        version: 0.9.1(nanostores@0.9.3)
+        version: 0.9.1(nanostores@0.10.0)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
@@ -97,8 +97,8 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1(postcss@8.4.31)
       nanostores:
-        specifier: ^0.9.3
-        version: 0.9.3
+        specifier: ^0.10.0
+        version: 0.10.0
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -765,13 +765,13 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /@nanostores/persistent@0.9.1(nanostores@0.9.3):
+  /@nanostores/persistent@0.9.1(nanostores@0.10.0):
     resolution: {integrity: sha512-ow57Hxm5VMaI5GHET/cVk8hX/iKMmbhcGrB9owfN8p8OHiiJgUlYxe1giacwlAALJXAh2t8bxXh42hHb64BCEA==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     peerDependencies:
       nanostores: ^0.9.0
     dependencies:
-      nanostores: 0.9.3
+      nanostores: 0.10.0
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -2334,9 +2334,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nanostores@0.9.3:
-    resolution: {integrity: sha512-KobZjcVyNndNrb5DAjfs0WG0lRcZu5Q1BOrfTOxokFLi25zFrWPjg+joXC6kuDqNfSt9fQwppyjUBkRPtsL+8w==}
-    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+  /nanostores@0.10.0:
+    resolution: {integrity: sha512-Poy5+9wFXOD0jAstn4kv9n686U2BFw48z/W8lms8cS8lcbRz7BU20JxZ3e/kkKQVfRrkm4yLWCUA6GQINdvJCQ==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     dev: false
 
   /next-tick@1.1.0:
