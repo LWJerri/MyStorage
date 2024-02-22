@@ -22,7 +22,7 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "@nanostores/persistent": "^0.9.1",
+    "@nanostores/persistent": "^0.10.1",
     "autoprefixer": "^10.4.16",
     "axios": "^1.5.1",
     "bytes-formatter": "^21.6.12",
