@@ -13,7 +13,7 @@ importers:
         version: 3.3.1
       prettier-plugin-svelte:
         specifier: ^3.0.3
-        version: 3.2.4(prettier@3.3.1)(svelte@4.2.17)
+        version: 3.2.4(prettier@3.3.1)(svelte@4.2.18)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.1
         version: 0.6.1(prettier-plugin-svelte@3.2.4)(prettier@3.3.1)
@@ -2591,14 +2591,14 @@ packages:
       svelte: 4.2.1
     dev: true
 
-  /prettier-plugin-svelte@3.2.4(prettier@3.3.1)(svelte@4.2.17):
+  /prettier-plugin-svelte@3.2.4(prettier@3.3.1)(svelte@4.2.18):
     resolution: {integrity: sha512-tZv+ADfeOWFNQkXkRh6zUXE16w3Vla8x2Ug0B/EnSmjR4EnwdwZbGgL/liSwR1kcEALU5mAAyua98HBxheCxgg==}
     peerDependencies:
       prettier: ^3.0.0
       svelte: ^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0
     dependencies:
       prettier: 3.3.1
-      svelte: 4.2.17
+      svelte: 4.2.18
     dev: true
 
   /prettier-plugin-tailwindcss@0.6.1(prettier-plugin-svelte@3.2.4)(prettier@3.3.1):
@@ -2654,7 +2654,7 @@ packages:
         optional: true
     dependencies:
       prettier: 3.3.1
-      prettier-plugin-svelte: 3.2.4(prettier@3.3.1)(svelte@4.2.17)
+      prettier-plugin-svelte: 3.2.4(prettier@3.3.1)(svelte@4.2.18)
     dev: true
 
   /prettier@3.0.3:
@@ -3155,8 +3155,8 @@ packages:
       magic-string: 0.30.4
       periscopic: 3.1.0
 
-  /svelte@4.2.17:
-    resolution: {integrity: sha512-N7m1YnoXtRf5wya5Gyx3TWuTddI4nAyayyIWFojiWV5IayDYNV5i2mRp/7qNGol4DtxEYxljmrbgp1HM6hUbmQ==}
+  /svelte@4.2.18:
+    resolution: {integrity: sha512-d0FdzYIiAePqRJEb90WlJDkjUEx42xhivxN8muUBmfZnP+tzUgz12DJ2hRJi8sIHCME7jeK1PTMgKPSfTd8JrA==}
     engines: {node: '>=16'}
     dependencies:
       '@ampproject/remapping': 2.2.1
