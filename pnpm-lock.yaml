@@ -54,8 +54,8 @@ importers:
         specifier: ^5.3.1
         version: 5.3.1
       stream:
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.0.3
+        version: 0.0.3
     devDependencies:
       '@types/bcryptjs':
         specifier: ^2.4.4
@@ -1328,6 +1328,11 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
+  /component-emitter@2.0.0:
+    resolution: {integrity: sha512-4m5s3Me2xxlVKG9PkZpQqHQR7bgpnN7joDMJ4yvVkVXngjoITG76IaZmzmywSeRTeTpc6N6r3H3+KyUurV8OYw==}
+    engines: {node: '>=18'}
+    dev: false
+
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
@@ -1480,10 +1485,6 @@ packages:
 
   /electron-to-chromium@1.4.537:
     resolution: {integrity: sha512-W1+g9qs9hviII0HAwOdehGYkr+zt7KKdmCcJcjH0mYg6oL8+ioT3Skjmt7BLoAQqXhjf40AXd+HlR4oAWMlXjA==}
-    dev: false
-
-  /emitter-component@1.1.1:
-    resolution: {integrity: sha512-G+mpdiAySMuB7kesVRLuyvYRqDmshB7ReKEVuyBPkzQlmiDiLrt7hHHIy4Aff552bgknVN7B2/d3lzhGO5dvpQ==}
     dev: false
 
   /emoji-regex@8.0.0:
@@ -2876,10 +2877,10 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /stream@0.0.2:
-    resolution: {integrity: sha1-f1Nj8Ff2WSxVlfALyAon9c7B8O8=}
+  /stream@0.0.3:
+    resolution: {integrity: sha512-aMsbn7VKrl4A2T7QAQQbzgN7NVc70vgF5INQrBXqn4dCXN1zy3L9HGgLO5s7PExmdrzTJ8uR/27aviW8or8/+A==}
     dependencies:
-      emitter-component: 1.1.1
+      component-emitter: 2.0.0
     dev: false
 
   /string-width@4.2.3:
