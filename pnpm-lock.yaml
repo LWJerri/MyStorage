@@ -2508,12 +2508,11 @@ snapshots:
 
   '@types/jsonwebtoken@9.0.3':
     dependencies:
-      '@types/node': 20.8.0
+      '@types/node': 20.14.9
 
   '@types/node@20.14.9':
     dependencies:
       undici-types: 5.26.5
-    optional: true
 
   '@types/node@20.8.0': {}
 
@@ -3857,8 +3856,7 @@ snapshots:
 
   undefsafe@2.0.5: {}
 
-  undici-types@5.26.5:
-    optional: true
+  undici-types@5.26.5: {}
 
   update-browserslist-db@1.0.13(browserslist@4.22.1):
     dependencies:
