@@ -27,7 +27,7 @@
     "axios": "^1.5.1",
     "bytes-formatter": "^21.6.12",
     "daisyui": "^4.1.1",
-    "nanostores": "^0.10.0",
+    "nanostores": "^0.11.2",
     "postcss": "^8.4.31",
     "svelte-i18n": "^4.0.0",
     "svelte-navigator": "^3.2.2",
