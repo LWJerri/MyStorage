@@ -666,9 +666,6 @@ packages:
   '@types/node@22.0.0':
     resolution: {integrity: sha512-VT7KSYudcPOzP5Q0wfbowyNLaVR8QWUdw+088uFWwfvpY6uCWaXpqV6ieLAu9WBcnTa7H4Z5RLK8I5t2FuOcqw==}
 
-  '@types/node@22.5.2':
-    resolution: {integrity: sha512-acJsPTEqYqulZS/Yp/S3GgeE6GZ0qYODUR8aVr/DkhHQ8l9nd4j5x1/ZJy9/gHrRlFMqkO6i0I3E27Alu4jjPg==}
-
   '@types/node@22.5.4':
     resolution: {integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==}
 
@@ -2517,20 +2514,15 @@ snapshots:
 
   '@types/jsonwebtoken@9.0.3':
     dependencies:
-      '@types/node': 22.5.2
+      '@types/node': 22.5.4
 
   '@types/node@22.0.0':
     dependencies:
       undici-types: 6.11.1
 
-  '@types/node@22.5.2':
-    dependencies:
-      undici-types: 6.19.8
-
   '@types/node@22.5.4':
     dependencies:
       undici-types: 6.19.8
-    optional: true
 
   '@zerodevx/svelte-toast@0.9.5(svelte@4.2.1)':
     dependencies:
