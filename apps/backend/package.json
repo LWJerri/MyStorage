@@ -15,7 +15,7 @@
   "dependencies": {
     "@fastify/cookie": "^9.1.0",
     "@fastify/cors": "^9.0.0",
-    "@fastify/multipart": "^8.0.0",
+    "@fastify/multipart": "^9.0.0",
     "@fastify/static": "^7.0.0",
     "@prisma/client": "^5.3.1",
     "aws-sdk": "^2.1467.0",
