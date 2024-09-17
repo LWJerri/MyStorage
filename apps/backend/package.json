@@ -21,7 +21,7 @@
     "aws-sdk": "^2.1467.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
-    "fastify": "^4.23.2",
+    "fastify": "^5.0.0",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^5.3.1",
     "stream": "^0.0.3"
