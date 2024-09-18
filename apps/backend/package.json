@@ -13,7 +13,7 @@
   "author": "LWJerri (lwjerri.dev)",
   "license": "MIT",
   "dependencies": {
-    "@fastify/cookie": "^9.1.0",
+    "@fastify/cookie": "^10.0.0",
     "@fastify/cors": "^9.0.0",
     "@fastify/multipart": "^9.0.0",
     "@fastify/static": "^7.0.0",
