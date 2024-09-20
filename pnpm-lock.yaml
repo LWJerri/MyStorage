@@ -3502,7 +3502,7 @@ snapshots:
 
   simple-update-notifier@2.0.0:
     dependencies:
-      semver: 7.5.4
+      semver: 7.6.3
 
   sonic-boom@4.1.0:
     dependencies:
