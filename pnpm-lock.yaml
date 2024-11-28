@@ -13,10 +13,10 @@ importers:
         version: 3.4.1
       prettier-plugin-svelte:
         specifier: ^3.0.3
-        version: 3.2.7(prettier@3.4.1)(svelte@5.2.9)
+        version: 3.2.7(prettier@3.4.1)(svelte@5.2.10)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.1
-        version: 0.6.9(prettier-plugin-svelte@3.2.7(prettier@3.4.1)(svelte@5.2.9))(prettier@3.4.1)
+        version: 0.6.9(prettier-plugin-svelte@3.2.7(prettier@3.4.1)(svelte@5.2.10))(prettier@3.4.1)
 
   apps/backend:
     dependencies:
@@ -799,9 +799,6 @@ packages:
     resolution: {integrity: sha512-R8gLRTZeyp03ymzP/6Lil/28tGeGEzhx1q2k703KGWRAI1VdvPIXdG70VJc2pAMw3NA6JKL5hhFu1sJX0Mnn/A==}
     engines: {node: '>=6.0.0'}
 
-  '@jridgewell/sourcemap-codec@1.4.15':
-    resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
-
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
@@ -1340,6 +1337,9 @@ packages:
 
   esm-env@1.1.4:
     resolution: {integrity: sha512-oO82nKPHKkzIj/hbtuDYy/JHqBHFlMIW36SDiPCVsj87ntDLcWN+sJ1erdVryd4NxODacFTsdrIE3b7IamqbOg==}
+
+  esm-env@1.2.0:
+    resolution: {integrity: sha512-OhSQuHL3mUcaQHjGe8UMG8GsJIJHYYz0flR0h9fiTPNMupLMkb7TvcRD0EeJXW5a8GHBgfz08b6FDLNK7kkPQA==}
 
   esrap@1.2.2:
     resolution: {integrity: sha512-F2pSJklxx1BlQIQgooczXCPHmcWpn6EsP5oo73LQfonG9fIlIENQ8vMmfGXeojP9MrkzUNAfyU5vdFlR9shHAw==}
@@ -2249,6 +2249,10 @@ packages:
       svelte: ^3.24
       typescript: ^4.1.2
 
+  svelte@5.2.10:
+    resolution: {integrity: sha512-ON0OyO7vOmSjTc9mLjusu3vf1I7BvjovbiRB7j84F1WZMXV6dR+Tj4btIzxQxMHfzbGskaFmRa7qjgmBSVBnhQ==}
+    engines: {node: '>=18'}
+
   svelte@5.2.9:
     resolution: {integrity: sha512-LjO7R6K8FI8dA3l+4CcsbJ3djIe2TtokHGzfpDTro5g8nworMbTz9alCR95EQXGsqlzIAvqJtZ7Yy0o33lL09Q==}
     engines: {node: '>=18'}
@@ -2873,7 +2877,7 @@ snapshots:
   '@jridgewell/gen-mapping@0.3.3':
     dependencies:
       '@jridgewell/set-array': 1.1.2
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
       '@jridgewell/trace-mapping': 0.3.25
 
   '@jridgewell/gen-mapping@0.3.5':
@@ -2887,8 +2891,6 @@ snapshots:
   '@jridgewell/set-array@1.1.2': {}
 
   '@jridgewell/set-array@1.2.1': {}
-
-  '@jridgewell/sourcemap-codec@1.4.15': {}
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
@@ -3463,6 +3465,8 @@ snapshots:
 
   esm-env@1.1.4: {}
 
+  esm-env@1.2.0: {}
+
   esrap@1.2.2:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -4029,16 +4033,16 @@ snapshots:
       prettier: 3.0.3
       svelte: 5.2.9
 
-  prettier-plugin-svelte@3.2.7(prettier@3.4.1)(svelte@5.2.9):
+  prettier-plugin-svelte@3.2.7(prettier@3.4.1)(svelte@5.2.10):
     dependencies:
       prettier: 3.4.1
-      svelte: 5.2.9
+      svelte: 5.2.10
 
-  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-svelte@3.2.7(prettier@3.4.1)(svelte@5.2.9))(prettier@3.4.1):
+  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-svelte@3.2.7(prettier@3.4.1)(svelte@5.2.10))(prettier@3.4.1):
     dependencies:
       prettier: 3.4.1
     optionalDependencies:
-      prettier-plugin-svelte: 3.2.7(prettier@3.4.1)(svelte@5.2.9)
+      prettier-plugin-svelte: 3.2.7(prettier@3.4.1)(svelte@5.2.10)
 
   prettier@3.0.3: {}
 
@@ -4292,6 +4296,22 @@ snapshots:
       pascal-case: 3.1.2
       svelte: 5.2.9
       typescript: 5.2.2
+
+  svelte@5.2.10:
+    dependencies:
+      '@ampproject/remapping': 2.3.0
+      '@jridgewell/sourcemap-codec': 1.5.0
+      '@types/estree': 1.0.6
+      acorn: 8.14.0
+      acorn-typescript: 1.4.13(acorn@8.14.0)
+      aria-query: 5.3.2
+      axobject-query: 4.1.0
+      esm-env: 1.2.0
+      esrap: 1.2.2
+      is-reference: 3.0.3
+      locate-character: 3.0.0
+      magic-string: 0.30.14
+      zimmerframe: 1.1.2
 
   svelte@5.2.9:
     dependencies:
