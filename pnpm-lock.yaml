@@ -13,10 +13,10 @@ importers:
         version: 3.4.2
       prettier-plugin-svelte:
         specifier: ^3.0.3
-        version: 3.3.2(prettier@3.4.2)(svelte@5.7.0)
+        version: 3.3.2(prettier@3.4.2)(svelte@5.8.0)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.1
-        version: 0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.7.0))(prettier@3.4.2)
+        version: 0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.8.0))(prettier@3.4.2)
 
   apps/backend:
     dependencies:
@@ -2250,8 +2250,8 @@ packages:
     resolution: {integrity: sha512-LjO7R6K8FI8dA3l+4CcsbJ3djIe2TtokHGzfpDTro5g8nworMbTz9alCR95EQXGsqlzIAvqJtZ7Yy0o33lL09Q==}
     engines: {node: '>=18'}
 
-  svelte@5.7.0:
-    resolution: {integrity: sha512-npaSigW2579iHv2wZrNyrlQQ8SQvTlBEN0rnxRQ7XVAcxhKHgGJYVYsErjPUKoyhAcjM6MZMnaE20KuXfzy8ug==}
+  svelte@5.8.0:
+    resolution: {integrity: sha512-ET/JQmx355DOJ2+KFi1u9ufU0bjASaXS7IjiyLbzBYk1FTyJBX2DKiABRns6W2qtEifB04rpvKXuF9pSNpNBeQ==}
     engines: {node: '>=18'}
 
   svrollbar@0.12.0:
@@ -4028,16 +4028,16 @@ snapshots:
       prettier: 3.0.3
       svelte: 5.2.9
 
-  prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.7.0):
+  prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.8.0):
     dependencies:
       prettier: 3.4.2
-      svelte: 5.7.0
+      svelte: 5.8.0
 
-  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.7.0))(prettier@3.4.2):
+  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.8.0))(prettier@3.4.2):
     dependencies:
       prettier: 3.4.2
     optionalDependencies:
-      prettier-plugin-svelte: 3.3.2(prettier@3.4.2)(svelte@5.7.0)
+      prettier-plugin-svelte: 3.3.2(prettier@3.4.2)(svelte@5.8.0)
 
   prettier@3.0.3: {}
 
@@ -4308,7 +4308,7 @@ snapshots:
       magic-string: 0.30.14
       zimmerframe: 1.1.2
 
-  svelte@5.7.0:
+  svelte@5.8.0:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
