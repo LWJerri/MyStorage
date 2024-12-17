@@ -13,10 +13,10 @@ importers:
         version: 3.4.2
       prettier-plugin-svelte:
         specifier: ^3.0.3
-        version: 3.3.2(prettier@3.4.2)(svelte@5.12.0)
+        version: 3.3.2(prettier@3.4.2)(svelte@5.14.2)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.1
-        version: 0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.12.0))(prettier@3.4.2)
+        version: 0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.14.2))(prettier@3.4.2)
 
   apps/backend:
     dependencies:
@@ -2258,8 +2258,8 @@ packages:
       svelte: ^3.24
       typescript: ^4.1.2
 
-  svelte@5.12.0:
-    resolution: {integrity: sha512-nOd7uj0D/4A3IrHnltaFYndVPGViYSs0s+Zi3N4uQg3owJt9RoiUdwxYx8qjorj5CtaGsx8dNYsFVbH6czrGNg==}
+  svelte@5.14.2:
+    resolution: {integrity: sha512-OxNh82bYjbutXNSZSPQspZzzmVzlRyNbiz0a6KrpOWvQ9LBUUZifXyeKhfl73LgyQC9UbsnVS9M55nQzqekMTA==}
     engines: {node: '>=18'}
 
   svelte@5.2.9:
@@ -4048,16 +4048,16 @@ snapshots:
       prettier: 3.0.3
       svelte: 5.2.9
 
-  prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.12.0):
+  prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.14.2):
     dependencies:
       prettier: 3.4.2
-      svelte: 5.12.0
+      svelte: 5.14.2
 
-  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.12.0))(prettier@3.4.2):
+  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.14.2))(prettier@3.4.2):
     dependencies:
       prettier: 3.4.2
     optionalDependencies:
-      prettier-plugin-svelte: 3.3.2(prettier@3.4.2)(svelte@5.12.0)
+      prettier-plugin-svelte: 3.3.2(prettier@3.4.2)(svelte@5.14.2)
 
   prettier@3.0.3: {}
 
@@ -4312,7 +4312,7 @@ snapshots:
       svelte: 5.2.9
       typescript: 5.2.2
 
-  svelte@5.12.0:
+  svelte@5.14.2:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
