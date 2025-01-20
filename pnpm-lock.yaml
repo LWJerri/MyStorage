@@ -59,7 +59,7 @@ importers:
     devDependencies:
       '@types/bcryptjs':
         specifier: ^2.4.4
-        version: 2.4.4
+        version: 2.4.6
       '@types/jsonwebtoken':
         specifier: ^9.0.3
         version: 9.0.3
@@ -994,8 +994,8 @@ packages:
   '@tsconfig/svelte@5.0.2':
     resolution: {integrity: sha512-BRbo1fOtyVbhfLyuCWw6wAWp+U8UQle+ZXu84MYYWzYSEB28dyfnRBIE99eoG+qdAC0po6L2ScIEivcT07UaMA==}
 
-  '@types/bcryptjs@2.4.4':
-    resolution: {integrity: sha512-9wlJI7k5gRyJEC4yrV7DubzNQFTPiykYxUA6lBtsk5NlOfW9oWLJ1HdIA4YtE+6C3i3mTpDQQEosJ2rVZfBWnw==}
+  '@types/bcryptjs@2.4.6':
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
@@ -3058,7 +3058,7 @@ snapshots:
 
   '@tsconfig/svelte@5.0.2': {}
 
-  '@types/bcryptjs@2.4.4': {}
+  '@types/bcryptjs@2.4.6': {}
 
   '@types/estree@1.0.6': {}
 
