@@ -126,7 +126,7 @@ importers:
         version: 5.0.2
       '@zerodevx/svelte-toast':
         specifier: ^0.9.5
-        version: 0.9.5(svelte@5.19.0)
+        version: 0.9.6(svelte@5.19.0)
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
@@ -1006,10 +1006,10 @@ packages:
   '@types/node@22.10.7':
     resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
 
-  '@zerodevx/svelte-toast@0.9.5':
-    resolution: {integrity: sha512-JLeB/oRdJfT+dz9A5bgd3Z7TuQnBQbeUtXrGIrNWMGqWbabpepBF2KxtWVhL2qtxpRqhae2f6NAOzH7xs4jUSw==}
+  '@zerodevx/svelte-toast@0.9.6':
+    resolution: {integrity: sha512-nHlTrCjverlPK9yukK6fqbG3e/R+f10ldrc4nJHOe2qNDScuPTuYVSFEk2dDDtzWAwTN5pmdEXgA3M2RbT8jiw==}
     peerDependencies:
-      svelte: ^3.57.0 || ^4.0.0
+      svelte: ^3.57.0 || ^4.0.0 || ^5.0.0
 
   abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
@@ -3058,7 +3058,7 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
-  '@zerodevx/svelte-toast@0.9.5(svelte@5.19.0)':
+  '@zerodevx/svelte-toast@0.9.6(svelte@5.19.0)':
     dependencies:
       svelte: 5.19.0
 
