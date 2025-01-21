@@ -129,10 +129,10 @@ importers:
         version: 0.9.6(svelte@5.19.0)
       prettier:
         specifier: ^3.0.3
-        version: 3.0.3
+        version: 3.4.2
       prettier-plugin-svelte:
         specifier: ^3.0.3
-        version: 3.3.3(prettier@3.0.3)(svelte@5.19.0)
+        version: 3.3.3(prettier@3.4.2)(svelte@5.19.0)
       svelte:
         specifier: ^5.0.5
         version: 5.19.0
@@ -1492,11 +1492,11 @@ packages:
   get-intrinsic@1.2.1:
     resolution: {integrity: sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==}
 
+  get-tsconfig@4.10.0:
+    resolution: {integrity: sha512-kGzZ3LWWQcGIAmg6iWvXn0ei6WDtV26wzHRMwDSzmAbcXrTEXxHy6IehI6/4eT6VRKyMP1eF1VqwrVUmE/LR7A==}
+
   get-tsconfig@4.7.2:
     resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
-
-  get-tsconfig@4.9.0:
-    resolution: {integrity: sha512-52n24W52sIueosRe0XZ8Ex5Yle+WbhfCKnV/gWXpbVR8FXNTfqdKEKUSypKso66VRHTvvcQxL44UTZbJRlCTnw==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -1989,11 +1989,6 @@ packages:
         optional: true
       prettier-plugin-svelte:
         optional: true
-
-  prettier@3.0.3:
-    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
-    engines: {node: '>=14'}
-    hasBin: true
 
   prettier@3.4.2:
     resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
@@ -3636,14 +3631,14 @@ snapshots:
       has-proto: 1.0.1
       has-symbols: 1.0.3
 
-  get-tsconfig@4.7.2:
-    dependencies:
-      resolve-pkg-maps: 1.0.0
-
-  get-tsconfig@4.9.0:
+  get-tsconfig@4.10.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
     optional: true
+
+  get-tsconfig@4.7.2:
+    dependencies:
+      resolve-pkg-maps: 1.0.0
 
   glob-parent@5.1.2:
     dependencies:
@@ -4062,11 +4057,6 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier-plugin-svelte@3.3.3(prettier@3.0.3)(svelte@5.19.0):
-    dependencies:
-      prettier: 3.0.3
-      svelte: 5.19.0
-
   prettier-plugin-svelte@3.3.3(prettier@3.4.2)(svelte@5.19.0):
     dependencies:
       prettier: 3.4.2
@@ -4077,8 +4067,6 @@ snapshots:
       prettier: 3.4.2
     optionalDependencies:
       prettier-plugin-svelte: 3.3.3(prettier@3.4.2)(svelte@5.19.0)
-
-  prettier@3.0.3: {}
 
   prettier@3.4.2: {}
 
@@ -4460,7 +4448,7 @@ snapshots:
   tsx@4.19.2:
     dependencies:
       esbuild: 0.23.1
-      get-tsconfig: 4.9.0
+      get-tsconfig: 4.10.0
     optionalDependencies:
       fsevents: 2.3.3
     optional: true
