@@ -34,7 +34,7 @@ importers:
         version: 8.0.4
       '@prisma/client':
         specifier: ^6.0.0
-        version: 6.0.0(prisma@6.0.0)
+        version: 6.3.0(prisma@6.0.0)(typescript@5.7.3)
       aws-sdk:
         specifier: ^2.1467.0
         version: 2.1692.0
@@ -712,13 +712,16 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@prisma/client@6.0.0':
-    resolution: {integrity: sha512-tOBhG35ozqZ/5Y6B0TNOa6cwULUW8ijXqBXcgb12bfozqf6eGMyGs+jphywCsj6uojv5lAZZnxVSoLMVebIP+g==}
+  '@prisma/client@6.3.0':
+    resolution: {integrity: sha512-BY3Fi28PUSk447Bpv22LhZp4HgNPo7NsEN+EteM1CLDnLjig5863jpW+3c3HHLFmml+nB/eJv1CjSriFZ8z7Cg==}
     engines: {node: '>=18.18'}
     peerDependencies:
       prisma: '*'
+      typescript: '>=5.1.0'
     peerDependenciesMeta:
       prisma:
+        optional: true
+      typescript:
         optional: true
 
   '@prisma/debug@6.0.0':
@@ -1685,9 +1688,6 @@ packages:
     resolution: {integrity: sha512-ypGJsmGtdXUOeM5u93TyeIEfEhM6s+ljAhrk5vAvSx8uyY/02OvrZnA0YNGUrPXfpJMgI1ODd3nwz8Npx4O4cg==}
     engines: {node: 20 || >=22}
 
-  picocolors@1.0.0:
-    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
-
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -2642,9 +2642,10 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@prisma/client@6.0.0(prisma@6.0.0)':
+  '@prisma/client@6.3.0(prisma@6.0.0)(typescript@5.7.3)':
     optionalDependencies:
       prisma: 6.0.0
+      typescript: 5.7.3
 
   '@prisma/debug@6.0.0': {}
 
@@ -3652,8 +3653,6 @@ snapshots:
     dependencies:
       lru-cache: 11.0.2
       minipass: 7.1.2
-
-  picocolors@1.0.0: {}
 
   picocolors@1.1.1: {}
 
