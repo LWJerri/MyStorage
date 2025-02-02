@@ -34,7 +34,7 @@ importers:
         version: 8.0.4
       '@prisma/client':
         specifier: ^6.0.0
-        version: 6.0.0(prisma@6.0.0)
+        version: 6.3.0(prisma@6.0.0)(typescript@5.7.3)
       aws-sdk:
         specifier: ^2.1467.0
         version: 2.1692.0
@@ -692,13 +692,16 @@ packages:
     peerDependencies:
       nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0
 
-  '@prisma/client@6.0.0':
-    resolution: {integrity: sha512-tOBhG35ozqZ/5Y6B0TNOa6cwULUW8ijXqBXcgb12bfozqf6eGMyGs+jphywCsj6uojv5lAZZnxVSoLMVebIP+g==}
+  '@prisma/client@6.3.0':
+    resolution: {integrity: sha512-BY3Fi28PUSk447Bpv22LhZp4HgNPo7NsEN+EteM1CLDnLjig5863jpW+3c3HHLFmml+nB/eJv1CjSriFZ8z7Cg==}
     engines: {node: '>=18.18'}
     peerDependencies:
       prisma: '*'
+      typescript: '>=5.1.0'
     peerDependenciesMeta:
       prisma:
+        optional: true
+      typescript:
         optional: true
 
   '@prisma/debug@6.0.0':
@@ -2457,9 +2460,10 @@ snapshots:
     dependencies:
       nanostores: 0.11.3
 
-  '@prisma/client@6.0.0(prisma@6.0.0)':
+  '@prisma/client@6.3.0(prisma@6.0.0)(typescript@5.7.3)':
     optionalDependencies:
       prisma: 6.0.0
+      typescript: 5.7.3
 
   '@prisma/debug@6.0.0': {}
 
