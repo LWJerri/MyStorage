@@ -116,7 +116,7 @@ importers:
         version: 0.12.0
       tslib:
         specifier: ^2.6.2
-        version: 2.6.2
+        version: 2.8.1
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^5.0.1
@@ -1966,8 +1966,8 @@ packages:
       '@swc/wasm':
         optional: true
 
-  tslib@2.6.2:
-    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+  tslib@2.8.1:
+    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
   tsx@4.19.2:
     resolution: {integrity: sha512-pOUl6Vo2LUq/bSa8S5q7b91cgNSjctn9ugq/+Mvow99qW6x/UZYwzxy/3NmqoT66eHYfCVvFvACC58UBPFf28g==}
@@ -2402,26 +2402,26 @@ snapshots:
       '@formatjs/fast-memoize': 2.2.6
       '@formatjs/intl-localematcher': 0.5.10
       decimal.js: 10.4.3
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   '@formatjs/fast-memoize@2.2.6':
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   '@formatjs/icu-messageformat-parser@2.11.0':
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.2
       '@formatjs/icu-skeleton-parser': 1.8.12
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   '@formatjs/icu-skeleton-parser@1.8.12':
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.2
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   '@formatjs/intl-localematcher@0.5.10':
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -3165,7 +3165,7 @@ snapshots:
       '@formatjs/ecma402-abstract': 2.3.2
       '@formatjs/fast-memoize': 2.2.6
       '@formatjs/icu-messageformat-parser': 2.11.0
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   ipaddr.js@2.2.0: {}
 
@@ -3286,7 +3286,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   lru-cache@11.0.2: {}
 
@@ -3354,7 +3354,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   node-releases@2.0.19: {}
 
@@ -3384,7 +3384,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.8.1
 
   path-key@3.1.1: {}
 
@@ -3716,7 +3716,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
-  tslib@2.6.2: {}
+  tslib@2.8.1: {}
 
   tsx@4.19.2:
     dependencies:
