@@ -92,7 +92,7 @@ importers:
         version: 1.7.9
       bytes-formatter:
         specifier: ^21.6.12
-        version: 21.6.12
+        version: 21.6.14
       daisyui:
         specifier: ^4.1.1
         version: 4.12.23(postcss@8.5.1)
@@ -985,8 +985,8 @@ packages:
   buffer@4.9.2:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
 
-  bytes-formatter@21.6.12:
-    resolution: {integrity: sha512-Gia4z2nUquLWBex1QrRlRJbhVhP96hgNKnPX8Sa09XPXwmPnG2pbYCjFRv394VbTBqhqIB1U34jFy0BedkMFPA==}
+  bytes-formatter@21.6.14:
+    resolution: {integrity: sha512-fiyxIZDjD3IkBt3zd2k8KQIdAK6wY19Zg+qNKiCWtlm5vSJx+NP0rr73j8BpN7hFI76QTMxlPsMOg1B11YTtsw==}
 
   call-bind-apply-helpers@1.0.1:
     resolution: {integrity: sha512-BhYE+WDaywFg2TBWYNXAE+8B1ATnThNBqXHP5nQu0jWJdVvY2hvkpyB3qOmtmDePiS5/BDQ8wASEWGMWRG148g==}
@@ -2708,7 +2708,7 @@ snapshots:
       ieee754: 1.1.13
       isarray: 1.0.0
 
-  bytes-formatter@21.6.12: {}
+  bytes-formatter@21.6.14: {}
 
   call-bind-apply-helpers@1.0.1:
     dependencies:
