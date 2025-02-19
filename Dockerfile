@@ -6,12 +6,11 @@ RUN apt-get install git curl wget build-essential libcairo2-dev libpango1.0-dev 
 
 WORKDIR /app
 
-RUN corepack enable
-
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY apps/frontend/package.json apps/frontend/
 COPY apps/backend/package.json apps/backend/
 
+RUN npm i pnpm@latest -g
 RUN pnpm i -r
 
 COPY apps/frontend apps/frontend
