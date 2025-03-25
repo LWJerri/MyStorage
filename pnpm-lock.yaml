@@ -25,7 +25,7 @@ importers:
         version: 11.0.2
       '@fastify/cors':
         specifier: ^11.0.0
-        version: 11.0.0
+        version: 11.0.1
       '@fastify/multipart':
         specifier: ^9.0.0
         version: 9.0.3
@@ -609,8 +609,8 @@ packages:
   '@fastify/cookie@11.0.2':
     resolution: {integrity: sha512-GWdwdGlgJxyvNv+QcKiGNevSspMQXncjMZ1J8IvuDQk0jvkzgWWZFNC2En3s+nHndZBGV8IbLwOI/sxCZw/mzA==}
 
-  '@fastify/cors@11.0.0':
-    resolution: {integrity: sha512-41Bx0LVGr2a6DnnhDN/SgfDlTRNZtEs8niPxyoymV6Hw09AIdz/9Rn/0Fpu+pBOs6kviwS44JY2mB8NcU2qSAA==}
+  '@fastify/cors@11.0.1':
+    resolution: {integrity: sha512-dmZaE7M1f4SM8ZZuk5RhSsDJ+ezTgI7v3HHRj8Ow9CneczsPLZV6+2j2uwdaSLn8zhTv6QV0F4ZRcqdalGx1pQ==}
 
   '@fastify/deepmerge@2.0.1':
     resolution: {integrity: sha512-hx+wJQr9Ph1hY/dyzY0SxqjumMyqZDlIF6oe71dpRKDHUg7dFQfjG94qqwQ274XRjmUrwKiYadex8XplNHx3CA==}
@@ -1533,9 +1533,6 @@ packages:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  mnemonist@0.40.0:
-    resolution: {integrity: sha512-kdd8AFNig2AD5Rkih7EPCXhu/iMvwevQFX/uEiGhZyPZi7fHqOoF4V4kHLpCfysxXMgQ4B52kdPMCwARshKvEg==}
-
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -1573,9 +1570,6 @@ packages:
   normalize-range@0.1.2:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
-
-  obliterator@2.0.5:
-    resolution: {integrity: sha512-42CPE9AhahZRsMNslczq0ctAEtqk8Eka26QofnqC346BZdHDySk3LWka23LI7ULIw11NmltpiLagIq8gBozxTw==}
 
   on-exit-leak-free@2.1.2:
     resolution: {integrity: sha512-0eJJY6hXLGf1udHwfNftBqH+g73EU4B504nZeKpz1sYRKafAghwxEJunB2O7rDZkL4PGfsMVnTXZ2EjibbqcsA==}
@@ -2345,10 +2339,10 @@ snapshots:
       cookie: 1.0.2
       fastify-plugin: 5.0.1
 
-  '@fastify/cors@11.0.0':
+  '@fastify/cors@11.0.1':
     dependencies:
       fastify-plugin: 5.0.1
-      mnemonist: 0.40.0
+      toad-cache: 3.7.0
 
   '@fastify/deepmerge@2.0.1': {}
 
@@ -3369,10 +3363,6 @@ snapshots:
 
   minipass@7.1.2: {}
 
-  mnemonist@0.40.0:
-    dependencies:
-      obliterator: 2.0.5
-
   mri@1.2.0: {}
 
   ms@2.1.3: {}
@@ -3406,8 +3396,6 @@ snapshots:
   normalize-path@3.0.0: {}
 
   normalize-range@0.1.2: {}
-
-  obliterator@2.0.5: {}
 
   on-exit-leak-free@2.1.2: {}
 
