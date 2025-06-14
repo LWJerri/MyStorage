@@ -27,7 +27,7 @@
     "stream": "^0.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.1",
     "@types/bcryptjs": "^3.0.0",
     "@types/jsonwebtoken": "^9.0.3",
     "nodemon": "^3.0.1",
