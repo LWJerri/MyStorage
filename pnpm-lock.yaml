@@ -34,7 +34,7 @@ importers:
         version: 8.2.0
       '@prisma/client':
         specifier: ^6.0.0
-        version: 6.16.3(prisma@6.16.3(typescript@5.9.2))(typescript@5.9.2)
+        version: 6.16.3(prisma@6.16.3(typescript@5.9.3))(typescript@5.9.3)
       aws-sdk:
         specifier: ^2.1467.0
         version: 2.1692.0
@@ -52,7 +52,7 @@ importers:
         version: 9.0.2
       prisma:
         specifier: ^6.0.0
-        version: 6.16.3(typescript@5.9.2)
+        version: 6.16.3(typescript@5.9.3)
       stream:
         specifier: ^0.0.3
         version: 0.0.3
@@ -71,13 +71,13 @@ importers:
         version: 3.1.10
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.2(@types/node@24.9.1)(typescript@5.9.2)
+        version: 10.9.2(@types/node@24.9.1)(typescript@5.9.3)
       tsx:
         specifier: ^4.1.0
         version: 4.20.6
       typescript:
         specifier: ^5.2.2
-        version: 5.9.2
+        version: 5.9.3
 
   apps/frontend:
     dependencies:
@@ -107,7 +107,7 @@ importers:
         version: 4.0.1(svelte@5.41.4)
       svelte-navigator:
         specifier: ^3.2.2
-        version: 3.2.2(svelte@5.41.4)(typescript@5.9.2)
+        version: 3.2.2(svelte@5.41.4)(typescript@5.9.3)
       svelte-select:
         specifier: ^5.7.0
         version: 5.8.3
@@ -138,13 +138,13 @@ importers:
         version: 5.41.4
       svelte-preprocess:
         specifier: ^6.0.0
-        version: 6.0.3(postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.2)))(postcss@8.5.6)(svelte@5.41.4)(typescript@5.9.2)
+        version: 6.0.3(postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.3)))(postcss@8.5.6)(svelte@5.41.4)(typescript@5.9.3)
       tailwindcss:
         specifier: ^4.0.2
         version: 4.1.16
       typescript:
         specifier: ^5.2.2
-        version: 5.9.2
+        version: 5.9.3
       vite:
         specifier: ^7.0.0
         version: 7.1.12(@types/node@24.9.1)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.7.0)
@@ -2116,8 +2116,8 @@ packages:
   type@2.7.3:
     resolution: {integrity: sha512-8j+1QmAbPvLZow5Qpi6NCaN8FB60p/6x8/vfNqOk/hC+HuvFZhL4+WfekuhQLiqFZXOgQdrs3B+XxEmCc6b3FQ==}
 
-  typescript@5.9.2:
-    resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2605,10 +2605,10 @@ snapshots:
     dependencies:
       nanostores: 1.0.1
 
-  '@prisma/client@6.16.3(prisma@6.16.3(typescript@5.9.2))(typescript@5.9.2)':
+  '@prisma/client@6.16.3(prisma@6.16.3(typescript@5.9.3))(typescript@5.9.3)':
     optionalDependencies:
-      prisma: 6.16.3(typescript@5.9.2)
-      typescript: 5.9.2
+      prisma: 6.16.3(typescript@5.9.3)
+      typescript: 5.9.3
 
   '@prisma/config@6.16.3':
     dependencies:
@@ -3677,13 +3677,13 @@ snapshots:
 
   possible-typed-array-names@1.0.0: {}
 
-  postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.2)):
+  postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.3)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.0
     optionalDependencies:
       postcss: 8.5.6
-      ts-node: 10.9.2(@types/node@24.9.1)(typescript@5.9.2)
+      ts-node: 10.9.2(@types/node@24.9.1)(typescript@5.9.3)
     optional: true
 
   postcss-value-parser@4.2.0: {}
@@ -3707,12 +3707,12 @@ snapshots:
 
   prettier@3.6.2: {}
 
-  prisma@6.16.3(typescript@5.9.2):
+  prisma@6.16.3(typescript@5.9.3):
     dependencies:
       '@prisma/config': 6.16.3
       '@prisma/engines': 6.16.3
     optionalDependencies:
-      typescript: 5.9.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - magicast
 
@@ -3892,31 +3892,31 @@ snapshots:
       svelte: 5.41.4
       tiny-glob: 0.2.9
 
-  svelte-navigator@3.2.2(svelte@5.41.4)(typescript@5.9.2):
+  svelte-navigator@3.2.2(svelte@5.41.4)(typescript@5.9.3):
     dependencies:
       svelte: 5.41.4
-      svelte2tsx: 0.1.193(svelte@5.41.4)(typescript@5.9.2)
+      svelte2tsx: 0.1.193(svelte@5.41.4)(typescript@5.9.3)
     transitivePeerDependencies:
       - typescript
 
-  svelte-preprocess@6.0.3(postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.2)))(postcss@8.5.6)(svelte@5.41.4)(typescript@5.9.2):
+  svelte-preprocess@6.0.3(postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.3)))(postcss@8.5.6)(svelte@5.41.4)(typescript@5.9.3):
     dependencies:
       svelte: 5.41.4
     optionalDependencies:
       postcss: 8.5.6
-      postcss-load-config: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.2))
-      typescript: 5.9.2
+      postcss-load-config: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.3))
+      typescript: 5.9.3
 
   svelte-select@5.8.3:
     dependencies:
       svelte-floating-ui: 1.5.8
 
-  svelte2tsx@0.1.193(svelte@5.41.4)(typescript@5.9.2):
+  svelte2tsx@0.1.193(svelte@5.41.4)(typescript@5.9.3):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 5.41.4
-      typescript: 5.9.2
+      typescript: 5.9.3
 
   svelte@5.41.4:
     dependencies:
@@ -3970,7 +3970,7 @@ snapshots:
 
   touch@3.1.1: {}
 
-  ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.2):
+  ts-node@10.9.2(@types/node@24.9.1)(typescript@5.9.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -3984,7 +3984,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.9.2
+      typescript: 5.9.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
@@ -3999,7 +3999,7 @@ snapshots:
 
   type@2.7.3: {}
 
-  typescript@5.9.2: {}
+  typescript@5.9.3: {}
 
   undefsafe@2.0.5: {}
 
