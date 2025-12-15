@@ -141,7 +141,7 @@ importers:
         version: 6.0.3(postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.10.0)(typescript@5.9.3)))(postcss@8.5.6)(svelte@5.45.2)(typescript@5.9.3)
       tailwindcss:
         specifier: ^4.0.2
-        version: 4.1.16
+        version: 4.1.18
       typescript:
         specifier: ^5.2.2
         version: 5.9.3
@@ -2060,8 +2060,8 @@ packages:
   svrollbar@0.12.0:
     resolution: {integrity: sha512-okH0sz8bGtw+tgOfN1mpEtbveifxROcE3mbUMBJ1RQz8Q+1rVr+nVG7EAJ9b0G80cGDu7dskjAWuzj3iru0k5g==}
 
-  tailwindcss@4.1.16:
-    resolution: {integrity: sha512-pONL5awpaQX4LN5eiv7moSiSPd/DLDzKVRJz8Q9PgzmAdd1R4307GQS2ZpfiN7ZmekdQrfhZZiSE5jkLR4WNaA==}
+  tailwindcss@4.1.18:
+    resolution: {integrity: sha512-4+Z+0yiYyEtUVCScyfHCxOYP06L5Ne+JiHhY2IjR2KWMIWhJOYZKLSGZaP5HkZ8+bY0cxfzwDE5uOmzFXyIwxw==}
 
   thread-stream@3.1.0:
     resolution: {integrity: sha512-OqyPZ9u96VohAyMfJykzmivOrY2wfMSf3C5TtFJVgN+Hm6aj+voFhlK+kZEIv2FBh1X6Xp3DlnCOfEQ3B2J86A==}
@@ -3950,7 +3950,7 @@ snapshots:
 
   svrollbar@0.12.0: {}
 
-  tailwindcss@4.1.16: {}
+  tailwindcss@4.1.18: {}
 
   thread-stream@3.1.0:
     dependencies:
