@@ -1,2 +1,10 @@
 packages:
   - "apps/**"
+allowBuilds:
+  "@prisma/client": true
+  "@prisma/engines": true
+  aws-sdk: true
+  es5-ext: true
+  esbuild: true
+  prisma: true
+  svelte-preprocess: true
