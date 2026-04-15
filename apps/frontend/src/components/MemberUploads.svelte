@@ -119,10 +119,10 @@
 </script>
 
 {#if fileTypeDisplay}
-  <div class="mt-5 grid gap-[0.75rem] sm:grid-cols-1 md:grid-cols-2 md:px-1 lg:grid-cols-4">
+  <div class="mt-6 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
     {#each response as upload}
-      <div class="card card-compact bg-base-300 flex flex-col rounded shadow-lg">
-        {#if member.member.showPreview}
+      <div class="card card-border card-sm border-base-content/10 bg-base-200 flex flex-col shadow-lg">
+        {#if member?.member?.showPreview}
           <figure>
             {#if ext(upload.name)}
               <img loading="lazy" src={upload.url} alt="preview" class="select-none" />
@@ -144,12 +144,12 @@
           </figure>
         {/if}
 
-        <div class="card-body flex-grow">
-          <h2 class="card-title font-bold">
+        <div class="card-body flex-grow gap-3">
+          <h2 class="card-title text-base-content font-bold break-words">
             {upload.name.length >= 15 ? upload.name.slice(0, 15) + "..." + upload.name.split(".").pop() : upload.name}
           </h2>
 
-          <div>
+          <div class="text-base-content/90 flex flex-col gap-1 text-sm">
             <p>
               {$_("other.uploaded", { values: { date: new Date(upload.createdAt).toLocaleString() } })}
             </p>
@@ -157,10 +157,10 @@
           </div>
 
           <div class="select-none">
-            <div class="flex justify-between">
-              <p>{$_("other.file.tagFile")}</p>
+            <div class="mb-2 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <p class="text-base-content text-sm font-medium">{$_("other.file.tagFile")}</p>
 
-              <div>
+              <div class="min-w-0 shrink-0">
                 <select
                   tabindex={Date.now()}
                   class="select select-sm [--rounded-btn:0.25rem] {!member.member?.tags.length ? 'hidden' : 'block'}"
@@ -188,18 +188,20 @@
           </div>
         </div>
 
-        <div class="mx-1 my-2 space-y-1">
-          <div class="flex">
-            <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success mr-1 w-1/2 rounded"
+        <div class="card-actions flex-col gap-2 px-2 pt-0 pb-3">
+          <div class="grid w-full grid-cols-2 gap-2">
+            <a href={upload.url} target="_blank" rel="noreferrer" class="btn btn-sm btn-outline btn-success rounded"
               >{$_("buttons.open")}</a
             >
             <button
+              type="button"
               on:click={async () => await downloadFile(upload.url, upload.name)}
-              class="btn btn-sm btn-outline btn-accent flex-1 rounded">{$_("buttons.download")}</button
+              class="btn btn-sm btn-outline btn-warning rounded">{$_("buttons.download")}</button
             >
           </div>
 
           <button
+            type="button"
             on:click={async () => await deleteFile(upload.id, upload.name)}
             class="btn btn-sm btn-outline btn-error w-full rounded">{$_("buttons.delete")}</button
           >
@@ -208,15 +210,15 @@
     {/each}
   </div>
 {:else}
-  <div class="select-none overflow-x-auto">
+  <div class="overflow-x-auto select-none">
     <table class="table-zebra table w-full rounded">
       <thead>
         <tr>
-          <th class="bg-base-300">{$_("table.filename")}</th>
-          <th class="bg-base-300">{$_("table.uploaded")}</th>
-          <th class="bg-base-300">{$_("table.size")}</th>
-          <th class="bg-base-300">{$_("table.tags")}</th>
-          <th class="bg-base-300 text-center">{$_("table.actions")}</th>
+          <th class="bg-base-200 text-base-content">{$_("table.filename")}</th>
+          <th class="bg-base-200 text-base-content">{$_("table.uploaded")}</th>
+          <th class="bg-base-200 text-base-content">{$_("table.size")}</th>
+          <th class="bg-base-200 text-base-content">{$_("table.tags")}</th>
+          <th class="bg-base-200 text-base-content text-center">{$_("table.actions")}</th>
         </tr>
       </thead>
       <tbody>
@@ -243,14 +245,15 @@
                 {/each}
               {/if}
             </td>
-            <td class="flex justify-center">
-              <div class="flex space-x-2">
+            <td>
+              <div class="flex flex-wrap items-center justify-center gap-2">
                 <a href={upload.url} target="_blank" class="btn btn-sm btn-outline btn-success rounded"
                   >{$_("buttons.open")}</a
                 >
                 <button
+                  type="button"
                   on:click={async () => await downloadFile(upload.url, upload.name)}
-                  class="btn btn-sm btn-outline btn-accent rounded">{$_("buttons.download")}</button
+                  class="btn btn-sm btn-outline btn-warning rounded">{$_("buttons.download")}</button
                 >
 
                 <button

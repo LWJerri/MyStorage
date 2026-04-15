@@ -70,63 +70,61 @@
   }
 </script>
 
-<div class="hero min-h-screen select-none">
-  <div class="hero-content w-full text-center">
+<div class="hero bg-base-300 min-h-screen select-none">
+  <div class="hero-content w-full max-w-md px-4 text-center sm:px-6">
     {#if $isLoading}
-      <div class="card bg-base-300 w-full rounded shadow-xl md:w-96">
-        <div class="card-body">
-          <h2 class="text-center text-xl outline-none">{$_("other.loading")}</h2>
+      <div class="card card-border bg-base-200 w-full shadow-2xl">
+        <div class="card-body gap-4 py-8">
+          <h2 class="text-base-content text-center text-2xl font-semibold">{$_("other.loading")}</h2>
         </div>
       </div>
     {:else}
-      <div class="card bg-base-300 w-full rounded shadow-xl md:w-96">
-        <div class="card-body">
-          <h2 class="text-center text-xl outline-none">{isRegister ? $_("titles.register") : $_("titles.login")}</h2>
+      <div class="card card-border bg-base-200 w-full shadow-2xl">
+        <div class="card-body gap-6 px-2 py-4 sm:px-4">
+          <h2 class="text-base-content text-center text-2xl font-semibold tracking-tight">
+            {isRegister ? $_("titles.register") : $_("titles.login")}
+          </h2>
 
-          <form on:submit|preventDefault={async () => await auth()}>
-            <div class="form-control mb-5 w-full">
-              <span class="label label-text">{$_("other.username")}</span>
-              <input type="text" bind:value={data.username} class="input-sm input input-bordered w-full rounded" />
-            </div>
+          <form class="flex w-full flex-col gap-4" on:submit|preventDefault={async () => await auth()}>
+            <label class="input input-sm w-full">
+              <span class="label">{$_("other.username")}</span>
+              <input type="text" bind:value={data.username} />
+            </label>
 
-            <div class="form-control mb-5 w-full">
-              <span class="label label-text">{$_("other.password")}</span>
-              <input type="password" bind:value={data.password} class="input-sm input input-bordered w-full rounded" />
-            </div>
+            <label class="input input-sm w-full">
+              <span class="label">{$_("other.password")}</span>
+              <input type="password" bind:value={data.password} />
+            </label>
 
             {#if isRegister}
-              <div class="form-control mb-5 w-full">
-                <span class="label label-text">{$_("other.accessKey")}</span>
-                <input type="text" bind:value={data.accessKey} class="input-sm input input-bordered w-full rounded" />
-              </div>
+              <label class="input input-sm w-full">
+                <span class="label">{$_("other.accessKey")}</span>
+                <input type="text" bind:value={data.accessKey} />
+              </label>
 
-              <div class="form-control mb-5 w-full">
-                <span class="label label-text">{$_("other.secretKey")}</span>
-                <input
-                  type="password"
-                  bind:value={data.secretKey}
-                  class="input-sm input input-bordered w-full rounded"
-                />
-              </div>
+              <label class="input input-sm w-full">
+                <span class="label">{$_("other.secretKey")}</span>
+                <input type="password" bind:value={data.secretKey} />
+              </label>
 
-              <div class="form-control mb-5 w-full">
-                <span class="label label-text">{$_("other.s3Bucket")}</span>
-                <input type="text" bind:value={data.bucket} class="input-sm input input-bordered w-full rounded" />
-              </div>
+              <label class="input input-sm w-full">
+                <span class="label">{$_("other.s3Bucket")}</span>
+                <input type="text" bind:value={data.bucket} />
+              </label>
 
-              <div class="form-control mb-5 w-full">
-                <span class="label label-text">{$_("other.s3Endpoint")}</span>
-                <input type="text" bind:value={data.endpoint} class="input-sm input input-bordered w-full rounded" />
-              </div>
+              <label class="input input-sm w-full">
+                <span class="label">{$_("other.s3Endpoint")}</span>
+                <input type="text" bind:value={data.endpoint} />
+              </label>
 
-              <div class="form-control mb-5 w-full">
-                <span class="label label-text">{$_("other.adminPassword")}</span>
-                <input type="password" bind:value={data.admin} class="input-sm input input-bordered w-full rounded" />
-              </div>
+              <label class="input input-sm w-full">
+                <span class="label">{$_("other.adminPassword")}</span>
+                <input type="password" bind:value={data.admin} />
+              </label>
             {/if}
 
             {#if error.error}
-              <div class="alert alert-error alert-sm mt-5 rounded shadow-lg">
+              <div class="alert alert-error alert-soft alert-sm rounded-lg">
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -145,12 +143,14 @@
               </div>
             {/if}
 
-            <div class="card-actions mt-5 justify-end">
-              <button class="btn btn-outline btn-access btn-sm rounded"
+            <div class="card-actions mt-2 justify-end gap-2 pt-2">
+              <button
+                type="submit"
+                class="btn btn-sm border-base-content/35 text-base-content hover:bg-base-content/[0.07] border-2 bg-transparent font-medium"
                 >{isRegister ? $_("buttons.create") : $_("buttons.enter")}</button
               >
 
-              <button on:click={() => (isRegister = !isRegister)} class="btn btn-outline btn-error btn-sm rounded"
+              <button type="button" class="btn btn-outline btn-error btn-sm" on:click={() => (isRegister = !isRegister)}
                 >{isRegister ? $_("buttons.cancel") : $_("titles.register")}</button
               >
             </div>

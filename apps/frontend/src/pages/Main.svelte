@@ -14,6 +14,8 @@
   $: member = {} as Member;
 
   let isAuth: boolean = false;
+
+  let sessionReady = false;
   let startDeleting: boolean = false;
   let page: number = 1;
 
@@ -66,36 +68,38 @@
 
     if (!isAuth) {
       document.location.href = "/join";
+      return;
     }
 
     window.localStorage.setItem("lang", member.member.language);
 
     await getFiles();
+    sessionReady = true;
   });
 </script>
 
-{#if $isLoading}
-  <div class="hero min-h-screen select-none">
-    <div class="hero-content w-full text-center">
-      <div class="card bg-base-300 w-full rounded shadow-xl md:w-96">
-        <div class="card-body">
-          <h2 class="text-center text-xl outline-none">{$_("other.loading")}</h2>
+{#if $isLoading || !sessionReady}
+  <div class="hero bg-base-300 min-h-screen select-none">
+    <div class="hero-content w-full max-w-md px-4 text-center sm:px-6">
+      <div class="card card-border bg-base-200 w-full shadow-2xl">
+        <div class="card-body gap-4 py-8">
+          <h2 class="text-base-content text-center text-2xl font-semibold">{$_("other.loading")}</h2>
         </div>
       </div>
     </div>
   </div>
 {:else}
-  <div>
+  <div class="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
     <Navbar {member} />
 
-    <div class="mt-5 grid grid-cols-1 gap-[0.75rem] md:grid-cols-2">
+    <div class="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
       <MemberInfo {member} {newInfo} />
 
       <MemberControl {member} {page} />
     </div>
 
     {#if response?.uploads?.length > 0 && isAuth}
-      <div class="my-2 flex justify-center space-x-1">
+      <div class="my-4 flex flex-wrap justify-center gap-2">
         <button
           on:click={async () => {
             page--;
@@ -117,7 +121,7 @@
 
       <MemberUploads {member} />
     {:else if response.error}
-      <div class="alert alert-error mt-5 rounded">
+      <div class="alert alert-error mt-6 rounded">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +139,7 @@
         </div>
       </div>
     {:else}
-      <div class="alert alert-warning mt-5 rounded">
+      <div class="alert alert-warning mt-6 rounded">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -158,15 +162,15 @@
 
 <input type="checkbox" id="delete_files" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box bg-base-300 relative rounded">
-    <label for="delete_files" class="btn btn-sm btn-circle absolute right-2 top-2"
+  <div class="modal-box border-base-content/10 bg-base-200 relative rounded-xl border shadow-2xl">
+    <label for="delete_files" class="btn btn-ghost btn-sm btn-circle absolute top-2 right-2"
       ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
       ></label
     >
 
-    <h3 class="text-lg font-bold">{$_("other.forceDelete.title")}</h3>
-    <p class="py-4">{$_("other.forceDelete.description")}</p>
+    <h3 class="text-base-content text-lg font-bold">{$_("other.forceDelete.title")}</h3>
+    <p class="text-base-content/90 py-4">{$_("other.forceDelete.description")}</p>
 
     <button
       on:click={async () => await forceDeleteFile()}

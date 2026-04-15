@@ -5,9 +5,9 @@
     "useDefineForClassFields": true,
     "module": "esnext",
     "resolveJsonModule": true,
-    "baseUrl": ".",
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "types": ["svelte"]
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]
 }

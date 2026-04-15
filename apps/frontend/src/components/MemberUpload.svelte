@@ -45,55 +45,50 @@
   }
 </script>
 
-<form on:submit|preventDefault={async () => await uploadFiles()} class="my-5">
-  <div class="flex justify-center px-1">
-    <div class="w-96">
-      <input
-        bind:files
-        class="form-control my-1 block w-full rounded text-white"
-        type="file"
-        name="files"
-        multiple
-        required
-      />
+<form class="flex flex-col gap-4 py-2" on:submit|preventDefault={async () => await uploadFiles()}>
+  <div class="mx-auto flex w-full max-w-md flex-col gap-4 px-1">
+    <input bind:files class="file-input file-input-sm w-full" type="file" name="files" multiple required />
 
-      {#if member.member?.tags.length > 0}
-        <div class="form-control my-5">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.file.upload.tag")}</span>
-          </label>
-
-          <div class="test">
-            <Select items={member.member?.tags} bind:value={tags} />
-          </div>
+    {#if (member.member?.tags?.length ?? 0) > 0}
+      <div class="flex flex-col gap-2">
+        <span class="label-text text-base-content">{$_("other.file.upload.tag")}</span>
+        <div class="upload-tag-select">
+          <Select items={member.member?.tags} bind:value={tags} />
         </div>
-      {/if}
+      </div>
+    {/if}
 
-      <button
-        type="submit"
-        class="btn btn-sm btn-outline btn-error my-1 w-full rounded {isUploading ? 'loading' : ''}"
-        disabled={uploadLimit ? true : isUploading}
-        >{isUploading ? $_("buttons.progress.uploading") : $_("buttons.upload")}</button
-      >
+    <button
+      type="submit"
+      class="btn btn-sm btn-outline btn-error w-full rounded {isUploading ? 'loading' : ''}"
+      disabled={uploadLimit ? true : isUploading}
+      >{isUploading ? $_("buttons.progress.uploading") : $_("buttons.upload")}</button
+    >
 
-      <p class="my-2 {uploadLimit ? 'block' : 'hidden'}">
-        {$_("info.limit", { values: { max: member?.member?.maxGB ?? 1 } })}
-      </p>
-    </div>
+    <p class="text-warning text-center text-sm {uploadLimit ? 'block' : 'hidden'}">
+      {$_("info.limit", { values: { max: member?.member?.maxGB ?? 1 } })}
+    </p>
   </div>
 </form>
 
 <style>
-  .test {
-    --inputColor: black;
-    --itemColor: black;
-    --itemHoverColor: black;
-    --background: #191a21;
-    --multiClearBG: black;
-    --multiClearHoverBG: black;
-    --multiItemActiveBG: white;
-    --multiItemActiveColor: black;
-    --multiItemBG: black;
+  .upload-tag-select :global(.svelte-select) {
+    --background: var(--color-base-100);
+    --inputColor: var(--color-base-content);
+    --itemColor: var(--color-base-content);
+    --itemHoverColor: var(--color-base-content);
+    --itemHoverBG: color-mix(in oklab, var(--color-base-content) 12%, transparent);
+    --listBackground: var(--color-base-100);
+    --listBorder: 1px solid color-mix(in oklab, var(--color-base-content) 18%, transparent);
+    --border: 1px solid color-mix(in oklab, var(--color-base-content) 18%, transparent);
+    --border-hover: 1px solid color-mix(in oklab, var(--color-base-content) 35%, transparent);
+    --multiItemBG: var(--color-base-200);
+    --multiItemColor: var(--color-base-content);
+    --multiClearBG: var(--color-base-300);
+    --multiClearHoverBG: var(--color-base-300);
+    --multiItemActiveBG: var(--color-primary);
+    --multiItemActiveColor: var(--color-primary-content);
+    --icons-color: var(--color-base-content);
+    --chevron-color: var(--color-base-content);
   }
 </style>

@@ -1,3 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes:
+    dark --default,
+    light;
+  logs: false;
+}
+
+@layer base {
+  #app {
+    min-height: 100dvh;
+    background-color: var(--color-base-300);
+    color: var(--color-base-content);
+  }
+}

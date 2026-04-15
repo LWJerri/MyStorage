@@ -34,9 +34,9 @@
   }
 </script>
 
-<div class="card card-compact bg-base-300 w-auto select-none rounded">
-  <div class="card-body">
-    <h2 class="card-title font-bold outline-none">
+<div class="card card-border card-sm border-base-content/10 bg-base-200 w-full shadow-lg select-none">
+  <div class="card-body gap-4">
+    <h2 class="card-title text-base-content flex flex-wrap items-center gap-2 text-lg font-bold outline-none">
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <svg
@@ -57,147 +57,112 @@
       {isEditing ? `(${$_("other.editing").toLowerCase()})` : ""}
     </h2>
     <div class={$infoPanel ? "hidden" : "block"}>
-      <div class="grid grid-cols-1 gap-[0.75rem] md:grid-cols-2">
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.username")}</span>
-          </label>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.username")}</span>
           <input
             bind:value={newInfo.username}
             type="text"
             placeholder={member?.member?.username}
-            class="input-ghost input input-sm input-bordered w-full rounded"
             disabled={isEditing ? false : true}
           />
-        </div>
+        </label>
 
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.passwordData.title")}</span>
-          </label>
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.passwordData.title")}</span>
           <input
             bind:value={newInfo.password}
             type="password"
             placeholder={$_("other.passwordData.placeholder")}
-            class="input-ghost input input-sm input-bordered w-full rounded"
             disabled={isEditing ? false : true}
           />
-        </div>
+        </label>
 
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.accessKey")}</span>
-          </label>
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.accessKey")}</span>
           <input
             bind:value={newInfo.accessKey}
             type="text"
             placeholder={member?.member?.accessKey}
-            class="input-ghost input input-sm input-bordered w-full rounded"
             disabled={isEditing ? false : true}
           />
-        </div>
+        </label>
 
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.secretKey")}</span>
-          </label>
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.secretKey")}</span>
           <input
             bind:value={newInfo.secretKey}
             type="password"
-            placeholder={member?.member?.secretKey.slice(0, 10) + "***"}
-            class="input-ghost input input-sm input-bordered w-full rounded"
+            placeholder={(member?.member?.secretKey?.slice(0, 10) ?? "") + "***"}
             disabled={isEditing ? false : true}
           />
-        </div>
+        </label>
 
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.s3Bucket")}</span>
-          </label>
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.s3Bucket")}</span>
           <input
             bind:value={newInfo.bucket}
             type="text"
             placeholder={member?.member?.bucket}
-            class="input-ghost input input-sm input-bordered w-full rounded"
             disabled={isEditing ? false : true}
           />
-        </div>
+        </label>
 
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.s3Endpoint")}</span>
-          </label>
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.s3Endpoint")}</span>
           <input
             bind:value={newInfo.endpoint}
             type="text"
             placeholder={member?.member?.endpoint}
-            class="input-ghost input input-sm input-bordered w-full rounded"
             disabled={isEditing ? false : true}
           />
-        </div>
+        </label>
 
-        <div class="form-control w-full [--rounded-btn:0.25rem]">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text inline-flex"
-              >{$_("other.space")}
-              <svg
-                class="ml-2 h-6 w-6 text-red-500 {member?.uploads?.size > 0 &&
-                member?.uploads?.size + 10737418240 >= member.member.maxGB * Math.pow(1024, 3)
-                  ? 'block'
-                  : 'hidden'}"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                /></svg
-              ></span
+        <div class="flex flex-col gap-2 md:col-span-2">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="label p-0">{$_("other.space")}</span>
+            <svg
+              class="text-error h-5 w-5 shrink-0 {member?.uploads?.size > 0 &&
+              member?.uploads?.size + 10737418240 >= (member?.member?.maxGB ?? 0) * Math.pow(1024, 3)
+                ? 'block'
+                : 'hidden'}"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              /></svg
             >
-          </label>
-          <div class="input-group">
+          </div>
+          <div class="join join-horizontal w-full">
             <input
               type="text"
               value={formatBytes(member?.uploads?.size ?? 0)}
-              class="input-ghost input input-sm input-bordered w-full"
+              class="input input-sm input-ghost join-item min-w-0 flex-1"
               disabled
             />
             <input
               type="number"
               bind:value={newInfo.maxGB}
               min="1"
-              class="input input-sm input-ghost w-32"
+              class="input input-sm input-ghost join-item w-32 shrink-0"
               placeholder="MAX {member?.member?.maxGB.toString()} GB"
               disabled={isEditing ? false : true}
             />
           </div>
         </div>
 
-        <div class="form-control w-full">
-          <!-- svelte-ignore a11y-label-has-associated-control -->
-          <label class="label">
-            <span class="label-text">{$_("other.file.total")}</span>
-          </label>
-          <input
-            type="text"
-            value={member?.uploads?.count}
-            class="input-ghost input input-sm input-bordered w-full rounded"
-            disabled
-          />
-        </div>
+        <label class="input input-sm input-ghost w-full">
+          <span class="label">{$_("other.file.total")}</span>
+          <input type="text" value={member?.uploads?.count} disabled />
+        </label>
       </div>
 
-      <div class="card-actions mt-5 justify-end">
+      <div class="card-actions mt-6 justify-end gap-2">
         <button
           class="btn btn-outline btn-sm btn-error rounded"
           on:click={async () => {

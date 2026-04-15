@@ -12,5 +12,5 @@ const memberLang = window.localStorage.getItem("lang");
 
 init({
   fallbackLocale: "ru",
-  initialLocale: memberLang,
+  initialLocale: memberLang ?? undefined,
 });

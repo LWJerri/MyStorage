@@ -128,9 +128,9 @@
   localToggle = uploadDisplay.get();
 </script>
 
-<div class="card card-compact bg-base-300 select-none rounded">
-  <div class="card-body">
-    <h2 class="card-title font-bold outline-none">
+<div class="card card-border card-sm border-base-content/10 bg-base-200 w-full shadow-lg select-none">
+  <div class="card-body gap-4">
+    <h2 class="card-title text-base-content flex flex-wrap items-center gap-2 text-lg font-bold outline-none">
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <svg
@@ -150,23 +150,23 @@
     </h2>
 
     <div class={$managePanel ? "hidden" : "block"}>
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <span class="label-text">{$_("other.preview")}</span>
+      <div class="flex flex-col gap-4">
+        <label class="label flex cursor-pointer items-center justify-between gap-4 py-1">
+          <span class="label-text text-base-content">{$_("other.preview")}</span>
           <input
             type="checkbox"
             on:click={async () => await filePreview()}
-            class="toggle"
+            class="toggle toggle-primary"
             checked={member.member?.showPreview}
           />
         </label>
 
-        <div class="label cursor-pointer">
-          <span class="label-text">Uploads display type</span>
+        <div class="label flex cursor-pointer items-center justify-between gap-4 py-1">
+          <span class="label-text text-base-content">Uploads display type</span>
 
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <div class="hover:text-yellow-400" on:click={() => uploadVisiblityType()}>
+          <div class="text-base-content hover:text-warning" on:click={() => uploadVisiblityType()}>
             <svg
               class="h-6 w-6 {localToggle ? 'hidden' : 'block'}"
               fill="none"
@@ -197,10 +197,9 @@
           </div>
         </div>
 
-        <!-- svelte-ignore a11y-label-has-associated-control -->
-        <label class="label cursor-pointer">
-          <span class="label-text">{$_("buttons.delete")}</span>
-          <label for="delete_files" class="btn btn-outline btn-error btn-sm modal-button rounded"
+        <div class="label flex cursor-pointer items-center justify-between gap-4 py-1">
+          <span class="label-text text-base-content">{$_("buttons.delete")}</span>
+          <label for="delete_files" class="btn btn-outline btn-error btn-sm shrink-0 rounded"
             ><svg
               class="h-6 w-6"
               fill="none"
@@ -215,15 +214,13 @@
               /></svg
             ></label
           >
-        </label>
+        </div>
       </div>
 
-      <!-- svelte-ignore a11y-label-has-associated-control -->
-      <label class="label">
-        <span class="label-text">{$_("other.lang.title")}</span>
-
+      <div class="flex flex-col gap-2">
+        <span class="label-text text-base-content">{$_("other.lang.title")}</span>
         <select
-          class="select select-sm [--rounded-btn:0.25rem]"
+          class="select select-sm w-full max-w-full"
           bind:value={lang}
           on:change={async () => await updateLanguage()}
         >
@@ -232,12 +229,11 @@
             <option value={locale}>{$_("name", { locale })}</option>
           {/each}
         </select>
-      </label>
+      </div>
 
-      <!-- svelte-ignore a11y-label-has-associated-control -->
-      <label class="label flex">
-        <span class="label-text">{$_("other.tag.title")}</span>
-        <label for="add_tags" class="btn btn-outline btn-success btn-sm modal-button rounded"
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <span class="label-text text-base-content">{$_("other.tag.title")}</span>
+        <label for="add_tags" class="btn btn-outline btn-success btn-sm shrink-0 rounded"
           ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             ><path
               stroke-linecap="round"
@@ -247,9 +243,9 @@
             /></svg
           ></label
         >
-      </label>
+      </div>
 
-      <div class="{member.member?.tags.length > 0 ? 'max-h-32' : ''} mb-5 overflow-y-auto">
+      <div class="{member.member?.tags.length > 0 ? 'max-h-32' : ''} flex flex-wrap gap-1 overflow-y-auto pb-1">
         {#if member.member?.tags.length > 0}
           {#each member.member?.tags as tag}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -259,26 +255,26 @@
         {/if}
       </div>
 
-      <div class="card-actions justify-start border-t border-gray-700 pt-2">
-        <form on:submit|preventDefault={async () => await getFiles()} class="w-full">
-          <span class="label-text">{$_("other.file.search")}</span>
-          <label class="input-group mt-2 w-full [--rounded-btn:0.25rem]">
+      <div class="card-actions border-base-content/10 flex-col items-stretch justify-start border-t pt-4">
+        <form class="flex w-full flex-col gap-2" on:submit|preventDefault={async () => await getFiles()}>
+          <span class="label-text text-base-content">{$_("other.file.search")}</span>
+          <div class="join join-horizontal w-full">
             <input
               type="text"
               placeholder={$_("other.file.placeholder")}
-              class="input input-sm w-full rounded"
+              class="input input-sm join-item min-w-0 flex-1"
               bind:value={search}
             />
             {#if member.member?.tags.length > 0}
-              <select class="select select-sm max-w-10 overflow-x-auto [--rounded-btn:0rem]" bind:value={tagKey}>
+              <select class="select select-sm join-item w-auto max-w-40 min-w-24 shrink-0" bind:value={tagKey}>
                 <option selected>-</option>
                 {#each member.member?.tags as tag}
                   <option value={tag}>{tag}</option>
                 {/each}
               </select>
             {/if}
-            <button class="btn btn-sm btn-error">{$_("buttons.find")}</button>
-          </label>
+            <button type="submit" class="btn btn-sm btn-error join-item shrink-0">{$_("buttons.find")}</button>
+          </div>
         </form>
       </div>
     </div>
@@ -287,20 +283,17 @@
 
 <input type="checkbox" id="add_tags" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box bg-base-300 relative rounded">
-    <label for="add_tags" class="btn btn-sm btn-circle absolute right-2 top-2"
+  <div class="modal-box border-base-content/10 bg-base-200 relative rounded-xl border shadow-2xl">
+    <label for="add_tags" class="btn btn-ghost btn-sm btn-circle absolute top-2 right-2"
       ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
         ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
       ></label
     >
-    <h3 class="text-lg font-bold">{$_("other.modal.tag.title")}</h3>
+    <h3 class="text-base-content text-lg font-bold">{$_("other.modal.tag.title")}</h3>
 
-    <input
-      bind:value={tag}
-      type="text"
-      placeholder={$_("other.modal.tag.placeholder")}
-      class="input ounded input-sm my-5 w-full rounded"
-    />
+    <label class="input input-sm my-4 w-full">
+      <input bind:value={tag} type="text" placeholder={$_("other.modal.tag.placeholder")} />
+    </label>
 
     <button class="btn btn-sm btn-success btn-outline w-full rounded" on:click={async () => await addNewTag()}
       >{$_("other.modal.tag.create")}</button
