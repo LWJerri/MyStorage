@@ -1,15 +1,18 @@
-import { PrismaClient } from ".prisma/client";
 import fastifyCookie from "@fastify/cookie";
 import fastifyCORS from "@fastify/cors";
 import fastifyMultipart from "@fastify/multipart";
 import fastifyStatic from "@fastify/static";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "@prisma/client";
 import "dotenv/config";
 import fastifyModule from "fastify";
 import path from "path";
 import { verifyData } from "./middleware/auth";
 import * as routes from "./routes";
 
-export const prisma = new PrismaClient();
+const prismaAdapter = new PrismaPg({ connectionString: process.env.DATABASE_URL ?? "" });
+export const prisma = new PrismaClient({ adapter: prismaAdapter });
+
 export const fastify = fastifyModule({ logger: true });
 
 fastify
@@ -21,20 +24,42 @@ fastify
     root: path.resolve(__dirname, "..", "..", "..", "apps", "frontend", "dist"),
   })
   .register(
-    (instance, opts, next) => {
+    (instance, _opts, next) => {
       instance
         .get("/", routes.api)
-        .delete("/file", { preHandler: verifyData }, routes.deleteFile)
+        .delete<{ Body: { id: string } }>("/file", { preHandler: verifyData }, routes.deleteFile)
         .delete("/file/force", { preHandler: verifyData }, routes.forceDeleteFile)
-        .get("/file", { preHandler: verifyData }, routes.files)
-        .post("/file", { preHandler: verifyData }, routes.upload)
-        .post("/join", routes.join)
-        .post("/tag", { preHandler: verifyData }, routes.addTag)
-        .delete("/tag", { preHandler: verifyData }, routes.deleteTag)
-        .post("/tag/file", { preHandler: verifyData }, routes.addFileTag)
-        .delete("/tag/file", { preHandler: verifyData }, routes.removeFileTag)
+        .get<{ Querystring: { page: string; key?: string; tagKey?: string } }>(
+          "/file",
+          { preHandler: verifyData },
+          routes.files,
+        )
+        .post<{ Querystring: { tags?: string } }>("/file", { preHandler: verifyData }, routes.upload)
+        .post<{
+          Body: {
+            admin?: string;
+            password: string;
+            username: string;
+            accessKey: string;
+            secretKey: string;
+            bucket: string;
+            endpoint: string;
+          };
+        }>("/join", routes.join)
+        .post<{ Body: { tag: string } }>("/tag", { preHandler: verifyData }, routes.addTag)
+        .delete<{ Body: { tag: string } }>("/tag", { preHandler: verifyData }, routes.deleteTag)
+        .post<{ Body: { fileID: string; tag: string } }>("/tag/file", { preHandler: verifyData }, routes.addFileTag)
+        .delete<{ Body: { fileID: string; tag: string } }>(
+          "/tag/file",
+          { preHandler: verifyData },
+          routes.removeFileTag,
+        )
         .get("/me", { preHandler: verifyData }, routes.meGET)
-        .put("/me", { preHandler: verifyData }, routes.mePUT)
+        .put<{ Body: { password: string; maxGB: number; username: string } }>(
+          "/me",
+          { preHandler: verifyData },
+          routes.mePUT,
+        )
         .post("/logout", { preHandler: verifyData }, routes.logout);
 
       next();

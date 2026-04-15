@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./dist/",
-    "target": "ESNext",
-    "module": "commonjs",
+    "target": "ES2022",
+    "module": "NodeNext",
     "inlineSourceMap": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
+    "strict": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "typeRoots": ["node_modules/@types"]
+    "types": ["node"]
   },
 
   "include": ["./src"],

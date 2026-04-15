@@ -19,6 +19,8 @@ export async function meGET(req: FastifyRequest, res: FastifyReply) {
       prisma.upload.aggregate({ _sum: { size: true }, where: findParams.where }),
     ]);
 
+    if (!findMember) return await res.status(404).send({ error: true, text: "Member not found!" });
+
     const member = exclude(findMember, "password");
 
     return await res.status(200).send({ error: false, member, uploads: { size, count } });
@@ -30,7 +32,7 @@ export async function meGET(req: FastifyRequest, res: FastifyReply) {
 }
 
 export async function mePUT(
-  req: FastifyRequest & { body: { password: string; maxGB: number; username: string } },
+  req: FastifyRequest<{ Body: { password: string; maxGB: number; username: string } }>,
   res: FastifyReply,
 ) {
   const { password, maxGB, username } = req.body;

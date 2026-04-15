@@ -5,9 +5,9 @@ import { prisma } from "../app";
 import { exclude } from "../helpers/exclude";
 
 export async function join(
-  req: FastifyRequest & {
-    body: {
-      admin: string;
+  req: FastifyRequest<{
+    Body: {
+      admin?: string;
       password: string;
       username: string;
       accessKey: string;
@@ -15,21 +15,22 @@ export async function join(
       bucket: string;
       endpoint: string;
     };
-  },
+  }>,
   res: FastifyReply,
 ) {
   try {
     const { password, username, admin } = req.body;
+    const tokenKey = process.env.TOKEN_KEY;
 
     const findMember = await prisma.member.findUnique({ where: { username } });
 
     if (process.env.ADMIN_PASSWORD == admin && !findMember) {
-      req.body.admin = undefined;
+      const { admin: _admin, ...memberPayload } = req.body;
 
       const memberPassword = await hash(password, 10);
 
       const newMember = await prisma.member.create({
-        data: { ...req.body, password: memberPassword },
+        data: { ...memberPayload, password: memberPassword },
       });
 
       const member = exclude(newMember, "password");
@@ -49,8 +50,9 @@ export async function join(
       const comparePassword = await compare(password, findMember.password);
 
       if (!comparePassword) return await res.status(403).send({ error: true, text: "Password doesen't match!" });
+      if (!tokenKey) return await res.status(500).send({ error: true, text: "Server misconfiguration!" });
 
-      const token = sign({ member_id: findMember.id, username }, process.env.TOKEN_KEY, { expiresIn: "24h" });
+      const token = sign({ member_id: findMember.id, username }, tokenKey, { expiresIn: "24h" });
 
       return await res
         .setCookie("token", token, { expires: new Date(Date.now() + 1000 * 60 * 60 * 24), path: "/" })

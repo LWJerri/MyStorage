@@ -3,7 +3,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
 import { getS3 } from "../helpers/s3";
 
-export async function deleteFile(req: FastifyRequest & { body: { id: string } }, res: FastifyReply) {
+export async function deleteFile(req: FastifyRequest<{ Body: { id: string } }>, res: FastifyReply) {
   try {
     const { id } = req.body;
 
@@ -17,6 +17,7 @@ export async function deleteFile(req: FastifyRequest & { body: { id: string } },
     ]);
 
     if (!upload) return await res.status(404).send({ error: true, text: "File with this id not found!" });
+    if (!member) return await res.status(404).send({ error: true, text: "Member not found!" });
 
     const deleteParams = {
       Bucket: member.bucket,

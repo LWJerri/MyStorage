@@ -2,14 +2,14 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
 
 export async function files(
-  req: FastifyRequest & { query: { page: string; key?: string; tagKey?: string } },
+  req: FastifyRequest<{ Querystring: { page: string; key?: string; tagKey?: string } }>,
   res: FastifyReply,
 ) {
   try {
     const { page, key, tagKey } = req.query;
 
     let prePage = Number(page);
-    const newPage = prePage <= 0 ? 1 : prePage ?? 1;
+    const newPage = prePage <= 0 ? 1 : (prePage ?? 1);
     const take = 100;
     const skip = take * (newPage - 1);
 

@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
 import { exclude } from "../helpers/exclude";
 
-export async function addFileTag(req: FastifyRequest & { body: { fileID: string; tag: string } }, res: FastifyReply) {
+export async function addFileTag(req: FastifyRequest<{ Body: { fileID: string; tag: string } }>, res: FastifyReply) {
   try {
     const { fileID, tag } = req.body;
     const findMember = await prisma.member.findUnique({ where: { id: req.user.member_id } });
@@ -25,10 +25,7 @@ export async function addFileTag(req: FastifyRequest & { body: { fileID: string;
   }
 }
 
-export async function removeFileTag(
-  req: FastifyRequest & { body: { fileID: string; tag: string } },
-  res: FastifyReply,
-) {
+export async function removeFileTag(req: FastifyRequest<{ Body: { fileID: string; tag: string } }>, res: FastifyReply) {
   try {
     const { fileID, tag } = req.body;
     const findMember = await prisma.member.findUnique({ where: { id: req.user.member_id } });
@@ -53,7 +50,7 @@ export async function removeFileTag(
   }
 }
 
-export async function addTag(req: FastifyRequest & { body: { tag: string } }, res: FastifyReply) {
+export async function addTag(req: FastifyRequest<{ Body: { tag: string } }>, res: FastifyReply) {
   try {
     const { tag } = req.body;
 
@@ -68,7 +65,7 @@ export async function addTag(req: FastifyRequest & { body: { tag: string } }, re
   }
 }
 
-export async function deleteTag(req: FastifyRequest & { body: { tag: string } }, res: FastifyReply) {
+export async function deleteTag(req: FastifyRequest<{ Body: { tag: string } }>, res: FastifyReply) {
   try {
     const { tag } = req.body;
     const findParams = { where: { id: req.user.member_id } };

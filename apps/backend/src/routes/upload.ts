@@ -3,20 +3,20 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../app";
 import { getS3 } from "../helpers/s3";
 
-export async function upload(
-  req: FastifyRequest & { query: { tags?: string }; body: { files: FormData } },
-  res: FastifyReply,
-) {
+export async function upload(req: FastifyRequest<{ Querystring: { tags?: string } }>, res: FastifyReply) {
   try {
     const member = await prisma.member.findUnique({ where: { id: req.user.member_id } });
     const uploadS3 = await getS3(req.user.member_id);
+    if (!member) return await res.status(404).send({ error: true, text: "Member not found!" });
 
     const Bucket = member.bucket;
 
     try {
       await uploadS3.headBucket({ Bucket: Bucket }).promise();
     } catch (err) {
-      if (err.statusCode == 404) return await uploadS3.createBucket({ Bucket: Bucket }).promise();
+      if (err instanceof Error && "statusCode" in err && err.statusCode === 404) {
+        await uploadS3.createBucket({ Bucket: Bucket }).promise();
+      }
     }
 
     for await (const part of req.files({ limits: { fieldSize: 214748364 } })) {
@@ -39,7 +39,7 @@ export async function upload(
         })
         .promise();
 
-      const fileTags = req.query.tags.split(",");
+      const fileTags = req.query.tags?.split(",") ?? [];
 
       const uploadData = {
         name: part.filename,
@@ -50,7 +50,7 @@ export async function upload(
       };
       const uploadTagData = { tags: { set: fileTags } };
 
-      const data = Object.assign(uploadData, !req.query.tags ? undefined : uploadTagData);
+      const data = Object.assign(uploadData, fileTags.length > 0 ? uploadTagData : undefined);
 
       await prisma.upload.create({ data });
     }
