@@ -152,7 +152,7 @@
     <div class={$managePanel ? "hidden" : "block"}>
       <div class="flex flex-col gap-4">
         <label class="label flex cursor-pointer items-center justify-between gap-4 py-1">
-          <span class="label-text text-base-content">{$_("other.preview")}</span>
+          <span class="text-base-content text-sm font-medium">{$_("other.preview")}</span>
           <input
             type="checkbox"
             on:click={async () => await filePreview()}
@@ -162,7 +162,7 @@
         </label>
 
         <div class="label flex cursor-pointer items-center justify-between gap-4 py-1">
-          <span class="label-text text-base-content">Uploads display type</span>
+          <span class="text-base-content text-sm font-medium">Uploads display type</span>
 
           <!-- svelte-ignore a11y-click-events-have-key-events -->
           <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -198,7 +198,7 @@
         </div>
 
         <div class="label flex cursor-pointer items-center justify-between gap-4 py-1">
-          <span class="label-text text-base-content">{$_("buttons.delete")}</span>
+          <span class="text-base-content text-sm font-medium">{$_("buttons.delete")}</span>
           <label for="delete_files" class="btn btn-outline btn-error btn-sm shrink-0 rounded"
             ><svg
               class="h-6 w-6"
@@ -218,7 +218,7 @@
       </div>
 
       <div class="flex flex-col gap-2">
-        <span class="label-text text-base-content">{$_("other.lang.title")}</span>
+        <span class="text-base-content text-sm font-medium">{$_("other.lang.title")}</span>
         <select
           class="select select-sm w-full max-w-full"
           bind:value={lang}
@@ -232,7 +232,7 @@
       </div>
 
       <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <span class="label-text text-base-content">{$_("other.tag.title")}</span>
+        <span class="text-base-content text-sm font-medium">{$_("other.tag.title")}</span>
         <label for="add_tags" class="btn btn-outline btn-success btn-sm shrink-0 rounded"
           ><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             ><path
@@ -257,7 +257,7 @@
 
       <div class="card-actions border-base-content/10 flex-col items-stretch justify-start border-t pt-4">
         <form class="flex w-full flex-col gap-2" on:submit|preventDefault={async () => await getFiles()}>
-          <span class="label-text text-base-content">{$_("other.file.search")}</span>
+          <span class="text-base-content text-sm font-medium">{$_("other.file.search")}</span>
           <div class="join join-horizontal w-full">
             <input
               type="text"

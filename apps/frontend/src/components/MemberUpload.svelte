@@ -51,7 +51,7 @@
 
     {#if (member.member?.tags?.length ?? 0) > 0}
       <div class="flex flex-col gap-2">
-        <span class="label-text text-base-content">{$_("other.file.upload.tag")}</span>
+        <span class="text-base-content text-sm font-medium">{$_("other.file.upload.tag")}</span>
         <div class="upload-tag-select">
           <Select items={member.member?.tags} bind:value={tags} />
         </div>
