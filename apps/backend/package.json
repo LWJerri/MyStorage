@@ -16,7 +16,7 @@
     "@fastify/cookie": "11.0.2",
     "@fastify/cors": "11.2.0",
     "@fastify/multipart": "10.0.0",
-    "@fastify/static": "9.1.0",
+    "@fastify/static": "9.1.1",
     "@prisma/adapter-pg": "7.7.0",
     "@prisma/client": "7.7.0",
     "aws-sdk": "2.1693.0",
